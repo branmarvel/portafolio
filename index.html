@@ -46,6 +46,20 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
 		
 		<style>
+			/* Variables de colores para mantener consistencia */
+			:root {
+				--primary-color: #4e7ac7;
+				--primary-color-dark: #3a5d9f;
+				--secondary-color: #e67e22;
+				--secondary-color-dark: #d35400;
+				--accent-color: #4ea9df;
+				--text-dark: #2e384d;
+				--text-medium: #555;
+				--text-light: #888;
+				--bg-light: #f9f9f9;
+				--white: #ffffff;
+			}
+			
 			/* Estilos mejorados para el carrusel */
 			.mySwiper {
 				width: 100%;
@@ -54,7 +68,7 @@
 			}
 
 			.swiper-slide {
-				background: linear-gradient(145deg, #ffffff, #f0f0f0);
+				background: linear-gradient(145deg, var(--white), var(--bg-light));
 				border-radius: 15px;
 				padding: 25px;
 				box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -77,7 +91,7 @@
 
 			.slide-header h3 {
 				margin: 0;
-				color: #2e384d;
+				color: var(--text-dark);
 			}
 
 			.video-container {
@@ -121,7 +135,7 @@
 			
 			.tech-icon i {
 				font-size: 2.5em;
-				color: #2e384d;
+				color: var(--primary-color);
 				margin-bottom: 8px;
 			}
 			
@@ -137,7 +151,7 @@
 			.tech-icon span {
 				font-size: 0.9em;
 				font-weight: 600;
-				color: #555;
+				color: var(--text-medium);
 			}
 
 			.project-link {
@@ -149,14 +163,14 @@
 				border-radius: 30px;
 				font-weight: 600;
 				transition: all 0.3s ease;
-				background-color: #4e7ac7;
+				background-color: var(--secondary-color);
 				color: white !important;
 				text-decoration: none;
 			}
 
 			.project-link:hover {
-				background-color: #3a5d9f;
-				box-shadow: 0 5px 15px rgba(78, 122, 199, 0.4);
+				background-color: var(--secondary-color-dark);
+				box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
 				transform: translateY(-3px);
 			}
 
@@ -170,8 +184,8 @@
 			}
 
 			.swiper-button-next, .swiper-button-prev {
-				color: #4e7ac7 !important;
-				background-color: white;
+				color: var(--primary-color) !important;
+				background-color: var(--white);
 				width: 40px;
 				height: 40px;
 				border-radius: 50%;
@@ -183,32 +197,105 @@
 			}
 
 			.swiper-pagination-bullet {
-				background: #4e7ac7;
+				background: var(--primary-color);
 				opacity: 0.5;
 			}
 
 			.swiper-pagination-bullet-active {
 				opacity: 1;
-				background: #4e7ac7;
+				background: var(--primary-color);
 			}
 
-			@media (max-width: 768px) {
-				.tech-icon i, .tech-icon img.custom-icon {
-					font-size: 2em;
-					height: 30px;
-					width: 30px;
-				}
-				
-				.tech-stack {
-					gap: 15px;
-				}
-				
-				.slide-header h3 {
-					font-size: 1.5em;
-				}
+			.skills-container {
+				display: flex;
+				flex-direction: column;
+				gap: 50px;
+				margin-top: 40px;
 			}
 			
-			/* Styles for new About Me section */
+			.skill-category {
+				background-color: var(--white);
+				border-radius: 15px;
+				padding: 30px;
+				box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+			}
+			
+			.skill-category h3 {
+				font-size: 1.5em;
+				color: var(--text-dark);
+				margin-bottom: 20px;
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+			
+			.skill-category h3 i {
+				color: var(--primary-color);
+			}
+			
+			.skills-grid {
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: flex-start;
+				gap: 15px;
+			}
+			
+			.skill-item {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin-bottom: 20px;
+				width: 100px;
+				text-align: center;
+			}
+			
+			.skill-icon {
+				font-size: 2.8rem;
+				color: var(--primary-color);
+				margin-bottom: 10px;
+				transition: transform 0.3s ease;
+			}
+			
+			.skill-icon i {
+				font-size: 2.8rem;
+				color: var(--primary-color);
+			}
+			
+			.skill-icon img.custom-icon {
+				height: 45px;
+				width: 45px;
+				object-fit: contain;
+			}
+			
+			.skill-item h4 {
+				font-size: 0.9em;
+				color: var(--text-medium);
+				margin: 0;
+				font-weight: 500;
+			}
+
+			.button.secondary.large.hvr-sweep-to-right {
+				background-color: var(--primary-color);
+				color: var(--white);
+				border: 2px solid var(--primary-color);
+				transition: all 0.3s ease;
+			}
+			
+			.button.secondary.large.hvr-sweep-to-right:hover {
+				background-color: var(--white);
+				color: var(--primary-color);
+				border-color: var(--primary-color);
+			}
+			
+			.hvr-sweep-to-right:before {
+				background-color: var(--white) !important;
+			}
+			
+			.hvr-sweep-to-right:hover {
+				color: var(--primary-color) !important;
+			}
+
+			/* Estilos para la sección de About Me */
 			.profile-image-container {
 				position: relative;
 				margin-bottom: 30px;
@@ -259,7 +346,7 @@
 			}
 			
 			.social-icon:hover {
-				color: #4ea9df;
+				color: var(--secondary-color);
 				transform: translateY(-5px);
 			}
 			
@@ -269,7 +356,7 @@
 			
 			.section-title {
 				font-size: 2.5em;
-				color: #333;
+				color: var(--text-dark);
 				margin-bottom: 10px;
 				position: relative;
 			}
@@ -277,7 +364,7 @@
 			.separator {
 				width: 70px;
 				height: 4px;
-				background: linear-gradient(to right, #4ea9df, #6DD5FA);
+				background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
 				margin-bottom: 25px;
 				border-radius: 2px;
 			}
@@ -285,7 +372,7 @@
 			.about-intro {
 				font-size: 1.6em;
 				font-weight: 300;
-				color: #555;
+				color: var(--text-medium);
 				margin-bottom: 20px;
 				line-height: 1.4;
 			}
@@ -293,7 +380,7 @@
 			.about-description {
 				font-size: 1.1em;
 				line-height: 1.8;
-				color: #666;
+				color: var(--text-medium);
 				margin-bottom: 20px;
 			}
 			
@@ -311,7 +398,7 @@
 			
 			.detail-item i {
 				font-size: 20px;
-				color: #4ea9df;
+				color: var(--secondary-color);
 				margin-right: 15px;
 			}
 			
@@ -334,12 +421,12 @@
 			
 			/* Estilos para la sección de Contacto */
 			#contact {
-				background-color: #f9f9f9;
+				background-color: var(--bg-light);
 				padding: 80px 0;
 			}
 			
 			.contact-info {
-				background-color: white;
+				background-color: var(--white);
 				padding: 40px;
 				border-radius: 10px;
 				box-shadow: 0 5px 20px rgba(0,0,0,0.05);
@@ -354,11 +441,11 @@
 				display: flex;
 				align-items: center;
 				margin-bottom: 10px;
-				color: #333;
+				color: var(--text-dark);
 			}
 			
 			.contact-method h3 i {
-				color: #4ea9df;
+				color: var(--secondary-color);
 				margin-right: 15px;
 				font-size: 20px;
 			}
@@ -366,16 +453,16 @@
 			.contact-method p {
 				padding-left: 35px;
 				margin: 0;
-				color: #666;
+				color: var(--text-medium);
 			}
 			
 			.contact-method a {
-				color: #666;
+				color: var(--text-medium);
 				transition: color 0.3s ease;
 			}
 			
 			.contact-method a:hover {
-				color: #4ea9df;
+				color: var(--secondary-color);
 			}
 			
 			.social-networks {
@@ -384,7 +471,7 @@
 			
 			.social-networks h3 {
 				margin-bottom: 15px;
-				color: #333;
+				color: var(--text-dark);
 			}
 			
 			.social-icons {
@@ -399,19 +486,19 @@
 				width: 40px;
 				height: 40px;
 				border-radius: 50%;
-				background-color: #4ea9df;
+				background-color: var(--secondary-color);
 				color: white;
 				font-size: 18px;
 				transition: all 0.3s ease;
 			}
 			
 			.social-icons .social-icon:hover {
-				background-color: #357eaa;
+				background-color: var(--secondary-color-dark);
 				transform: translateY(-5px);
 			}
 			
 			.contact-form {
-				background-color: white;
+				background-color: var(--white);
 				padding: 40px;
 				border-radius: 10px;
 				box-shadow: 0 5px 20px rgba(0,0,0,0.05);
@@ -425,7 +512,7 @@
 				display: block;
 				margin-bottom: 8px;
 				font-weight: 600;
-				color: #555;
+				color: var(--text-medium);
 			}
 			
 			.form-group .required {
@@ -442,8 +529,8 @@
 			}
 			
 			.form-input:focus {
-				border-color: #4ea9df;
-				box-shadow: 0 0 0 2px rgba(78, 169, 223, 0.2);
+				border-color: var(--secondary-color);
+				box-shadow: 0 0 0 2px rgba(230, 126, 34, 0.2);
 				outline: none;
 			}
 			
@@ -455,6 +542,18 @@
 				padding: 12px 30px;
 				font-size: 16px;
 				font-weight: 600;
+				background-color: var(--secondary-color);
+				color: white;
+				border: none;
+				border-radius: 50px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+			}
+			
+			.form-submit button:hover {
+				background-color: var(--secondary-color-dark);
+				transform: translateY(-3px);
+				box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
 			}
 			
 			.form-submit button i {
@@ -489,7 +588,7 @@
 			}
 			
 			#footer .social a:hover {
-				color: #4ea9df;
+				color: var(--secondary-color);
 			}
 			
 			.link-list {
@@ -539,11 +638,29 @@
 			}
 			
 			#copyright .links a {
-				color: #4ea9df;
+				color: var(--secondary-color);
 			}
 			
-			/* Hover Effects */
-			.hvr-forward {
+			/* Hover Effects consistentes */
+			.button {
+				border-radius: 50px !important;
+				overflow: hidden;
+				position: relative;
+				z-index: 1;
+			}
+			
+			.button.primary {
+				background-color: var(--secondary-color) !important;
+				color: white !important;
+			}
+			
+			.button.secondary {
+				background-color: transparent !important;
+				color: var(--secondary-color) !important;
+				border: 2px solid var(--secondary-color) !important;
+			}
+			
+			.hvr-grow {
 				display: inline-block;
 				vertical-align: middle;
 				transform: perspective(1px) translateZ(0);
@@ -552,10 +669,117 @@
 				transition-property: transform;
 			}
 			
-			.hvr-forward:hover,
-			.hvr-forward:focus,
-			.hvr-forward:active {
-				transform: translateX(8px);
+			.hvr-grow:hover,
+			.hvr-grow:focus,
+			.hvr-grow:active {
+				transform: scale(1.05);
+			}
+			
+			.hvr-bounce-to-bottom {
+				display: inline-block;
+				vertical-align: middle;
+				transform: perspective(1px) translateZ(0);
+				box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+				position: relative;
+				transition-property: color;
+				transition-duration: 0.5s;
+				overflow: hidden;
+				border-radius: 50px !important;
+			}
+			
+			.hvr-bounce-to-bottom:before {
+				content: "";
+				position: absolute;
+				z-index: -1;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: var(--secondary-color);
+				transform: scaleY(0);
+				transform-origin: 50% 0;
+				transition-property: transform;
+				transition-duration: 0.5s;
+				transition-timing-function: ease-out;
+				border-radius: 50px;
+			}
+			
+			.hvr-bounce-to-bottom:hover:before, 
+			.hvr-bounce-to-bottom:focus:before, 
+			.hvr-bounce-to-bottom:active:before {
+				transform: scaleY(1);
+				transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+			}
+			
+			.hvr-bounce-to-right {
+				display: inline-block;
+				vertical-align: middle;
+				transform: perspective(1px) translateZ(0);
+				box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+				position: relative;
+				transition-property: color;
+				transition-duration: 0.5s;
+				overflow: hidden;
+				border-radius: 50px !important;
+			}
+			
+			.hvr-bounce-to-right:before {
+				content: "";
+				position: absolute;
+				z-index: -1;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: var(--secondary-color);
+				transform: scaleX(0);
+				transform-origin: 0 50%;
+				transition-property: transform;
+				transition-duration: 0.5s;
+				transition-timing-function: ease-out;
+				border-radius: 50px;
+			}
+			
+			.hvr-bounce-to-right:hover:before, 
+			.hvr-bounce-to-right:focus:before, 
+			.hvr-bounce-to-right:active:before {
+				transform: scaleX(1);
+				transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+			}
+			
+			.hvr-sweep-to-right {
+				display: inline-block;
+				vertical-align: middle;
+				transform: perspective(1px) translateZ(0);
+				box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+				position: relative;
+				transition-property: color;
+				transition-duration: 0.3s;
+				overflow: hidden;
+				border-radius: 50px !important;
+			}
+			
+			.hvr-sweep-to-right:before {
+				content: "";
+				position: absolute;
+				z-index: -1;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: var(--primary-color);
+				transform: scaleX(0);
+				transform-origin: 0 50%;
+				transition-property: transform;
+				transition-duration: 0.3s;
+				transition-timing-function: ease-out;
+				border-radius: 50px;
+			}
+			
+			.hvr-sweep-to-right:hover:before, 
+			.hvr-sweep-to-right:focus:before, 
+			.hvr-sweep-to-right:active:before {
+				transform: scaleX(1);
 			}
 			
 			.hvr-float {
@@ -571,6 +795,102 @@
 			.hvr-float:focus,
 			.hvr-float:active {
 				transform: translateY(-8px);
+			}
+			
+			.hvr-forward {
+				display: inline-block;
+				vertical-align: middle;
+				transform: perspective(1px) translateZ(0);
+				box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+				transition-duration: 0.3s;
+				transition-property: transform;
+			}
+			
+			.hvr-forward:hover,
+			.hvr-forward:focus,
+			.hvr-forward:active {
+				transform: translateX(8px);
+			}
+			
+			.hvr-underline-from-center {
+				display: inline-block;
+				vertical-align: middle;
+				transform: perspective(1px) translateZ(0);
+				box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.hvr-underline-from-center:before {
+				content: "";
+				position: absolute;
+				z-index: -1;
+				left: 51%;
+				right: 51%;
+				bottom: 0;
+				background: var(--secondary-color);
+				height: 3px;
+				transition-property: left, right;
+				transition-duration: 0.3s;
+				transition-timing-function: ease-out;
+			}
+			
+			.hvr-underline-from-center:hover:before, 
+			.hvr-underline-from-center:focus:before, 
+			.hvr-underline-from-center:active:before {
+				left: 0;
+				right: 0;
+			}
+			
+			/* Estilos para la sección de Habilidades */
+			.skill-icon {
+				width: 40px;
+				height: 40px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin-right: 15px;
+				flex-shrink: 0;
+			}
+			
+			.skill-icon i {
+				font-size: 30px;
+				color: var(--secondary-color);
+			}
+			
+			.skill-icon img.custom-icon {
+				max-width: 30px;
+				max-height: 30px;
+				object-fit: contain;
+			}
+			
+			.skill-info h4 {
+				color: var(--text-dark);
+				margin-bottom: 8px;
+			}
+			
+			.skill-bar {
+				background-color: #eee;
+				height: 10px;
+				border-radius: 5px;
+				overflow: hidden;
+			}
+			
+			.skill-progress {
+				background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
+				height: 100%;
+				position: relative;
+				border-radius: 5px;
+				transition: width 1.5s ease-in-out;
+			}
+			
+			.skill-progress span {
+				position: absolute;
+				right: 5px;
+				top: -18px;
+				font-size: 10px;
+				font-weight: bold;
+				color: var(--text-dark);
 			}
 			
 			/* Responsive Adjustments */
@@ -598,28 +918,6 @@
 				.about-intro {
 					font-size: 1.3em;
 				}
-			}
-			
-			/* Estilos para la sección de Habilidades */
-			.skill-icon {
-				width: 40px;
-				height: 40px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				margin-right: 15px;
-				flex-shrink: 0;
-			}
-			
-			.skill-icon i {
-				font-size: 30px;
-				color: #4ea9df;
-			}
-			
-			.skill-icon img.custom-icon {
-				max-width: 30px;
-				max-height: 30px;
-				object-fit: contain;
 			}
 		</style>
 	</head>
@@ -697,62 +995,32 @@
 								<div class="skills-grid">
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fab fa-angular"></i></div>
-										<div class="skill-info">
-											<h4>Angular</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 90%;" data-skill="90%"><span>90%</span></div>
-											</div>
-										</div>
+										<h4>Angular</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fab fa-vuejs"></i></div>
-										<div class="skill-info">
-											<h4>Vue.js</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 85%;" data-skill="85%"><span>85%</span></div>
-											</div>
-										</div>
+										<h4>Vue.js</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fab fa-react"></i></div>
-										<div class="skill-info">
-											<h4>React</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 75%;" data-skill="75%"><span>75%</span></div>
-											</div>
-										</div>
+										<h4>React</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fab fa-js"></i></div>
-										<div class="skill-info">
-											<h4>JavaScript</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 95%;" data-skill="95%"><span>95%</span></div>
-											</div>
-										</div>
+										<h4>JavaScript</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fab fa-html5"></i></div>
-										<div class="skill-info">
-											<h4>HTML5/CSS3</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 90%;" data-skill="90%"><span>90%</span></div>
-											</div>
-										</div>
+										<h4>HTML5/CSS3</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fab fa-sass"></i></div>
-										<div class="skill-info">
-											<h4>Sass/SCSS</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 85%;" data-skill="85%"><span>85%</span></div>
-											</div>
-										</div>
+										<h4>Sass/SCSS</h4>
 									</div>
 								</div>
 							</div>
@@ -763,66 +1031,36 @@
 								<div class="skills-grid">
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fab fa-laravel"></i></div>
-										<div class="skill-info">
-											<h4>Laravel</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 88%;" data-skill="88%"><span>88%</span></div>
-											</div>
-										</div>
+										<h4>Laravel</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fab fa-node-js"></i></div>
-										<div class="skill-info">
-											<h4>Node.js</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 80%;" data-skill="80%"><span>80%</span></div>
-											</div>
-										</div>
+										<h4>Node.js</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fas fa-database"></i></div>
-										<div class="skill-info">
-											<h4>SQL</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 85%;" data-skill="85%"><span>85%</span></div>
-											</div>
-										</div>
+										<h4>SQL</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon">
 											<img src="https://cdn.worldvectorlogo.com/logos/postgresql.svg" alt="PostgreSQL" class="custom-icon">
 										</div>
-										<div class="skill-info">
-											<h4>PostgreSQL</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 82%;" data-skill="82%"><span>82%</span></div>
-											</div>
-										</div>
+										<h4>PostgreSQL</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon">
 											<img src="https://cdn.worldvectorlogo.com/logos/mysql-6.svg" alt="MySQL" class="custom-icon">
 										</div>
-										<div class="skill-info">
-											<h4>MySQL</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 85%;" data-skill="85%"><span>85%</span></div>
-											</div>
-										</div>
+										<h4>MySQL</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fab fa-php"></i></div>
-										<div class="skill-info">
-											<h4>PHP</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 90%;" data-skill="90%"><span>90%</span></div>
-											</div>
-										</div>
+										<h4>PHP</h4>
 									</div>
 								</div>
 							</div>
@@ -835,62 +1073,32 @@
 										<div class="skill-icon">
 											<img src="https://cdn.worldvectorlogo.com/logos/flutter.svg" alt="Flutter" class="custom-icon">
 										</div>
-										<div class="skill-info">
-											<h4>Flutter</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 75%;" data-skill="75%"><span>75%</span></div>
-											</div>
-										</div>
+										<h4>Flutter</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fab fa-aws"></i></div>
-										<div class="skill-info">
-											<h4>AWS</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 70%;" data-skill="70%"><span>70%</span></div>
-											</div>
-										</div>
+										<h4>AWS</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fab fa-docker"></i></div>
-										<div class="skill-info">
-											<h4>Docker</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 78%;" data-skill="78%"><span>78%</span></div>
-											</div>
-										</div>
+										<h4>Docker</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fab fa-git-alt"></i></div>
-										<div class="skill-info">
-											<h4>Git</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 92%;" data-skill="92%"><span>92%</span></div>
-											</div>
-										</div>
+										<h4>Git</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fab fa-firebase"></i></div>
-										<div class="skill-info">
-											<h4>Firebase</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 85%;" data-skill="85%"><span>85%</span></div>
-											</div>
-										</div>
+										<h4>Firebase</h4>
 									</div>
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon"><i class="fab fa-github"></i></div>
-										<div class="skill-info">
-											<h4>GitHub</h4>
-											<div class="skill-bar">
-												<div class="skill-progress" style="width: 95%;" data-skill="95%"><span>95%</span></div>
-											</div>
-										</div>
+										<h4>GitHub</h4>
 									</div>
 								</div>
 							</div>
