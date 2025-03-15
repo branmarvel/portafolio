@@ -4,7 +4,7 @@
 		<title>Brandon Bello | Full Stack Developer Portfolio</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<meta name="description" content="Brandon Bello - Full Stack Developer especializado en Angular, Laravel, Vue.js y más tecnologías modernas para desarrollo web." />
+		<meta name="description" content="Portafolio de Brandon Bello - Desarrollador Full Stack especializado en Angular, Laravel y Vue.js. Creación de aplicaciones web y móviles con tecnologías modernas.">
 		<meta name="keywords" content="desarrollador web, full stack, angular, laravel, vue, firebase, portfolio" />
 		<meta name="author" content="Brandon Bello" />
 		
@@ -12,13 +12,11 @@
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="Brandon Bello | Full Stack Developer" />
 		<meta property="og:description" content="Portfolio profesional de Brandon Bello, desarrollador Full Stack con experiencia en Angular, Laravel y Vue.js." />
-		<meta property="og:image" content="images/social-preview.jpg" />
 
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content="Brandon Bello | Full Stack Developer" />
 		<meta name="twitter:description" content="Portfolio profesional de Brandon Bello, desarrollador Full Stack con experiencia en Angular, Laravel y Vue.js." />
-		<meta name="twitter:image" content="images/social-preview.jpg" />
 		
 		<!-- Theme Color for Browser -->
 		<meta name="theme-color" content="#6c5ce7" />
@@ -45,6 +43,11 @@
 		<!-- Hover.css -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
 		
+
+		<!-- Preconectar a dominios externos -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://www.youtube.com">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
 		<style>
 			/* Variables de colores para mantener consistencia */
 			:root {
@@ -73,7 +76,10 @@
 				flex-direction: column;
 				justify-content: center;
 			}
-			
+			:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+}
 			@keyframes gradient {
 				0% {
 					background-position: 0% 50%;
@@ -1418,6 +1424,30 @@
 					z-index: 1002;
 				}
 			}
+
+
+			/* Agregar estilos para notificaciones */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-weight: 500;
+    z-index: 10000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.notification.success {
+    background: #4CAF50;
+    color: white;
+}
+
+.notification.error {
+    background: #f44336;
+    color: white;
+}
 		</style>
 	</head>
 	<body class="homepage is-preload">
@@ -1451,10 +1481,10 @@
 							
 							<!-- Quick Contact Buttons -->
 							<div class="quick-contact" data-aos="fade-up" data-aos-delay="400">
-								<!-- <a href="https://github.com/branmarvel" target="_blank" class="contact-btn">
+								<!-- <a href="https://github.com/branmarvel" target="_blank"  rel="noopener noreferrer nofollow" class="contact-btn">
 									<i class="fab fa-github"></i> GitHub
 								</a> -->
-								<a href="https://www.linkedin.com/in/brandon-jose-bello-moncada-5826061a0" target="_blank" class="contact-btn">
+								<a href="https://www.linkedin.com/in/brandon-jose-bello-moncada-5826061a0" target="_blank"  rel="noopener noreferrer nofollow" class="contact-btn">
 									<i class="fab fa-linkedin"></i> LinkedIn
 								</a>
 								<a href="mailto:brandonbello02@gmail.com" class="contact-btn">
@@ -1489,11 +1519,11 @@
 								<li class="nav-item dropdown">
 									<a href="#" class="nav-link dropdown-toggle">Tecnologías <i class="fas fa-chevron-down"></i></a>
 									<ul class="dropdown-menu">
-										<li><a href="#">Angular</a></li>
-										<li><a href="#">Laravel</a></li>
-										<li><a href="#">Vue.js</a></li>
-										<li><a href="#">Flutter</a></li>
-										<li><a href="#">Firebase</a></li>
+										<li><a href="#featured-projects?tech=angular">Angular</a></li>
+										<li><a href="#featured-projects?tech=laravel">Laravel</a></li>
+										<li><a href="#featured-projects?tech=vue">Vue.js</a></li>
+										<li><a href="#featured-projects?tech=flutter">Flutter</a></li>
+										<li><a href="#featured-projects?tech=firebase">Firebase</a></li>
 									</ul>
 								</li>
 								<li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
@@ -1590,7 +1620,7 @@
 									
 									<div class="skill-item hvr-float">
 										<div class="skill-icon">
-											<img src="https://cdn.worldvectorlogo.com/logos/postgresql.svg" alt="PostgreSQL" class="custom-icon">
+											<img src="https://cdn.worldvectorlogo.com/logos/postgresql.svg" alt="PostgreSQL" class="custom-icon lazyload">
 										</div>
 										<h4>PostgreSQL</h4>
 									</div>
@@ -1599,7 +1629,7 @@
 										<div class="skill-icon">
 											<img src="https://img.icons8.com/color/48/mysql.png" 
 												 alt="MySQL" 
-												 class="custom-icon">
+												 class="custom-icon lazyload">
 										</div>
 										<h4>MySQL</h4>
 									</div>
@@ -1616,7 +1646,7 @@
 								<div class="skills-grid">
 									<div class="skill-item hvr-float">
 										<div class="skill-icon">
-											<img src="https://cdn.worldvectorlogo.com/logos/flutter.svg" alt="Flutter" class="custom-icon">
+											<img src="https://cdn.worldvectorlogo.com/logos/flutter.svg" alt="Flutter" class="custom-icon lazyload">
 										</div>
 										<h4>Flutter</h4>
 									</div>
@@ -1640,7 +1670,7 @@
 										<div class="skill-icon">
 											<img src="https://img.icons8.com/?size=100&id=62452&format=png&color=000000" 
 												 alt="Firebase" 
-												 class="custom-icon">
+												 class="custom-icon lazyload">
 										</div>
 										<h4>Firebase</h4>
 									</div>
@@ -1673,7 +1703,7 @@
 										<h3>Proyecto Angular & Firebase</h3>
 									</div>
 									<div class="video-container">
-										<iframe src="./assets/videos/sgcp.mp4" allowfullscreen></iframe>
+										<iframe width="1276" height="718" src="https://www.youtube.com/embed/1_30YCtLpRo" title="Sistema para la Gestion y Control de proyectos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen></iframe>
 									</div>
 									<div class="tech-stack">
 										<div class="tech-icon">
@@ -1684,12 +1714,12 @@
 											<div class="skill-icon">
 												<img src="https://img.icons8.com/?size=100&id=62452&format=png&color=000000" 
 													 alt="Firebase" 
-													 class="custom-icon">
+													 class="custom-icon lazyload">
 											</div>
 											<span>Firebase</span>
 										</div>
 									</div>
-									<a href="https://sgcp-app.web.app/#/login" target="_blank" class="button primary project-link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
+									<a href="https://sgcp-app.web.app/#/login" target="_blank" rel="noopener noreferrer nofollow" class="button primary project-link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
 								</div>
 
 								<!-- Slide 2 - Flutter + Firebase -->
@@ -1698,23 +1728,23 @@
 										<h3>Aplicación Flutter</h3>
 									</div>
 									<div class="video-container">
-										<iframe src="./assets/videos/utext.mp4" allowfullscreen></iframe>
+										<iframe width="1280" height="696" src="https://www.youtube.com/embed/fzd6cNL0xJQ" title="Aplicativo Educativo Didáctico para profesores" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 									</div>
 									<div class="tech-stack">
 										<div class="tech-icon">
-											<img src="https://cdn.worldvectorlogo.com/logos/flutter.svg" alt="Flutter" class="custom-icon">
+											<img src="https://cdn.worldvectorlogo.com/logos/flutter.svg" alt="Flutter" class="custom-icon lazyload">
 											<span>Flutter</span>
 										</div>
 										<div class="tech-icon">
 											<div class="skill-icon">
 												<img src="https://img.icons8.com/?size=100&id=62452&format=png&color=000000" 
 													 alt="Firebase" 
-													 class="custom-icon">
+													 class="custom-icon lazyload">
 											</div>
 											<span>Firebase</span>
 										</div>
 									</div>
-									<a href="https://u-text-app.web.app" target="_blank" class="button primary project-link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
+									<a href="https://u-text-app.web.app" target="_blank" rel="noopener noreferrer nofollow" class="button primary project-link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
 								</div>
 
 								<!-- Slide 3 - Laravel + PostgreSQL + Vue -->
@@ -1723,7 +1753,7 @@
 										<h3>Sistema Laravel & Vue</h3>
 									</div>
 									<div class="video-container">
-										<iframe src="./assets/videos/almacen.mp4" allowfullscreen></iframe>
+										<iframe width="1276" height="718" src="https://www.youtube.com/embed/gsz2Cx-1DYw" title="Sistema de Almacén Avanzado con Tecnología de negocios" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 									</div>
 									<div class="tech-stack">
 										<div class="tech-icon">
@@ -1731,7 +1761,7 @@
 											<span>Laravel</span>
 										</div>
 										<div class="tech-icon">
-											<img src="https://cdn.worldvectorlogo.com/logos/postgresql.svg" alt="PostgreSQL" class="custom-icon">
+											<img src="https://cdn.worldvectorlogo.com/logos/postgresql.svg" alt="PostgreSQL" class="custom-icon lazyload">
 											<span>PostgreSQL</span>
 										</div>
 										<div class="tech-icon">
@@ -1739,7 +1769,7 @@
 											<span>Vue.js</span>
 										</div>
 									</div>
-									<a href="#" target="_blank" class="button primary project-link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
+									<a href="#" target="_blank" rel="noopener noreferrer nofollow" class="button primary project-link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
 								</div>
 
 								<!-- Slide 4 - MySQL + Angular -->
@@ -1755,7 +1785,7 @@
 											<div class="skill-icon">
 												<img src="https://img.icons8.com/color/48/mysql.png" 
 													 alt="MySQL" 
-													 class="custom-icon">
+													 class="custom-icon lazyload">
 											</div>
 											<span>MySQL</span>
 										</div>
@@ -1764,7 +1794,7 @@
 											<span>Angular</span>
 										</div>
 									</div>
-									<a href="#" target="_blank" class="button primary project-link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
+									<a href="#" target="_blank" rel="noopener noreferrer nofollow" class="button primary project-link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
 								</div> -->
 
 									<!-- Slide 5 - AWS -->
@@ -1780,11 +1810,11 @@
 										<div class="skill-icon">
 											<img src="https://img.icons8.com/color/100/amazon-web-services.png" 
 												 alt="AWS" 
-												 class="custom-icon">
+												 class="custom-icon lazyload">
 										</div>
 										<span>AWS</span>
 									</div>
-									<a href="https://www.nerds-web.com/home" target="_blank" class="button primary project-link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
+									<a href="https://www.nerds-web.com/home" target="_blank" rel="noopener noreferrer nofollow" class="button primary project-link">Ver Proyecto <i class="fas fa-arrow-right"></i></a>
 								</div>
 							</div> -->
 
@@ -1806,12 +1836,12 @@
 						<div class="row">
 							<!-- <div class="col-md-5" data-aos="fade-right">
 								<div class="profile-image-container">
-									<img src="images/pic06.jpg" alt="Brandon Bello" class="profile-image" />
+									<img src="images/pic06.jpg" alt="Brandon Bello" class="profile-image lazyload" />
 									<div class="social-media-icons">
-										<a href="https://github.com/branmarvel" target="_blank" class="social-icon hvr-grow"><i class="fab fa-github"></i></a>
-										<a href="https://www.linkedin.com/in/brandon-bello/" target="_blank" class="social-icon hvr-grow"><i class="fab fa-linkedin"></i></a>
-										<a href="https://twitter.com/brandonbello02" target="_blank" class="social-icon hvr-grow"><i class="fab fa-twitter"></i></a>
-										<a href="mailto:brandonbello02@gmail.com" class="social-icon hvr-grow"><i class="fas fa-envelope"></i></a>
+										<a href="https://github.com/branmarvel" target="_blank" rel="noopener noreferrer nofollow" class="social-icon hvr-grow"><i class="fab fa-github"></i></a>
+										<a href="https://www.linkedin.com/in/brandon-bello/" target="_blank" rel="noopener noreferrer nofollow" class="social-icon hvr-grow"><i class="fab fa-linkedin"></i></a>
+										<a href="https://twitter.com/brandonbello02" target="_blank" rel="noopener noreferrer nofollow" class="social-icon hvr-grow"><i class="fab fa-twitter"></i></a>
+										<a href="mailto:brandonbello02@gmail.com" rel="noopener noreferrer nofollow" class="social-icon hvr-grow"><i class="fas fa-envelope"></i></a>
 									</div>
 								</div>
 							</div> -->
@@ -1856,11 +1886,13 @@
 									</div>
 									
 									<div class="call-to-action">
-										<a href="mailto:brandon91596@gmail.com" class="button primary large hvr-bounce-to-right">Contáctame</a>
-										<a href="./assets/Brandon_Bello_24884464.pdf" target="_blank" class="button secondary large hvr-sweep-to-right" download>Descargar CV <i class="fas fa-download"></i></a>
+										<a href="mailto:brandon91596@gmail.com" class="button primary large hvr-bounce-to-right" rel="noopener noreferrer nofollow">Contáctame</a>
+										<a href="./assets/Brandon_Bello_24884464.pdf" target="_blank" class="button secondary large hvr-sweep-to-right" download rel="noopener noreferrer nofollow">Descargar CV <i class="fas fa-download"></i></a>
 									</div>
 								</div>
 							</div>
+						</div>
+						</div>
 						</div>
 					</div>
 				</section>
@@ -1883,7 +1915,7 @@
 									
 									<div class="contact-method">
 										<h3><i class="fas fa-phone"></i> Teléfono</h3>
-										<a href="https://api.whatsapp.com/send?phone=584123098258" target="_blank">+58 (309) 412-3098258</a>
+										<a href="https://api.whatsapp.com/send?phone=584123098258" target="_blank" rel="noopener noreferrer nofollow">+58 (309) 412-3098258</a>
 									</div>
 									
 									<div class="contact-method">
@@ -1894,17 +1926,17 @@
 									<div class="social-networks">
 										<h3>Social media</h3>
 										<div class="social-icons">
-											<!-- <a href="https://github.com/branmarvel" target="_blank" title="GitHub" class="social-icon hvr-float"><i class="fab fa-github"></i></a> -->
-											<a href="https://www.linkedin.com/in/brandon-jose-bello-moncada-5826061a0" target="_blank" title="LinkedIn" class="social-icon hvr-float"><i class="fab fa-linkedin"></i></a>
-											<!-- <a href="https://twitter.com/brandonbello02" target="_blank" title="Twitter" class="social-icon hvr-float"><i class="fab fa-twitter"></i></a> -->
-											<!-- <a href="https://instagram.com/brandonbello02" target="_blank" title="Instagram" class="social-icon hvr-float"><i class="fab fa-instagram"></i></a> -->
+											<!-- <a href="https://github.com/branmarvel" target="_blank"  rel="noopener noreferrer nofollow" title="GitHub" class="social-icon hvr-float"><i class="fab fa-github"></i></a> -->
+											<a href="https://www.linkedin.com/in/brandon-jose-bello-moncada-5826061a0" target="_blank"  rel="noopener noreferrer nofollow" title="LinkedIn" class="social-icon hvr-float"><i class="fab fa-linkedin"></i></a>
+											<!-- <a href="https://twitter.com/brandonbello02" target="_blank"  rel="noopener noreferrer nofollow" title="Twitter" class="social-icon hvr-float"><i class="fab fa-twitter"></i></a> -->
+											<!-- <a href="https://instagram.com/brandonbello02" target="_blank"  rel="noopener noreferrer nofollow" title="Instagram" class="social-icon hvr-float"><i class="fab fa-instagram"></i></a> -->
 										</div>
 									</div>
 								</div>
 							</div>
 							
 							<div class="col-md-7" data-aos="fade-left" data-aos-delay="400">
-								<form class="contact-form" id="contact-form">
+								<form action="https://formspree.io/f/xnnpnnza" method="POST" class="contact-form" id="contact-form">
 									<div class="row">
 										<div class="col-md-6">
 											<div class="form-group">
@@ -1956,11 +1988,11 @@
 										Disponible para proyectos y oportunidades laborales.
 									</p>
 									<ul class="social">
-										<!-- <li><a href="https://github.com/branmarvel" target="_blank" class="icon brands fa-github"><span class="label">Github</span></a></li> -->
-										<li><a href="https://www.linkedin.com/in/brandon-jose-bello-moncada-5826061a0" target="_blank" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+										<!-- <li><a href="https://github.com/branmarvel" target="_blank"  rel="noopener noreferrer nofollow" class="icon brands fa-github"><span class="label">Github</span></a></li> -->
+										<li><a href="https://www.linkedin.com/in/brandon-jose-bello-moncada-5826061a0" target="_blank"  rel="noopener noreferrer nofollow" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 										<!-- <li><a href="https://twitter.com/brandonbello02" target="_blank" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li> -->
 										<!-- <li><a href="https://instagram.com/brandonbello02" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li> -->
-										<li><a href="mailto:brandon91596@gmail.com" target="_blank" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+										<li><a href="mailto:brandon91596@gmail.com" target="_blank"  rel="noopener noreferrer nofollow" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 									</ul>
 								</section>
 							</div>
@@ -2079,8 +2111,8 @@
 						ctx = canvas.getContext('2d'),
 						colorPrimary = '#e6e6fa',
 						colorSecondary = '#00bfff',
-						width, height, particles, particleCount = 60,
-						connectionDistance = 120;
+						width, height, particles, particleCount = 40,
+						connectionDistance = 100;
 					
 					// Establece el canvas al tamaño de la ventana
 					function resizeCanvas() {
@@ -2281,15 +2313,48 @@
 				
 				// Validación del formulario de contacto
 				const contactForm = document.getElementById('contact-form');
-				if (contactForm) {
-					contactForm.addEventListener('submit', function(e) {
-						e.preventDefault();
-						// Aquí puedes agregar código para enviar el formulario por AJAX
-						alert('¡Gracias por tu mensaje! Te responderé lo antes posible.');
-						contactForm.reset();
-					});
-				}
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const button = this.querySelector('button');
+        button.disabled = true;
+        button.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin"></i>';
+        
+        try {
+            const response = await fetch(this.action, {
+                method: 'POST',
+                body: new FormData(this),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                this.reset();
+                showNotification('¡Mensaje enviado con éxito!', 'success');
+            } else {
+                showNotification('Error al enviar el mensaje', 'error');
+            }
+        } catch (error) {
+            showNotification('Error de conexión', 'error');
+        } finally {
+            button.disabled = false;
+            button.innerHTML = 'Enviar Mensaje <i class="fas fa-paper-plane"></i>';
+        }
+    });
+}
 				
+function showNotification(message, type) {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 5000);
+}
 				// Scroll suave para los enlaces de navegación
 				document.querySelectorAll('a.scrolly, .link-list a, a[href^="#"]').forEach(anchor => {
 					anchor.addEventListener('click', function(e) {
@@ -2354,13 +2419,19 @@
 					});
 					
 					// Cerrar menú al hacer clic en un enlace
+				// Modificar el evento click de los navLinks
 					navLinks.forEach(link => {
 						link.addEventListener('click', function() {
 							navMenu.classList.remove('active');
 							document.body.classList.remove('no-scroll');
+							
+							// Cerrar dropdowns si están abiertos
+							document.querySelectorAll('.dropdown-menu').forEach(menu => {
+								menu.classList.remove('show');
+							});
 						});
 					});
-					
+										
 					// Scroll suave para los enlaces de navegación
 					document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 						anchor.addEventListener('click', function(e) {
@@ -2423,6 +2494,8 @@
 					// Inicializar estado activo
 					setActiveNavLink();
 				});
+		
+
 			</script>
 	</body>
 </html>
