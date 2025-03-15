@@ -1446,15 +1446,50 @@
     top: 3em;
     margin-bottom: 6em;
   }
-  .about-section {
-    flex-direction: column;
+  #about-me .section-title {
+    font-size: 2em;
     text-align: center;
   }
-  .about-section img {
-    margin-bottom: 20px;
+  
+  #about-me .separator {
+    margin: 0 auto 20px;
   }
-  .about-section .description {
-    padding: 0 20px;
+  
+  #about-me .about-intro {
+    font-size: 1.3em;
+    text-align: center;
+  }
+  
+  #about-me .about-description {
+    font-size: 1em;
+    text-align: justify;
+  }
+  
+  #about-me .about-details {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  #about-me .detail-item {
+    justify-content: center;
+    text-align: center;
+  }
+  
+  #about-me .detail-item i {
+    margin-right: 10px;
+    font-size: 18px;
+  }
+  
+  #about-me .call-to-action {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #about-me .call-to-action .button {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    margin: 5px 0;
   }
   .tweet {
     text-align: center;
@@ -1893,13 +1928,26 @@
     transform: scale(1.1);
   }
 }
-
-@media (max-width: 480px) {
-  .about-section h1 {
-    font-size: 24px;
+@media screen and (max-width: 480px) {
+  #about-me .section-title {
+    font-size: 1.75em;
   }
-  .about-section p {
-    font-size: 14px;
+  
+  #about-me .about-intro {
+    font-size: 1.1em;
+  }
+  
+  #about-me .about-description {
+    font-size: 0.95em;
+  }
+  
+  #about-me .detail-item {
+    font-size: 0.9em;
+  }
+  
+  #about-me .call-to-action .button {
+    padding: 10px 15px;
+    font-size: 0.9em;
   }
 }
 		</style>
