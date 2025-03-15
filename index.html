@@ -62,7 +62,9 @@
 				--bg-light: #f9f9f9;
 				--white: #ffffff;
 			}
-			
+			body.no-scroll {
+    overflow: hidden;
+}
 			/* Estilos mejorados para el header */
 			#header {
 				background: linear-gradient(135deg, #2d3436, #6c5ce7, #07349c);
@@ -1149,8 +1151,12 @@
 				width: 90%;
 				max-width: 1200px;
 				margin: 0 auto;
+				padding: 0 15px;
 			}
-			
+			.nav-logo {
+    padding-left: 0;
+    font-size: 1.3rem !important;
+}
 			.nav-logo a {
 				color: white;
 				font-size: 1.5rem;
@@ -1171,7 +1177,20 @@
 				margin: 0;
 				padding: 0;
 			}
-			
+			/* Mejorar visibilidad del menú */
+.nav-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(to bottom, 
+        rgba(15,15,25,1) 0%, 
+        rgba(15,15,25,0) 100%
+    );
+    pointer-events: none;
+}
 			.nav-item {
 				position: relative;
 				margin: 0 0.5rem;
@@ -1276,11 +1295,17 @@
 			}
 			
 			.nav-toggle {
-				display: none;
-				font-size: 1.5rem;
-				color: white;
-				cursor: pointer;
-			}
+    display: block;
+    background: none;
+	display: none;
+    border: none;
+    color: white;
+    font-size: 1rem; /* Tamaño reducido */
+    z-index: 1001;
+    position: static;
+    transform: none;
+    margin-left: auto;
+}
 			
 			/* Estilos para el botón scroll-to-top */
 			.scroll-to-top {
@@ -1747,46 +1772,45 @@
 
   /* Custom Navigation Bar Mobile Styles (from index.html) */
   .nav-menu {
-    z-index: 1003;
-    width: 70%;
-    right: -100%;
-    height: 100vh;
-    padding: 80px 20px 20px;
-    background: rgba(15, 15, 25, 0.98);
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    overflow-y: auto;
-    box-sizing: border-box;
-    -webkit-overflow-scrolling: touch;
-  }
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px; /* Ancho definido */
+        height: 100vh;
+        background: rgba(20, 20, 30, 0.98); /* Fondo más consistente */
+        backdrop-filter: blur(15px);
+        padding: 70px 20px 20px;
+        margin: 0;
+        flex-direction: column; /* Dirección vertical */
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    }
+    
+	.nav-menu.active {
+        right: 0;
+    }
+	.nav-item {
+        margin: 10px 0;
+        width: 100%;
+        display: block; /* Elementos en bloque */
+    }
+    
+	.nav-link {
+        display: block;
+        padding: 12px 20px !important;
+        margin: 5px 0;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+    }
 
-  .nav-menu.active {
-    right: 0;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-  }
+	.nav-link:hover {
+        background: rgba(108, 92, 231, 0.2) !important;
+        transform: translateX(8px);
+    }
 
-  .nav-link {
-    color: #fff !important;
-    font-size: 1.2rem;
-    padding: 1rem 2rem !important;
-    margin: 10px 0;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    display: block;
-  }
+ /* Botón más discreto */
 
-  .nav-link:hover {
-    background: rgba(108, 92, 231, 0.3) !important;
-    transform: translateX(10px);
-  }
-
-  .nav-toggle {
-    z-index: 1004;
-    font-size: 1.8rem;
-  }
 
   .nav-container {
     display: block;
@@ -1808,11 +1832,16 @@
   }
 
   .nav-toggle {
-    padding: 10px;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-  }
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem; /* Tamaño reducido */
+    z-index: 1001;
+    position: static;
+    transform: none;
+    margin-left: auto;
+}
 
   .nav-toggle:hover {
     background: rgba(108, 92, 231, 0.3);
@@ -1877,11 +1906,12 @@
 						<div class="nav-container">
 							<div class="nav-logo">
 								<a href="index.html">Brandon Bello</a>
+								
 							</div>
 							
-							<div class="nav-toggle" id="nav-toggle">
+							<button class="nav-toggle" id="nav-toggle" aria-label="Menú">
 								<i class="fas fa-bars"></i>
-							</div>
+							</button>
 							
 							<ul class="nav-menu" id="nav-menu">
 								<li class="nav-item"><a href="index.html" class="nav-link active">Inicio</a></li>
@@ -2835,28 +2865,26 @@ function showNotification(message, type) {
 					// Agregar evento scroll
 					window.onscroll = scrollFunction;
 					
-					// Toggle para menu móvil
-					if (navToggle) {
-						navToggle.addEventListener('click', function() {
-							navMenu.classList.toggle('active');
-							document.body.classList.toggle('no-scroll');
-						});
-					}
-					
-					// Manejo de dropdowns en móvil
-					dropdownToggles.forEach(toggle => {
-						toggle.addEventListener('click', function(e) {
-							if (window.innerWidth <= 768) {
-								e.preventDefault();
-								this.classList.toggle('active');
-								const dropdownMenu = this.nextElementSibling;
-								dropdownMenu.classList.toggle('show');
-							}
-						});
-					});
-					
+					navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navMenu.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+    });
+
+
+	  document.addEventListener('click', (e) => {
+        if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+            navMenu.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }
+    });
+	document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        });
+    });
 					// Cerrar menú al hacer clic en un enlace
-				// Modificar el evento click de los navLinks
 					navLinks.forEach(link => {
 						link.addEventListener('click', function() {
 							navMenu.classList.remove('active');
