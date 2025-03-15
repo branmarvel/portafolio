@@ -1446,7 +1446,16 @@
     top: 3em;
     margin-bottom: 6em;
   }
-
+  .about-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-section img {
+    margin-bottom: 20px;
+  }
+  .about-section .description {
+    padding: 0 20px;
+  }
   .tweet {
     text-align: center;
   }
@@ -1885,6 +1894,14 @@
   }
 }
 
+@media (max-width: 480px) {
+  .about-section h1 {
+    font-size: 24px;
+  }
+  .about-section p {
+    font-size: 14px;
+  }
+}
 		</style>
 	</head>
 	<body class="homepage is-preload">
