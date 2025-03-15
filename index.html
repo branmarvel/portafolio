@@ -441,6 +441,9 @@
 				display: flex;
 				flex-wrap: wrap;
 				gap: 2rem;
+				background-color: rgba(108, 92, 231, 0.05);
+				padding: 30px;
+				border-radius: 20px;
 			}
 			.skills-column {
 				flex: 1;
@@ -1394,7 +1397,12 @@
 
 .d-flex {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 100%;
+    overflow-x: hidden;
 }
+
 .justify-content-center {
     justify-content: center;
 }
@@ -1700,7 +1708,7 @@
 
   /* Wrapper (from main.css mobile section) */
   .wrapper {
-    padding: 3em 1em 3em 1em;
+    padding: 1.5em 1em 1.5em 1em;
   }
 
   /* Header (from main.css mobile section) */
@@ -1971,7 +1979,6 @@
 				<!-- Banner -->
 				<section id="banner" data-aos="zoom-in" data-aos-duration="1200">
 					<header>
-						<!-- Personalized banner text -->
 						<h2>Hola, soy <strong class="accent-text">Brandon Bello</strong></h2>
 						<p>
 							Desarrollador <strong>Full Stack</strong> apasionado por crear soluciones web elegantes y funcionales
@@ -1994,39 +2001,43 @@
 						<div class="skills-container">
 							<div class="skills-column">
 								<h3><i class="fas fa-code"></i> Frontend</h3>
-								<div class="tech-icon">
-									<div class="skill-icon">
-										<img src="https://img.icons8.com/color/48/html-5.png" alt="HTML5">
+								<div class="d-flex flex-row flex-wrap">
+									<div class="tech-icon">
+										<div class="skill-icon">
+											<img src="https://img.icons8.com/color/48/html-5.png" alt="HTML5">
+										</div>
+										<span>HTML5</span>
 									</div>
-									<span>HTML5</span>
-								</div>
-								<div class="tech-icon">
-									<div class="skill-icon">
-										<img src="https://img.icons8.com/color/48/css3.png" alt="CSS3">
+									<div class="tech-icon">
+										<div class="skill-icon">
+											<img src="https://img.icons8.com/color/48/css3.png" alt="CSS3">
+										</div>
+										<span>CSS3</span>
 									</div>
-									<span>CSS3</span>
-								</div>
-								<div class="tech-icon">
-									<div class="skill-icon">
-										<img src="https://img.icons8.com/color/48/javascript.png" alt="JavaScript">
+									<div class="tech-icon">
+										<div class="skill-icon">
+											<img src="https://img.icons8.com/color/48/javascript.png" alt="JavaScript">
+										</div>
+										<span>JavaScript</span>
 									</div>
-									<span>JavaScript</span>
-								</div>
-								<div class="tech-icon">
-									<div class="skill-icon">
-										<img src="https://img.icons8.com/color/48/angularjs.png" alt="Angular">
+									<div class="tech-icon">
+										<div class="skill-icon">
+											<img src="https://img.icons8.com/color/48/angularjs.png" alt="Angular">
+										</div>
+										<span>Angular</span>
 									</div>
-									<span>Angular</span>
-								</div>
-								<div class="tech-icon">
-									<div class="skill-icon">
-										<img src="https://img.icons8.com/color/48/vue-js.png" alt="Vue.js">
+									<div class="tech-icon">
+										<div class="skill-icon">
+											<img src="https://img.icons8.com/color/48/vue-js.png" alt="Vue.js">
+										</div>
+										<span>Vue.js</span>
 									</div>
-									<span>Vue.js</span>
 								</div>
 							</div>
 							<div class="skills-column">
 								<h3><i class="fas fa-server"></i> Backend</h3>
+							<div class="d-flex flex-row flex-wrap">
+								
 								<div class="tech-icon">
 									<div class="skill-icon">
 										<img src="https://img.icons8.com/color/48/nodejs.png" alt="Node.js">
@@ -2052,25 +2063,29 @@
 									<span>PostgreSQL</span>
 								</div>
 							</div>
+							</div>
 							<div class="skills-column">
 								<h3><i class="fas fa-mobile-alt"></i> Mobile & Cloud</h3>
-								<div class="tech-icon">
-									<div class="skill-icon">
-										<img src="https://img.icons8.com/color/48/flutter.png" alt="Flutter">
+								
+								<div class="d-flex flex-row flex-wrap">
+									<div class="tech-icon">
+										<div class="skill-icon">
+											<img src="https://img.icons8.com/color/48/flutter.png" alt="Flutter">
+										</div>
+										<span>Flutter</span>
 									</div>
-									<span>Flutter</span>
-								</div>
-								<div class="tech-icon">
-									<div class="skill-icon">
-										<img src="https://img.icons8.com/color/48/firebase.png" alt="Firebase">
+									<div class="tech-icon">
+										<div class="skill-icon">
+											<img src="https://img.icons8.com/color/48/firebase.png" alt="Firebase">
+										</div>
+										<span>Firebase</span>
 									</div>
-									<span>Firebase</span>
-								</div>
-								<div class="tech-icon">
-									<div class="skill-icon">
-										<img src="https://img.icons8.com/color/48/amazon-web-services.png" alt="AWS">
+									<div class="tech-icon">
+										<div class="skill-icon">
+											<img src="https://img.icons8.com/color/48/amazon-web-services.png" alt="AWS">
+										</div>
+										<span>AWS</span>
 									</div>
-									<span>AWS</span>
 								</div>
 							</div>
 						</div>
