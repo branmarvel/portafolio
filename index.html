@@ -439,11 +439,28 @@
 
 			.skills-container {
 				display: flex;
-				flex-direction: column;
-				gap: 50px;
-				margin-top: 40px;
+				flex-wrap: wrap;
+				gap: 2rem;
 			}
-			
+			.skills-column {
+				flex: 1;
+				min-width: 300px;
+				background-color: var(--white);
+				border-radius: 15px;
+				padding: 20px;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				margin: 10px;
+			}
+			.skills-column h3 {
+				margin-bottom: 20px;
+				padding-bottom: 10px;
+				border-bottom: 2px solid var(--primary);
+			}
+			@media (max-width: 768px) {
+				.skills-container {
+					flex-direction: column;
+				}
+			}
 			.skill-category {
 				background-color: var(--white);
 				border-radius: 15px;
@@ -1893,6 +1910,10 @@
 									<img src="https://img.icons8.com/color/48/postgreesql.png" alt="PostgreSQL" style="width:24px;height:24px;vertical-align:middle;">
 									PostgreSQL
 								</div>
+								<div class="skill-tag">
+									<img src="https://img.icons8.com/color/48/postgreesql.png" alt="PostgreSQL" style="width:24px;height:24px;vertical-align:middle;">
+									Node.js
+								</div>
 							</div>
 							
 							<!-- Quick Contact Buttons -->
@@ -1971,126 +1992,85 @@
 						</header>
 						
 						<div class="skills-container">
-							<!-- Frontend Skills -->
-							<div class="skill-category" data-aos="fade-right" data-aos-delay="200">
+							<div class="skills-column">
 								<h3><i class="fas fa-code"></i> Frontend</h3>
-								<div class="skills-grid">
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fab fa-angular"></i></div>
-										<h4>Angular</h4>
+								<div class="tech-icon">
+									<div class="skill-icon">
+										<img src="https://img.icons8.com/color/48/html-5.png" alt="HTML5">
 									</div>
-									
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fab fa-vuejs"></i></div>
-										<h4>Vue.js</h4>
+									<span>HTML5</span>
+								</div>
+								<div class="tech-icon">
+									<div class="skill-icon">
+										<img src="https://img.icons8.com/color/48/css3.png" alt="CSS3">
 									</div>
-									
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fab fa-react"></i></div>
-										<h4>React</h4>
+									<span>CSS3</span>
+								</div>
+								<div class="tech-icon">
+									<div class="skill-icon">
+										<img src="https://img.icons8.com/color/48/javascript.png" alt="JavaScript">
 									</div>
-									
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fab fa-js"></i></div>
-										<h4>JavaScript</h4>
+									<span>JavaScript</span>
+								</div>
+								<div class="tech-icon">
+									<div class="skill-icon">
+										<img src="https://img.icons8.com/color/48/angularjs.png" alt="Angular">
 									</div>
-									
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fab fa-html5"></i></div>
-										<h4>HTML5/CSS3</h4>
+									<span>Angular</span>
+								</div>
+								<div class="tech-icon">
+									<div class="skill-icon">
+										<img src="https://img.icons8.com/color/48/vue-js.png" alt="Vue.js">
 									</div>
-									
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fab fa-sass"></i></div>
-										<h4>Sass/SCSS</h4>
-									</div>
+									<span>Vue.js</span>
 								</div>
 							</div>
-							
-							<!-- Backend Skills -->
-							<div class="skill-category" data-aos="fade-left" data-aos-delay="400">
+							<div class="skills-column">
 								<h3><i class="fas fa-server"></i> Backend</h3>
-								<div class="skills-grid">
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fab fa-laravel"></i></div>
-										<h4>Laravel</h4>
+								<div class="tech-icon">
+									<div class="skill-icon">
+										<img src="https://img.icons8.com/color/48/nodejs.png" alt="Node.js">
 									</div>
-									
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fab fa-node-js"></i></div>
-										<h4>Node.js</h4>
+									<span>Node.js</span>
+								</div>
+								<div class="tech-icon">
+									<div class="skill-icon">
+										<img src="https://img.icons8.com/color/48/php.png" alt="PHP">
 									</div>
-									
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fas fa-database"></i></div>
-										<h4>SQL</h4>
+									<span>PHP</span>
+								</div>
+								<div class="tech-icon">
+									<div class="skill-icon">
+										<img src="https://img.icons8.com/fluency/48/laravel.png" alt="Laravel" style="width:24px;height:24px;vertical-align:middle;">
 									</div>
-									
-									<div class="skill-item hvr-float">
-										<div class="skill-icon">
-											<img src="https://cdn.worldvectorlogo.com/logos/postgresql.svg" alt="PostgreSQL" class="custom-icon lazyload">
-										</div>
-										<h4>PostgreSQL</h4>
+									<span>Laravel</span>
+								</div>
+								<div class="tech-icon">
+									<div class="skill-icon">
+										<img src="https://img.icons8.com/color/48/postgreesql.png" alt="PostgreSQL">
 									</div>
-									
-									<div class="skill-item hvr-float">
-										<div class="skill-icon">
-											<img src="https://img.icons8.com/color/100/amazon-web-services.png" 
-												 alt="AWS" 
-												 class="custom-icon lazyload">
-										</div>
-										<h4>AWS</h4>
-									</div>
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fab fa-php"></i></div>
-										<h4>PHP</h4>
-									</div>
+									<span>PostgreSQL</span>
 								</div>
 							</div>
-							
-							<!-- Mobile & Cloud Skills -->
-							<div class="skill-category" data-aos="fade-up" data-aos-delay="600">
+							<div class="skills-column">
 								<h3><i class="fas fa-mobile-alt"></i> Mobile & Cloud</h3>
-								<div class="skills-grid">
-									<div class="skill-item hvr-float">
-										<div class="skill-icon">
-											<img src="https://cdn.worldvectorlogo.com/logos/flutter.svg" alt="Flutter" class="custom-icon lazyload">
-										</div>
-										<h4>Flutter</h4>
+								<div class="tech-icon">
+									<div class="skill-icon">
+										<img src="https://img.icons8.com/color/48/flutter.png" alt="Flutter">
 									</div>
-									
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fab fa-aws"></i></div>
-										<h4>AWS</h4>
+									<span>Flutter</span>
+								</div>
+								<div class="tech-icon">
+									<div class="skill-icon">
+										<img src="https://img.icons8.com/color/48/firebase.png" alt="Firebase">
 									</div>
-									
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fab fa-docker"></i></div>
-										<h4>Docker</h4>
+									<span>Firebase</span>
+								</div>
+								<div class="tech-icon">
+									<div class="skill-icon">
+										<img src="https://img.icons8.com/color/48/amazon-web-services.png" alt="AWS">
 									</div>
-									
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fab fa-git-alt"></i></div>
-										<h4>Git</h4>
-									</div>
-									
-									<div class="skill-item hvr-float">
-										<div class="skill-icon">
-											<img src="https://img.icons8.com/?size=100&id=62452&format=png&color=000000" 
-												 alt="Firebase" 
-												 class="custom-icon lazyload">
-										</div>
-										<h4>Firebase</h4>
-									</div>
-									
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fab fa-github"></i></div>
-										<h4>GitHub</h4>
-									</div>
-									<div class="skill-item hvr-float">
-										<div class="skill-icon"><i class="fab fa-docker"></i></div>
-										<h4>Docker</h4>
-									  </div>
+									<span>AWS</span>
 								</div>
 							</div>
 						</div>
