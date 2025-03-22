@@ -15,6 +15,10 @@
 body.no-scroll {
 overflow: hidden;
 }
+
+html {
+    scroll-behavior: smooth;
+  }
 /* Estilos mejorados para el header */
 #header {
 background: linear-gradient(135deg, #2d3436, #6c5ce7, #07349c);

@@ -27,6 +27,7 @@
 		<!-- Estilos Base -->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="./assets/css/styles.css">
 		
 		<!-- Swiper CSS -->
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -45,13 +46,15 @@
 		
 
 		<!-- Preconectar a dominios externos -->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link rel="preconnect" href="https://www.youtube.com">
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link rel="preconnect" href="https://www.youtube.com">
+		<link rel="preconnect" href="https://cdn.jsdelivr.net">
 	
 
-<link rel="stylesheet" href="./assets/css/styles.css">
-			
+
+
+
+
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
@@ -1049,26 +1052,26 @@ function showNotification(message, type) {
 
 					// Agregar evento scroll
 					window.onscroll = scrollFunction;
-					
-					navToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        navMenu.classList.toggle('active');
-        document.body.classList.toggle('no-scroll');
-    });
+									
+									navToggle.addEventListener('click', (e) => {
+						e.stopPropagation();
+						navMenu.classList.toggle('active');
+						document.body.classList.toggle('no-scroll');
+					});
 
 
-	  document.addEventListener('click', (e) => {
-        if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
-            navMenu.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        }
-    });
-	document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        });
-    });
+					document.addEventListener('click', (e) => {
+						if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+							navMenu.classList.remove('active');
+							document.body.classList.remove('no-scroll');
+						}
+					});
+					document.querySelectorAll('.nav-link').forEach(link => {
+						link.addEventListener('click', () => {
+							navMenu.classList.remove('active');
+							document.body.classList.remove('no-scroll');
+						});
+					});
 					// Cerrar menú al hacer clic en un enlace
 					navLinks.forEach(link => {
 						link.addEventListener('click', function() {
@@ -1175,6 +1178,7 @@ window.onclick = function(event) {
     event.target.style.display = 'none';
   }
 }
+
 </script>
 <style>
 	.credentials-modal {
