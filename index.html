@@ -7,7 +7,12 @@
 		<meta name="description" content="Portafolio de Brandon Bello - Desarrollador Full Stack especializado en Angular, Laravel y Vue.js. Creación de aplicaciones web y móviles con tecnologías modernas.">
 		<meta name="keywords" content="desarrollador web, full stack, angular, laravel, vue, firebase, portfolio" />
 		<meta name="author" content="Brandon Bello" />
-		
+
+		<!-- Idiomas -->
+		<link rel="alternate" hreflang="es" href="https://portafolio-brandon-bello.web.app/index.html" />
+		<link rel="alternate" hreflang="en" href="https://portafolio-brandon-bello.web.app/index-en.html" />
+		<link rel="alternate" hreflang="x-default" href="https://portafolio-brandon-bello.web.app/index-en.html" />
+
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="Brandon Bello | Full Stack Developer" />
@@ -50,8 +55,8 @@
 		<link rel="preconnect" href="https://www.youtube.com">
 		<link rel="preconnect" href="https://cdn.jsdelivr.net">
 	
-
-
+		<!-- Script para el switch de idioma -->
+		<script src="assets/js/language-switcher.js"></script>
 
 
 
@@ -111,7 +116,6 @@
 							</div>
 						</header>
 						<footer data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-							<!-- Eliminando el botón "Conoce" -->
 						</footer>
 					</div>
 
@@ -131,10 +135,13 @@
 								<li class="nav-item"><a href="index.html" class="nav-link active">Inicio</a></li>
 								<li class="nav-item"><a href="#skills" class="nav-link">Habilidades</a></li>
 								<li class="nav-item"><a href="#featured-projects" class="nav-link">Proyectos</a></li>
-							
 								<li class="nav-item"><a href="#about-me" class="nav-link">Sobre Mí</a></li>
-
 								<li class="nav-item"><a href="#contact" class="nav-link">Contacto</a></li>
+								<li class="nav-item">
+									<a href="index-en.html" class="nav-link language-toggle" id="language-toggle-btn" title="Switch to English">
+										<img src="https://img.icons8.com/?size=100&id=15532&format=png&color=000000" alt="USA Flag" style="width: 24px; height: auto; vertical-align: middle;">
+									</a>
+								</li>
 							</ul>
 						</div>
 					</nav>
@@ -1115,31 +1122,50 @@ function showNotification(message, type) {
 					
 					// Set active link based on scroll position
 					function setActiveNavLink() {
-						const scrollPosition = window.scrollY;
-						
-						document.querySelectorAll('section[id]').forEach(section => {
-							const sectionTop = section.offsetTop - 100;
-							const sectionBottom = sectionTop + section.offsetHeight;
-							const sectionId = section.getAttribute('id');
-							
-							if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-								navLinks.forEach(link => {
-									link.classList.remove('active');
-									if (link.getAttribute('href') === `#${sectionId}`) {
-										link.classList.add('active');
-									}
-								});
-							}
-						});
-						
-						// Si estamos en la parte superior de la página, marca el enlace de inicio como activo
-						if (scrollPosition < 100) {
+					const scrollPosition = window.scrollY;
+					const navLinks = document.querySelectorAll('.nav-link'); // Obtén todos los nav-link
+					const langToggleBtn = document.getElementById('language-toggle-btn'); // Referencia al botón de idioma
+
+					document.querySelectorAll('section[id]').forEach(section => {
+						const sectionTop = section.offsetTop - 100;
+						const sectionBottom = sectionTop + section.offsetHeight;
+						const sectionId = section.getAttribute('id');
+
+						if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
 							navLinks.forEach(link => {
-								link.classList.remove('active');
-								if (link.getAttribute('href') === 'index.html') {
+								// Solo quitar 'active' si NO es el botón de idioma
+								if (link !== langToggleBtn) {
+									link.classList.remove('active');
+								}
+								if (link.getAttribute('href') === `#${sectionId}` && link !== langToggleBtn) {
 									link.classList.add('active');
 								}
 							});
+						}
+					});
+
+					// Si estamos en la parte superior de la página, marca el enlace de inicio como activo
+					if (scrollPosition < 100) {
+						navLinks.forEach(link => {
+							if (link !== langToggleBtn) { // No tocar el botón de idioma
+								link.classList.remove('active');
+								// Comprueba si el href es 'index.html' O '#' (si usas # para el enlace de inicio)
+								// Y también si la URL actual termina en 'index.html' o es solo el dominio (para la página de inicio)
+								const isHomePageLink = link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '#';
+								const isCurrentlyHomePage = window.location.pathname.endsWith('/') || window.location.pathname.endsWith('/index.html') || window.location.pathname === '/';
+
+								if (isHomePageLink && isCurrentlyHomePage) {
+									link.classList.add('active');
+								}
+							}
+						});
+					}
+
+						// Adicional: Asegurarse de que el botón de idioma NUNCA tenga la clase 'active'
+						// por esta lógica, a menos que explícitamente quieras darle un estilo diferente
+						// cuando se presiona (lo cual no parece ser el caso aquí).
+						if (langToggleBtn && langToggleBtn.classList.contains('active')) {
+							// langToggleBtn.classList.remove('active'); // Descomenta si es necesario quitarlo forzosamente
 						}
 					}
 					

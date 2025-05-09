@@ -16,6 +16,26 @@ body.no-scroll {
 overflow: hidden;
 }
 
+body.page-fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+body.page-fade-in {
+    opacity: 0;
+    animation: fadeInAnimation 0.5s ease-in forwards;
+}
+
+@keyframes fadeInAnimation {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+.is-preload body {
+  opacity: 1; /* Asegúrate de que el preloader no interfiera si usas fade-in */
+}
+
 html {
     scroll-behavior: smooth;
   }

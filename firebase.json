@@ -8,8 +8,12 @@
     ],
     "rewrites": [
       {
+        "source": "/es",
+        "destination": "/index.html" 
+      },
+      { 
         "source": "**",
-        "destination": "/index.html"
+        "destination": "/index-en.html"
       }
     ]
   }
