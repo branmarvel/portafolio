@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PortfolioApp from '../components/PortfolioApp.jsx';
+import '../styles/global.css';
+---
+
+<Layout title="Brandon Bello | Full Stack Developer">
+	<main class="w-full h-[100dvh] overflow-hidden">
+		<PortfolioApp client:load />
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: 0;
+		padding: 0;
+	}
+</style>
