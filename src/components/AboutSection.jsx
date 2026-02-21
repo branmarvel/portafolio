@@ -4,6 +4,16 @@ import { useLanguage } from '../context/LanguageContext';
 export default function AboutSection() {
     const { t } = useLanguage();
 
+    const trackDownload = (fileName) => {
+        if (window.gtag) {
+            window.gtag('event', 'cv_download', {
+                'file_name': fileName,
+                'event_category': 'Engagement',
+                'event_label': 'CV Download'
+            });
+        }
+    };
+
     return (
         <section id="about" className="w-full h-full flex flex-col justify-start md:justify-center items-center px-4 md:px-12 bg-[var(--color-base)] relative overflow-y-auto overflow-x-hidden">
             {/* Subtle glow lines */}
@@ -31,15 +41,26 @@ export default function AboutSection() {
 
                     {/* CV Download Buttons */}
                     <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                        <a href="/Brandon_Bello_Programador_24884464.pdf" download className="px-4 py-2.5 md:px-8 md:py-4 rounded-full bg-white text-black font-semibold hover:bg-[var(--color-tungsten)] transition-colors flex items-center justify-center gap-2 group/cv text-[11px] md:text-sm">
+                        <a
+                            href="/Brandon_Bello_Programador_24884464.pdf"
+                            download
+                            onClick={() => trackDownload('Brandon_Bello_ES.pdf')}
+                            className="px-4 py-2.5 md:px-8 md:py-4 rounded-full bg-white text-black font-semibold hover:bg-[var(--color-tungsten)] transition-colors flex items-center justify-center gap-2 group/cv text-[11px] md:text-sm"
+                        >
                             <span>{t('about.cvEs')}</span>
                             <svg className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover/cv:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                         </a>
-                        <a href="/Brandon_Bello_Developer.pdf" download className="px-4 py-2.5 md:px-8 md:py-4 rounded-full border border-[var(--color-border)] text-white font-semibold hover:bg-[var(--color-tungsten)] hover:text-black transition-colors flex items-center justify-center gap-2 group/cv text-[11px] md:text-sm">
+                        <a
+                            href="/Brandon_Bello_Developer.pdf"
+                            download
+                            onClick={() => trackDownload('Brandon_Bello_EN.pdf')}
+                            className="px-4 py-2.5 md:px-8 md:py-4 rounded-full border border-[var(--color-border)] text-white font-semibold hover:bg-[var(--color-tungsten)] hover:text-black transition-colors flex items-center justify-center gap-2 group/cv text-[11px] md:text-sm"
+                        >
                             <span>{t('about.cvEn')}</span>
                             <svg className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover/cv:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                         </a>
                     </div>
+
                 </motion.div>
 
                 {/* Details Column */}

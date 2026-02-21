@@ -1,0 +1,30 @@
+---
+interface Props {
+	id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${id}`}></script>
+<script is:inline define:vars={{ id }}>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	window.gtag = gtag; // Make gtag globally available
+
+	// Check if consent was already given
+	const consent = localStorage.getItem('cookie-consent');
+	if (consent === 'granted') {
+		gtag('js', new Date());
+		gtag('config', id);
+	}
+
+	// Listen for consent granted event
+	window.addEventListener('cookie-consent-granted', () => {
+		gtag('js', new Date());
+		gtag('config', id);
+	});
+</script>
