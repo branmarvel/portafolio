@@ -98,7 +98,14 @@ export default function ProjectsSection() {
                 </motion.h2>
                 <div className="flex gap-2">
                     {projects.map((_, idx) => (
-                        <div key={idx} className={`h-1 transition-all duration-500 rounded ${idx === projectIndex ? 'w-8 bg-[var(--color-tungsten)]' : 'w-2 bg-[var(--color-border)]'}`} />
+                        <button
+                            key={idx}
+                            onClick={() => {
+                                const newDirection = idx > projectIndex ? 1 : -1;
+                                setPage([idx, newDirection]);
+                            }}
+                            className={`h-1 transition-all duration-300 rounded cursor-pointer ${idx === projectIndex ? 'w-8 bg-[var(--color-tungsten)]' : 'w-2 bg-[var(--color-border)] hover:bg-white/50'}`}
+                        />
                     ))}
                 </div>
             </div>
@@ -190,10 +197,25 @@ export default function ProjectsSection() {
             </div>
 
             {/* Mobile Controls */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 md:hidden z-20 pointer-events-auto">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 md:hidden z-20 pointer-events-auto">
                 <button onClick={() => paginate(-1)} className="p-3 bg-[var(--color-surface)] rounded-full border border-[var(--color-border)] text-white hover:bg-[var(--color-surface-hover)]">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
+
+                {/* Dots Indicator for Mobile */}
+                <div className="flex gap-2">
+                    {projects.map((_, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => {
+                                const newDirection = idx > projectIndex ? 1 : -1;
+                                setPage([idx, newDirection]);
+                            }}
+                            className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === projectIndex ? 'bg-[var(--color-tungsten)] scale-125' : 'bg-[var(--color-border)]'}`}
+                        />
+                    ))}
+                </div>
+
                 <button onClick={() => paginate(1)} className="p-3 bg-[var(--color-surface)] rounded-full border border-[var(--color-border)] text-white hover:bg-[var(--color-surface-hover)]">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>

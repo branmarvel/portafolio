@@ -44,7 +44,7 @@ export default function Navbar() {
                         <button
                             key={link.id}
                             onClick={() => {
-                                const buttons = document.querySelectorAll('.fixed.right-6.top-1\\/2 button');
+                                const buttons = document.querySelectorAll('.nav-dot');
                                 if (buttons && buttons[link.index]) buttons[link.index].click();
                             }}
                             className={`relative px-2 py-1.5 md:px-3 text-[10px] md:text-sm font-medium uppercase tracking-widest transition-colors flex-shrink-0 ${activeSection === link.id ? 'text-[var(--color-tungsten)]' : 'text-[var(--color-text-secondary)] hover:text-white'
