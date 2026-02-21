@@ -67,13 +67,13 @@ export default function ContactSection() {
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-24 shrink-0 pb-4">
                     {/* Contact Info */}
                     <motion.div variants={fadeInUp} className="flex flex-col gap-3 md:gap-6 justify-center glass-panel md:bg-transparent p-4 md:p-0 rounded-2xl md:rounded-none border border-[var(--color-border)] md:border-none">
-                        <a href="mailto:brandon91596@gmail.com" className="flex items-center gap-3 md:gap-6 group hover:translate-x-2 md:hover:translate-x-4 transition-transform duration-500 w-full overflow-hidden">
+                        <a href="mailto:ing.bbellom@gmail.com" className="flex items-center gap-3 md:gap-6 group hover:translate-x-2 md:hover:translate-x-4 transition-transform duration-500 w-full overflow-hidden">
                             <div className="w-10 h-10 md:w-20 md:h-20 rounded-full border border-[var(--color-border)] flex items-center justify-center group-hover:bg-[var(--color-tungsten)] group-hover:text-black transition-colors duration-500 shrink-0">
                                 <svg className="w-4 h-4 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                             </div>
                             <div className="flex flex-col overflow-hidden min-w-0 flex-1">
                                 <span className="font-mono text-[8px] md:text-xs uppercase text-[var(--color-text-secondary)] mb-0.5 tracking-widest truncate">{t('contact.emailLabel')}</span>
-                                <span className="text-sm md:text-3xl font-medium group-hover:text-[var(--color-tungsten)] transition-colors truncate block">brandon91596@gmail.com</span>
+                                <span className="text-sm md:text-3xl font-medium group-hover:text-[var(--color-tungsten)] transition-colors truncate block">ing.bbellom@gmail.com</span>
                             </div>
                         </a>
 
