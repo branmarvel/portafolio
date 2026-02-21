@@ -129,7 +129,7 @@ export default function ScrollController({ sections }) {
                     <motion.button
                         key={idx}
                         onClick={() => navigateTo(idx, idx > currentIndex ? 1 : -1)}
-                        className="w-1.5 md:w-2 relative h-6 md:h-12 flex justify-center group"
+                        className="w-1.5 md:w-2 relative h-6 md:h-12 flex justify-center group nav-dot"
                     >
                         <div className={`w-0.5 transition-all duration-500 rounded-full ${currentIndex === idx ? 'h-full bg-[var(--color-tungsten)]' : 'h-1/3 bg-[var(--color-border)] group-hover:bg-white'
                             }`}></div>
