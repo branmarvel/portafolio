@@ -99,7 +99,7 @@ export default function InteractiveCanvas() {
                         </p>
                         <div className="flex gap-4 pt-4 font-mono text-xs text-[var(--color-tungsten)]">
                             <a href="https://www.linkedin.com/in/brandon-jose-bello-moncada-5826061a0" target="_blank" rel="noreferrer" className="hover:underline">LINKEDIN</a>
-                            <a href="mailto:brandon91596@gmail.com" className="hover:underline">EMAIL</a>
+                            <a href="mailto:ing.bbellom@gmail.com" className="hover:underline">EMAIL</a>
                             <a href="https://api.whatsapp.com/send?phone=584123098258" target="_blank" rel="noreferrer" className="hover:underline">WHATSAPP</a>
                         </div>
                     </div>
