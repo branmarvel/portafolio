@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+import CookieConsent from '../components/CookieConsent';
 
 interface Props {
 	title: string;
@@ -22,8 +24,12 @@ const { title, description = "Portafolio Creativo" } = Astro.props;
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+		
+		<!-- Google Analytics -->
+		<GoogleAnalytics id="G-XXXXXXXXXX" />
 	</head>
 	<body class="antialiased selection:bg-[#ffd7aa] selection:text-black">
 		<slot />
+		<CookieConsent client:idle />
 	</body>
 </html>
