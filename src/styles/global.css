@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --color-base: #0a0a0a;
+  --color-surface: #141414;
+  --color-surface-hover: #1f1f1f;
+  --color-tungsten: #ffd7aa;
+  /* Warm copper/tungsten light */
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #888888;
+  --color-border: #2a2a2a;
+
+  --font-mono: 'JetBrains Mono', 'Geist Mono', monospace;
+  --font-sans: 'Inter', 'Manrope', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow: hidden;
+  height: 100dvh;
+}
+
+body {
+  background-color: var(--color-base);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* Secuestro maestro de Scroll (Awwwards Style) */
+  overscroll-behavior-y: none;
+  cursor: none;
+  /* Se oculta a favor de CustomCursor.jsx */
+}
+
+/* Custom Selection */
+::selection {
+  background: var(--color-text-primary);
+  color: var(--color-base);
+}
+
+/* Base focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-tungsten);
+  outline-offset: 4px;
+}
+
+/* Premium Custom Scrollbar - Disabled for Master Snap Scroll */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Permitir clics seguros sin el cursor */
+a,
+button,
+input,
+textarea {
+  cursor: none !important;
+}
+
+/* Premium Utility Classes */
+@layer utilities {
+  .glass-panel {
+    @apply bg-[var(--color-surface)]/80 backdrop-blur-md border border-[var(--color-border)] shadow-[0_4px_30px_#00000080];
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-[#ffd7aa];
+  }
+}
