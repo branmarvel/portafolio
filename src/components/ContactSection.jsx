@@ -96,6 +96,26 @@ export default function ContactSection() {
                                 <span className="text-sm md:text-3xl font-medium group-hover:text-[var(--color-tungsten)] transition-colors truncate block">Brandon Bello</span>
                             </div>
                         </a>
+
+                        <a href="https://www.instagram.com/ing.bbellom/" target="_blank" rel="noreferrer" className="flex items-center gap-3 md:gap-6 group hover:translate-x-2 md:hover:translate-x-4 transition-transform duration-500 w-full overflow-hidden">
+                            <div className="w-10 h-10 md:w-20 md:h-20 rounded-full border border-[var(--color-border)] flex items-center justify-center group-hover:bg-[var(--color-tungsten)] group-hover:text-black transition-colors duration-500 shrink-0">
+                                <svg className="w-4 h-4 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 7.5h.008v.008H16.5V7.5z" /><path strokeLinecap="round" strokeLinejoin="round" d="M9 18.75a0.375 0.375 0 110-0.75 0.375 0.375 0 010 0.75zM9 18.75a0.375 0.375 0 110-0.75 0.375 0.375 0 010 0.75z" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 9a3 3 0 100 6 3 3 0 000-6z" /><path strokeLinecap="round" strokeLinejoin="round" d="M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" /></svg>
+                            </div>
+                            <div className="flex flex-col overflow-hidden min-w-0 flex-1">
+                                <span className="font-mono text-[8px] md:text-xs uppercase text-[var(--color-text-secondary)] mb-0.5 tracking-widest truncate">{t('contact.instagramLabel')}</span>
+                                <span className="text-sm md:text-3xl font-medium group-hover:text-[var(--color-tungsten)] transition-colors truncate block">@ing.bbellom</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.facebook.com/profile.php?id=61588590329460" target="_blank" rel="noreferrer" className="flex items-center gap-3 md:gap-6 group hover:translate-x-2 md:hover:translate-x-4 transition-transform duration-500 w-full overflow-hidden">
+                            <div className="w-10 h-10 md:w-20 md:h-20 rounded-full border border-[var(--color-border)] flex items-center justify-center group-hover:bg-[var(--color-tungsten)] group-hover:text-black transition-colors duration-500 shrink-0">
+                                <svg className="w-4 h-4 md:w-8 md:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /></svg>
+                            </div>
+                            <div className="flex flex-col overflow-hidden min-w-0 flex-1">
+                                <span className="font-mono text-[8px] md:text-xs uppercase text-[var(--color-text-secondary)] mb-0.5 tracking-widest truncate">{t('contact.facebookLabel')}</span>
+                                <span className="text-sm md:text-3xl font-medium group-hover:text-[var(--color-tungsten)] transition-colors truncate block">Brandon Bello</span>
+                            </div>
+                        </a>
                     </motion.div>
 
                     {/* Form */}
