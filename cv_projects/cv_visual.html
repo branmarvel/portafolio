@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brandon J. Bello Moncada — CV Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        :root {
+            --bg:      #ffffff;
+            --sidebar: #f8fafc;
+            --primary: #4f46e5;
+            --accent:  #6366f1;
+            --text:    #0f172a;
+            --muted:   #475569;
+            --line:    rgba(0,0,0,0.08);
+            --pill:    rgba(79,70,229,0.1);
+        }
+
+        /* ── Dark Mode ── */
+        body.dark-mode #cv-page {
+            --bg:      #0f172a;
+            --sidebar: #1e293b;
+            --text:    #f8fafc;
+            --muted:   #94a3b8;
+            --line:    rgba(255,255,255,0.1);
+            --pill:    rgba(99,102,241,0.2);
+        }
+        body.dark-mode .tag { background: #1e293b; color: #94a3b8; }
+        body.dark-mode .tag.hi { background: var(--pill); color: var(--accent); border-color: var(--accent); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family:'Inter',Arial,sans-serif;
+            background:#e2e8f0;
+            display:flex; flex-direction:column; align-items:center;
+            padding:24px 16px 80px; min-height:100vh;
+        }
+
+        /* ── Controls Bar ─────────────────── */
+        #controls {
+            position:fixed; top:16px; right:16px;
+            display:flex; gap:8px; z-index:999; flex-wrap:wrap; justify-content:flex-end;
+        }
+        .btn {
+            display:flex; align-items:center; gap:6px;
+            background:var(--primary); color:#fff; border:none;
+            padding:9px 16px; border-radius:8px;
+            font-family:'Inter',sans-serif; font-weight:600; font-size:12px;
+            cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,.25);
+            transition:transform .15s, box-shadow .15s; white-space:nowrap;
+        }
+        .btn:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.3); }
+        .btn.sec { background:#1e293b; border:1px solid rgba(255,255,255,.12); }
+        .btn.theme { background:#334155; }
+        .btn.lang { background:#0f766e; }
+        label.btn { cursor:pointer; }
+        #photoInput { display:none; }
+
+        /* ── Page (US Letter 816×1056px at 96dpi) ─ */
+        #cv-page {
+            width:816px; height:1056px;
+            background:var(--bg);
+            display:flex; flex-direction:column;
+            overflow:hidden; position:relative;
+        }
+        #cv-page::before {
+            content:''; position:absolute; top:-60px; right:-60px;
+            width:300px; height:300px; border-radius:50%;
+            background:rgba(99,102,241,.07); pointer-events:none;
+        }
+
+        /* ── Header ───────────────────────── */
+        header {
+            display:flex; align-items:center; gap:24px;
+            padding:26px 34px 20px;
+            border-bottom:1px solid var(--line);
+            flex-shrink:0; position:relative; z-index:1;
+        }
+        .photo-wrap {
+            width:90px; height:90px; border-radius:50%;
+            flex-shrink:0; overflow:hidden; background:var(--sidebar);
+            box-shadow:0 0 0 3px var(--primary), 0 0 0 6px rgba(99,102,241,.20);
+        }
+        .photo-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
+        .header-text { flex:1; }
+        .header-text h1 {
+            font-family:'Outfit',sans-serif; font-size:2rem; font-weight:700;
+            color:var(--text); letter-spacing:-0.5px; line-height:1.1;
+        }
+        .header-text h1 span { color:var(--primary); }
+        .header-text .role {
+            font-size:.75rem; font-weight:600; text-transform:uppercase;
+            letter-spacing:2px; color:var(--accent); margin-top:4px;
+        }
+        .contact-grid { display:grid; grid-template-columns: auto auto; gap:5px 24px; }
+        .c-item {
+            display:flex; align-items:center; gap:5px;
+            font-size:.69rem; color:var(--muted); text-decoration:none;
+            white-space: nowrap;
+        }
+        .c-item svg { color:var(--accent); flex-shrink:0; }
+
+        /* ── Body Grid ────────────────────── */
+        .body-grid {
+            display:grid; grid-template-columns:210px 1fr;
+            flex:1; overflow:hidden; position:relative; z-index:1;
+        }
+
+        /* ── Sidebar ──────────────────────── */
+        aside {
+            background:var(--sidebar); padding:20px 18px;
+            border-right:1px solid var(--line);
+            display:flex; flex-direction:column; gap:16px; overflow:hidden;
+        }
+        .s-title {
+            font-family:'Outfit',sans-serif; font-size:.72rem; font-weight:700;
+            text-transform:uppercase; letter-spacing:1.5px; color:var(--text);
+            display:flex; align-items:center; gap:6px;
+            margin-bottom:7px; padding-bottom:4px; border-bottom:1px solid var(--line);
+        }
+        .s-title svg { color:var(--accent); }
+        .skill-cat { margin-bottom:7px; }
+        .skill-cat h4 { font-size:.6rem; text-transform:uppercase; color:var(--muted); margin-bottom:4px; }
+        .tags { display:flex; flex-wrap:wrap; gap:3px; }
+        .tag {
+            font-size:.6rem; padding:2px 7px; border-radius:4px;
+            color:var(--muted); border:1px solid var(--line);
+            background:#ffffff;
+        }
+        .tag.hi { color:var(--primary); border-color:var(--primary); background:var(--pill); font-weight: 500; }
+        .edu-item p { font-size:.7rem; color:var(--text); font-weight:600; }
+        .edu-item span { font-size:.63rem; color:var(--muted); display:block; }
+        .edu-item em { font-size:.6rem; color:var(--accent); font-style:normal; display:block; margin-top:3px; padding-left: 2px; }
+        .lang-item { font-size:.7rem; color:var(--muted); }
+        .lang-item strong { color:var(--text); }
+
+        /* ── Main Content ─────────────────── */
+        main { padding:20px 26px; display:flex; flex-direction:column; gap:14px; overflow:hidden; }
+        .summary { font-size:.75rem; color:var(--muted); line-height:1.55; }
+        .summary strong { color:var(--text); }
+        .m-title {
+            font-family:'Outfit',sans-serif; font-size:.88rem; font-weight:700;
+            color:var(--text); display:flex; align-items:center; gap:8px; margin-bottom:9px;
+        }
+        .m-title svg { color:var(--accent); }
+        .m-title::after { content:''; flex:1; height:1px; background:var(--line); }
+
+        /* Experience */
+        .exp { display:grid; grid-template-columns:8px 1fr; gap:0 12px; margin-bottom:11px; }
+        .exp-line { display:flex; flex-direction:column; align-items:center; }
+        .dot { width:8px; height:8px; border-radius:50%; background:var(--primary); flex-shrink:0; margin-top:4px; }
+        .v-line { width:1px; flex:1; background:var(--line); margin-top:3px; }
+        .exp-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:2px; }
+        .exp-head h3 { font-size:.8rem; font-weight:600; color:var(--text); }
+        .exp-head .date { font-size:.62rem; color:var(--accent); font-weight:600; white-space:nowrap; padding-left:6px; }
+        .exp-co { font-size:.65rem; color:var(--muted); font-style:italic; margin-bottom:4px; display:block; }
+        .exp ul { list-style:none; }
+        .exp li {
+            font-size:.7rem; color:var(--muted);
+            padding-left:11px; position:relative; margin-bottom:2.5px; line-height:1.45;
+        }
+        .exp li::before { content:'•'; position:absolute; left:0; color:var(--accent); }
+        .exp li strong { color:var(--text); font-weight:500; }
+
+        @media print {
+            /* Force light theme for printing */
+            body.dark-mode #cv-page, #cv-page {
+                --bg:      #ffffff !important;
+                --sidebar: #f8fafc !important;
+                --text:    #0f172a !important;
+                --muted:   #475569 !important;
+                --line:    rgba(0,0,0,0.08) !important;
+                --pill:    rgba(79,70,229,0.1) !important;
+            }
+            body.dark-mode .tag { background: #ffffff !important; color: #475569 !important; border: 1px solid rgba(0,0,0,0.08) !important; }
+            body.dark-mode .tag.hi { background: rgba(79,70,229,0.1) !important; color: #4f46e5 !important; border-color: #4f46e5 !important; }
+            
+            body { background:none; padding:0; }
+            #controls { display:none; }
+            #cv-page { box-shadow:none; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="controls">
+    <label class="btn sec" title="Subir foto">
+        <i data-lucide="camera" width="14" height="14"></i>
+        <span data-es="Subir Foto" data-en="Upload Photo">Subir Foto</span>
+        <input type="file" id="photoInput" accept="image/*">
+    </label>
+    <button class="btn theme" onclick="toggleTheme()" id="themeBtn">
+        <i data-lucide="moon" width="14" height="14"></i>
+        <span data-es="Modo Oscuro" data-en="Dark Mode">Modo Oscuro</span>
+    </button>
+    <button class="btn lang" onclick="toggleLang()" id="langBtn">
+        <i data-lucide="globe" width="14" height="14"></i> 🇬🇧 English
+    </button>
+    <button class="btn" onclick="exportPDF()">
+        <i data-lucide="download" width="14" height="14"></i>
+        <span data-es="Exportar PDF" data-en="Export PDF">Exportar PDF</span>
+    </button>
+</div>
+
+<div id="cv-page">
+    <header>
+        <div class="photo-wrap">
+            <img id="photoImg"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 90 90'%3E%3Crect width='90' height='90' fill='%23f1f5f9'/%3E%3Ccircle cx='45' cy='34' r='18' fill='%2394a3b8'/%3E%3Cellipse cx='45' cy='72' rx='25' ry='16' fill='%2394a3b8'/%3E%3C/svg%3E"
+                alt="Brandon Bello">
+        </div>
+        <div class="header-text">
+            <h1>Brandon J. <span>Bello</span> Moncada</h1>
+            <p class="role" data-es="FULL-STACK DEVELOPER" data-en="FULL-STACK DEVELOPER">FULL-STACK DEVELOPER</p>
+        </div>
+        <div class="contact-grid">
+            <a class="c-item" href="mailto:brandon91596@gmail.com"><i data-lucide="mail" width="12" height="12"></i> brandon91596@gmail.com</a>
+            <a class="c-item" href="https://wa.me/584123098258"><i data-lucide="message-circle" width="12" height="12"></i> +58 412-3098258</a>
+            <a class="c-item" href="https://linkedin.com/in/brandon-jose-bello-moncada-5826061a0"><i data-lucide="linkedin" width="12" height="12"></i> https://linkedin.com/in/brandon-bello</a>
+            <a class="c-item" href="https://portafolio-brandon-bello.web.app"><i data-lucide="globe" width="12" height="12"></i> https://portafolio-brandon-bello.web.app</a>
+        </div>
+    </header>
+
+    <div class="body-grid">
+        <aside>
+            <div>
+                <div class="s-title"><i data-lucide="cpu" width="12" height="12"></i> <span data-es="Hard Skills" data-en="Hard Skills">Hard Skills</span></div>
+                <div class="skill-cat">
+                    <h4>Backend</h4>
+                    <div class="tags">
+                        <span class="tag hi">Go 1.25 (Gin/GORM)</span><span class="tag hi">Laravel 11</span>
+                        <span class="tag hi">Node.js</span>
+                        <span class="tag">PHP 8.2</span><span class="tag">Python</span>
+                    </div>
+                </div>
+                <div class="skill-cat">
+                    <h4>Frontend</h4>
+                    <div class="tags">
+                        <span class="tag hi">Vue 3 + Vite</span><span class="tag hi">Astro 5 + React 19</span>
+                        <span class="tag">TypeScript</span><span class="tag">React Native (Expo)</span>
+                        <span class="tag">PrimeVue 4</span><span class="tag">NativeWind</span>
+                        <span class="tag">Tailwind CSS v4</span>
+                    </div>
+                </div>
+                <div class="skill-cat">
+                    <h4><span data-es="Automatización & Cloud" data-en="Automation & Cloud">Automatización & Cloud</span></h4>
+                    <div class="tags">
+                        <span class="tag hi">n8n</span><span class="tag hi">Docker</span>
+                        <span class="tag">Capacitor (APK)</span><span class="tag">Socket.io</span>
+                        <span class="tag">Linux Server</span>
+                    </div>
+                </div>
+                <div class="skill-cat">
+                    <h4><span data-es="Datos & BI" data-en="Data & BI">Datos & BI</span></h4>
+                    <div class="tags">
+                        <span class="tag">PostgreSQL</span><span class="tag">SQLite</span>
+                        <span class="tag">ECharts</span><span class="tag">ApexCharts</span>
+                        <span class="tag">SQL Server</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="s-title"><i data-lucide="zap" width="12" height="12"></i> <span data-es="Metodologías" data-en="Methodologies">Metodologías</span></div>
+                <div class="tags">
+                    <span class="tag hi">AI-Assisted Dev</span><span class="tag hi">Clean Arch.</span>
+                    <span class="tag">SOLID</span><span class="tag">TDD</span>
+                    <span class="tag">CI/CD</span><span class="tag">Prompt Eng.</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="s-title"><i data-lucide="graduation-cap" width="12" height="12"></i> <span data-es="Educación" data-en="Education">Educación</span></div>
+                <div class="edu-item">
+                    <p data-es="T.S.U en Informática" data-en="B.S. in Computer Science (T.S.U)">T.S.U en Informática</p>
+                    <span>I.U.J.O · Caracas (2023)</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="s-title"><i data-lucide="languages" width="12" height="12"></i> <span data-es="Idiomas" data-en="Languages">Idiomas</span></div>
+                <p class="lang-item"><strong data-es="Español:" data-en="Spanish:">Español:</strong> <span data-es="Nativo" data-en="Native">Nativo</span></p>
+                <p class="lang-item"><strong data-es="Inglés:" data-en="English:">Inglés:</strong> <span data-es="B2 Profesional" data-en="B2 Professional">B2 Profesional</span></p>
+            </div>
+        </aside>
+
+        <main>
+            <!-- Summary -->
+            <div class="m-title"><i data-lucide="user" width="14" height="14"></i> <span data-es="Perfil Profesional" data-en="Professional Profile">Perfil Profesional</span></div>
+            <p class="summary"
+               data-es="Diseñé y entregué sistemas críticos en Go + Laravel y Vue + React Native que digitalizaron procesos manuales para +150 usuarios, reduciendo tiempos operativos en <strong>30%</strong> y errores logísticos en <strong>25%</strong>. Especialista en AI-Assisted Development con TDD y CI/CD, logrando ciclos de release de 2 semanas."
+               data-en="Designed and delivered critical systems in Go + Laravel and Vue + React Native that digitized manual processes for 150+ users, reducing operational times by <strong>30%</strong> and logistics errors by <strong>25%</strong>. Specialist in AI-Assisted Development with TDD and CI/CD, achieving 2-week release cycles.">
+               Diseñé y entregué sistemas críticos en Go + Laravel y Vue + React Native que digitalizaron procesos manuales para +150 usuarios, reduciendo tiempos operativos en <strong>30%</strong> y errores logísticos en <strong>25%</strong>. Especialista en AI-Assisted Development con TDD y CI/CD, logrando ciclos de release de 2 semanas.
+            </p>
+
+            <!-- Experience -->
+            <section>
+                <div class="m-title"><i data-lucide="briefcase" width="14" height="14"></i> <span data-es="Experiencia Profesional" data-en="Professional Experience">Experiencia Profesional</span></div>
+
+                <!-- MPPEF -->
+                <div class="exp">
+                    <div class="exp-line"><div class="dot"></div><div class="v-line"></div></div>
+                    <div>
+                        <div class="exp-head">
+                            <h3 data-es="Full-Stack Developer — Transformación Digital" data-en="Full-Stack Developer — Digital Transformation">Full-Stack Developer — Transformación Digital</h3>
+                            <span class="date">Ene 2025 – <span data-es="Presente" data-en="Present">Presente</span></span>
+                        </div>
+                        <span class="exp-co" data-es="MPPEF · Ministerio de Economía y Finanzas, Caracas, Venezuela" data-en="MPPEF · Ministry of Economy and Finance, Caracas, Venezuela">MPPEF · Ministerio de Economía y Finanzas, Caracas, Venezuela</span>
+                        <ul>
+                            <li data-es="Reemplacé procesos manuales (Excel/papel) con sistemas Go + Laravel desde cero, logrando un <strong>+60% de productividad operativa</strong>." data-en="Replaced manual processes (Excel/paper) with Go + Laravel systems from scratch, achieving <strong>+60% operational productivity</strong>.">Reemplacé procesos manuales (Excel/papel) con sistemas Go + Laravel desde cero, logrando un <strong>+60% de productividad operativa</strong>.</li>
+                            <li data-es="Diseñé la arquitectura del sistema de Bienes Públicos (<strong>Go 1.25, Gin, GORM</strong>): API REST + WebSockets + JWT/RBAC. Genera PDFs y Excel. <strong>+100k registros</strong>." data-en="Designed the architecture of the Public Assets system (<strong>Go 1.25, Gin, GORM</strong>): REST API + WebSockets + JWT/RBAC. Generates PDFs and Excel. <strong>100k+ records</strong>.">Diseñé la arquitectura del sistema de Bienes Públicos (<strong>Go 1.25, Gin, GORM</strong>): API REST + WebSockets + JWT/RBAC. Genera PDFs y Excel. <strong>+100k registros</strong>.</li>
+                            <li data-es="Desarrollé un sistema de Almacén e Inventario (<strong>Laravel 11, Vue 3, Socket.io</strong>) con flujos de aprobación y trazabilidad, cuyo despliegue en múltiples áreas redujo los errores logísticos en un <strong>30%</strong>." data-en="Developed Inventory & Warehouse system (<strong>Laravel 11, Vue 3, Socket.io</strong>) with approval workflows and audit trail, where deployment across multiple areas reduced logistics errors by <strong>30%</strong>.">Desarrollé un sistema de Almacén e Inventario (<strong>Laravel 11, Vue 3, Socket.io</strong>) con flujos de aprobación y trazabilidad, cuyo despliegue en múltiples áreas redujo los errores logísticos en un <strong>30%</strong>.</li>
+                            <li data-es="Automaticé alertas con <strong>n8n + Telegram</strong>; administración de servidores Linux y pipelines Docker." data-en="Automated alerts via <strong>n8n + Telegram</strong>; managed Linux servers and Docker pipelines.">Automaticé alertas con <strong>n8n + Telegram</strong>; administración de servidores Linux y pipelines Docker.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Jutba -->
+                <div class="exp">
+                    <div class="exp-line"><div class="dot"></div><div class="v-line"></div></div>
+                    <div>
+                        <div class="exp-head">
+                            <h3 data-es="Flutter Developer (Freelance part-time)" data-en="Flutter Developer (Freelance part-time)">Flutter Developer (Freelance part-time)</h3>
+                            <span class="date">Mar 2025 – Feb 2026</span>
+                        </div>
+                        <span class="exp-co" data-es="Jutba · Plataforma de Transmisión (España)" data-en="Jutba · Streaming Platform (Spain)">Jutba · Plataforma de Transmisión (España)</span>
+                        <ul>
+                            <li data-es="Desarrollé el frontend con <strong>Flutter + Widgetbook</strong>, logrando paridad total en Android, iOS y Web." data-en="Built the frontend with <strong>Flutter + Widgetbook</strong>, achieving full parity across Android, iOS and Web.">Desarrollé el frontend con <strong>Flutter + Widgetbook</strong>, logrando paridad total en Android, iOS y Web.</li>
+                            <li data-es="Integré <strong>Firebase</strong> (Auth, Realtime DB, Push), logrando una <strong>reducción del 40%</strong> en el tiempo de implementación." data-en="Integrated <strong>Firebase</strong> (Auth, Realtime DB, Push), achieving a <strong>40% reduction</strong> in feature implementation time.">Integré <strong>Firebase</strong> (Auth, Realtime DB, Push), logrando una <strong>reducción del 40%</strong> en el tiempo de implementación.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PwC -->
+                <div class="exp">
+                    <div class="exp-line"><div class="dot"></div></div>
+                    <div>
+                        <div class="exp-head">
+                            <h3 data-es="Risk Assurance Services Assistant" data-en="Risk Assurance Services Assistant">Risk Assurance Services Assistant</h3>
+                            <span class="date"><span data-es="Ago" data-en="Aug">Ago</span> 2023 – <span data-es="Oct" data-en="Oct">Oct</span> 2024</span>
+                        </div>
+                        <span class="exp-co" data-es="PwC (PriceWaterhouseCoopers) · Venezuela" data-en="PwC (PriceWaterhouseCoopers) · Venezuela">PwC (PriceWaterhouseCoopers) · Venezuela</span>
+                        <ul>
+                            <li data-es="Desarrollé herramienta interna (<strong>Angular + SQL Server</strong>) para generación automatizada de informes de ciberseguridad, lo que redujo el tiempo de preparación en un <strong>25%</strong> (de 8h a 6h)." data-en="Built internal tool (<strong>Angular + SQL Server</strong>) for automated cybersecurity report generation, reducing preparation time by <strong>25%</strong> (from 8h to 6h).">Desarrollé herramienta interna (<strong>Angular + SQL Server</strong>) para generación automatizada de informes de ciberseguridad, lo que redujo el tiempo de preparación en un <strong>25%</strong> (de 8h a 6h).</li>
+                            <li data-es="Ejecuté revisiones de seguridad y auditoría de accesos en entornos Linux, SQL Server y Windows, estandarizando la documentación técnica para <strong>+20 pruebas de control críticas</strong>." data-en="Executed security reviews and access auditing in Linux, SQL Server, and Windows environments, standardizing technical documentation for <strong>+20 critical control tests</strong>.">Ejecuté revisiones de seguridad y auditoría de accesos en entornos Linux, SQL Server y Windows, estandarizando la documentación técnica para <strong>+20 pruebas de control críticas</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</div>
+
+<script>
+lucide.createIcons();
+
+// ── Photo upload ───────────────────────────────
+document.getElementById('photoInput').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => { document.getElementById('photoImg').src = ev.target.result; };
+    reader.readAsDataURL(file);
+});
+
+// ── Language Toggle ────────────────────────────
+let currentLang = 'es';
+
+function toggleLang() {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    const btn = document.getElementById('langBtn');
+    btn.innerHTML = currentLang === 'es'
+        ? '<i data-lucide="globe" width="14" height="14"></i> 🇬🇧 English'
+        : '<i data-lucide="globe" width="14" height="14"></i> 🇪🇸 Español';
+
+    // Update all elements with data-es / data-en
+    document.querySelectorAll('[data-es]').forEach(el => {
+        const content = el.getAttribute(`data-${currentLang}`);
+        if (content !== null) {
+            // Use innerHTML for elements that have HTML tags, innerText for simple text
+            if (content.includes('<')) {
+                el.innerHTML = content;
+            } else {
+                el.textContent = content;
+            }
+        }
+    });
+
+    lucide.createIcons();
+    // Update html lang attr
+    document.documentElement.lang = currentLang;
+
+    // Update theme button text if it exists
+    updateThemeBtn();
+}
+
+function updateThemeBtn() {
+    const isDark = document.body.classList.contains('dark-mode');
+    const btn = document.getElementById('themeBtn');
+    if (isDark) {
+        btn.innerHTML = `<i data-lucide="sun" width="14" height="14"></i> 
+            <span data-es="Modo Claro" data-en="Light Mode">${currentLang === 'es' ? 'Modo Claro' : 'Light Mode'}</span>`;
+    } else {
+        btn.innerHTML = `<i data-lucide="moon" width="14" height="14"></i> 
+            <span data-es="Modo Oscuro" data-en="Dark Mode">${currentLang === 'es' ? 'Modo Oscuro' : 'Dark Mode'}</span>`;
+    }
+    lucide.createIcons();
+}
+
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    updateThemeBtn();
+}
+
+// ── PDF Export ─────────────────────────────────
+function exportPDF() {
+    const page = document.getElementById('cv-page');
+    const lang = currentLang === 'es' ? 'ES' : 'EN';
+    const opt = {
+        margin:    0,
+        filename:  `Brandon_Bello_CV_${lang}.pdf`,
+        image:     { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+            scale:           3,
+            useCORS:         true,
+            letterRendering: true,
+            backgroundColor: '#ffffff',
+            ignoreElements:  el => el.id === 'controls'
+        },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(page).save();
+}
+</script>
+</body>
+</html>

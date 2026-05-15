@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es" id="htmlRoot">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Brandon José Bello Moncada — Full-Stack Senior Developer. Go, Laravel, Vue, Flutter, NestJS, n8n, Docker. Digital transformation specialist.">
+    <meta name="keywords"
+        content="Full Stack Developer, Go, Golang, Laravel, Vue, Flutter, NestJS, TypeScript, PostgreSQL, Docker, Firebase, n8n, Python, React, Astro, CI/CD, Clean Architecture, TDD, Power BI, SQL Server, Angular, Widgetbook">
+    <meta name="author" content="Brandon José Bello Moncada">
+    <title id="pageTitle">Brandon José Bello Moncada — Full-Stack Senior Developer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        /* ── RESET & PRINT ─────────────────── */
+        @page {
+            size: letter;
+            margin: 0.45in 0.6in;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ── CONTROLS (NO PDF) ─────────────── */
+        #controls {
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            gap: 7px;
+            z-index: 999;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .ctrl-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 14px;
+            border-radius: 6px;
+            border: none;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity .2s;
+        }
+
+        .ctrl-btn:hover {
+            opacity: .85;
+        }
+
+        .ctrl-btn.dl {
+            background: #1d4ed8;
+            color: #fff;
+        }
+
+        .ctrl-btn.lang {
+            background: #0f766e;
+            color: #fff;
+        }
+
+        /* ── BODY ──────────────────────────── */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 9.5pt;
+            color: #111;
+            background: #fff;
+            line-height: 1.35;
+            padding: 0.45in 0.6in;
+            max-width: 8.5in;
+            margin: 0 auto;
+        }
+
+        /* ── HEADER ────────────────────────── */
+        header {
+            text-align: center;
+            border-bottom: 1.5pt solid #111;
+            padding-bottom: 7pt;
+            margin-bottom: 7pt;
+        }
+
+        header h1 {
+            font-size: 17pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+
+        header .subtitle {
+            font-size: 9.5pt;
+            color: #333;
+            margin-top: 4pt;
+            font-weight: 600;
+        }
+
+        header .contact {
+            font-size: 8.5pt;
+            color: #333;
+            margin-top: 4pt;
+            line-height: 1.65;
+        }
+
+        header .contact a {
+            color: #1d4ed8;
+            text-decoration: none;
+        }
+
+        /* ── SECTIONS ──────────────────────── */
+        /* CRITICAL: NO page-break-inside:avoid on section —
+           that's what caused the blank page gap.
+           Only keep it on .job to avoid splitting individual jobs. */
+        section {
+            margin-top: 7pt;
+        }
+
+        h2 {
+            font-size: 10pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .4px;
+            border-bottom: 1pt solid #555;
+            padding-bottom: 1.5pt;
+            margin-bottom: 4pt;
+        }
+
+        p {
+            font-size: 9.5pt;
+            color: #222;
+        }
+
+        /* ── JOBS ──────────────────────────── */
+        .job {
+            margin-bottom: 6pt;
+            page-break-inside: avoid;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .job-header h3 {
+            font-size: 9.5pt;
+            font-weight: 700;
+        }
+
+        .job-header .date {
+            font-size: 8.5pt;
+            color: #444;
+            white-space: nowrap;
+            padding-left: 6pt;
+        }
+
+        .job-company {
+            font-size: 8.5pt;
+            color: #444;
+            font-style: italic;
+            display: block;
+            margin-bottom: 2pt;
+        }
+
+        ul {
+            padding-left: 14pt;
+            margin-top: 1.5pt;
+        }
+
+        li {
+            font-size: 8.5pt;
+            color: #222;
+            margin-bottom: 2pt;
+            line-height: 1.35;
+        }
+
+        /* ── SKILLS ────────────────────────── */
+        .skill-row {
+            margin-bottom: 2pt;
+            font-size: 8.5pt;
+        }
+
+        .skill-row .lbl {
+            font-weight: 700;
+        }
+
+        /* ── EDU ───────────────────────────── */
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .edu-header h3 {
+            font-size: 9.5pt;
+            font-weight: 700;
+        }
+
+        .edu-header .date {
+            font-size: 8.5pt;
+            color: #444;
+        }
+
+        .edu-sub {
+            font-size: 8.5pt;
+            color: #444;
+            font-style: italic;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                margin: 0;
+            }
+
+            #controls {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Controls (not printed) -->
+    <div id="controls">
+        <button class="ctrl-btn lang" onclick="toggleLang()" id="langBtn">🇬🇧 Switch to English</button>
+        <button class="ctrl-btn dl" onclick="exportPDF()">⬇ Download PDF</button>
+    </div>
+
+    <!-- ══ SPANISH CONTENT ══════════════════════════════════════════════ -->
+    <div id="content-es">
+        <header>
+            <h1>Brandon José Bello Moncada</h1>
+            <p class="subtitle">Full-Stack Senior Developer · Especialista en Transformación Digital</p>
+            <div class="contact">
+                Caracas, Venezuela &nbsp;|&nbsp; +58 412-3098258 &nbsp;|&nbsp;
+                <a href="mailto:brandon91596@gmail.com">brandon91596@gmail.com</a><br>
+                LinkedIn: <a
+                    href="https://linkedin.com/in/brandon-jose-bello-moncada-5826061a0">linkedin.com/in/brandon-jose-bello-moncada-5826061a0</a>
+                &nbsp;|&nbsp;
+                Portafolio: <a href="https://portafolio-brandon-bello.web.app">portafolio-brandon-bello.web.app</a>
+            </div>
+        </header>
+
+        <section>
+            <h2>Resumen Ejecutivo</h2>
+            <p>Desarrollador Full-Stack Senior con más de 3 años de experiencia en transformación digital gubernamental
+                e internacional. Pionero en <em>Vibe Coding</em> y herramientas de IA avanzada para acelerar ciclos de
+                entrega con calidad garantizada mediante TDD y CI/CD. Especialista en construir sistemas críticos desde
+                cero (Zero to MVP) en Go, Laravel, Vue y Flutter, migrando procesos manuales (Excel/papel) a
+                infraestructuras cloud escalables. Experiencia demostrada en gestión de servidores, DevOps y liderazgo
+                técnico en entornos gubernamentales y freelance internacional.</p>
+        </section>
+
+        <section>
+            <h2>Habilidades Técnicas</h2>
+            <div class="skill-row"><span class="lbl">Backend:</span> Go 1.25 (Gin + GORM), PHP 8.2 (Laravel 11 + Octane
+                + Sanctum), Python, RESTful APIs, WebSockets.</div>
+            <div class="skill-row"><span class="lbl">Frontend:</span> Vue 3 + Vite (Composition API + Pinia + PrimeVue
+                4), Astro 5 + React 19 (Zustand), React Native (Expo SDK 54 + NativeWind), TypeScript, Tailwind CSS v4,
+                DaisyUI, ECharts, ApexCharts.</div>
+            <div class="skill-row"><span class="lbl">Automatización & Mobile:</span> n8n Workflow Automation, Telegram
+                Bots, Docker, Capacitor (APK Android), Socket.io, Linux Server Management, CI/CD.</div>
+            <div class="skill-row"><span class="lbl">Bases de Datos:</span> PostgreSQL, SQLite, MySQL, SQL Server, Power
+                BI, ECharts.</div>
+            <div class="skill-row"><span class="lbl">Librerías especializadas:</span> Laravel Auditing (trazabilidad),
+                DomPDF (reportes PDF), Maroto v2 (PDF en Go), Excelize (Excel en Go), ML Kit (OCR móvil), Playwright
+                (E2E).</div>
+        </section>
+
+        <section>
+            <h2>Experiencia Profesional</h2>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>Programador Senior — Transformación Digital</h3>
+                    <span class="date">Enero 2025 – Presente</span>
+                </div>
+                <span class="job-company">MPPEF · Ministerio del Poder Popular de Economía y Finanzas, Caracas,
+                    Venezuela</span>
+                <ul>
+                    <li>Lideré la transformación digital integral reemplazando procesos manuales en Excel y registros
+                        físicos con sistemas desarrollados desde cero en <strong>Go</strong> y <strong>Laravel</strong>.
+                    </li>
+                    <li>Diseñé el sistema de Gestión de Bienes Públicos con <strong>Go 1.25 (Gin + GORM)</strong>:
+                        registro, asignación, transferencia y auditoría de activos con API REST, WebSockets, JWT y RBAC
+                        granular. Genera PDFs (Maroto v2) y reportes Excel (Excelize). Procesa más de 100,000 registros.
+                    </li>
+                    <li>Construyó la app móvil con <strong>React Native (Expo SDK 54)</strong> + NativeWind + Zustand,
+                        con ML Kit para reconocimiento óptico de activos y autenticación biométrica; panel web en
+                        <strong>Astro 5 + React 19</strong> con ECharts y Playwright para E2E.
+                    </li>
+                    <li>Implementé el sistema de Almacén e Inventario con <strong>Laravel 11 (Octane + Sanctum +
+                            JWT-Auth)</strong> y frontend en <strong>Vue 3 + Vite + Pinia + PrimeVue 4</strong>:
+                        entradas/salidas, transferencias entre almacenes, flujo de aprobación jerárquico, notas de
+                        despacho en PDF (DomPDF), trazabilidad con Laravel Auditing y notificaciones en tiempo real via
+                        Socket.io. Replicado en múltiples pisos → <strong>+60% productividad, −30% errores</strong>.
+                    </li>
+                    <li>Automaticé alertas y reportes críticos con <strong>n8n</strong> y <strong>Telegram</strong>,
+                        optimizando tiempos de respuesta ante incidentes.</li>
+                    <li>Responsable de administración de servidores Linux, pipelines Docker y ciclo completo de vida del
+                        producto (Zero to MVP a Producción).</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>Flutter Developer — Freelance Internacional</h3>
+                    <span class="date">2025 – 2026</span>
+                </div>
+                <span class="job-company">Jutba · Plataforma de Transmisión y Gestión (España)</span>
+                <ul>
+                    <li>Lideré el desarrollo Frontend con <strong>Flutter</strong>, implementando
+                        <strong>Widgetbook</strong> para validación de componentes UI, garantizando paridad total en
+                        Android, iOS y Web.
+                    </li>
+                    <li>Integré servicios de <strong>Firebase</strong> (Autenticación, Realtime Database, Push
+                        Notifications) → <strong>−40% tiempo de implementación</strong> de features nuevas.</li>
+                    <li>Colaboré en la arquitectura backend con <strong>NestJS + TypeScript</strong> desplegado en
+                        <strong>Google Cloud Run</strong>.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>Risk Assurance Services Assistant</h3>
+                    <span class="date">Agosto 2023 – Octubre 2024</span>
+                </div>
+                <span class="job-company">PwC (PriceWaterhouseCoopers) · Venezuela</span>
+                <ul>
+                    <li>Colaboré en el desarrollo de una herramienta interna en <strong>Angular + SQL Server</strong>
+                        para la generación <strong>automatizada</strong> de informes de ciberseguridad usando plantillas
+                        estandarizadas (Word/Excel), reduciendo el tiempo de preparación de reportes en un
+                        <strong>25%</strong>.
+                    </li>
+                    <li>Participé en revisiones técnicas de seguridad en ambientes <strong>Linux, SQL Server y
+                            Windows</strong>, registrando y evaluando pruebas de control (configuraciones, permisos,
+                        logs de acceso) según metodologías documentadas.</li>
+                    <li>Diseñé dashboards ejecutivos en <strong>Power BI</strong> para la visualización de KPIs de
+                        riesgo tecnológico y soporte a decisiones estratégicas de la dirección.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Educación</h2>
+            <div class="edu-header">
+                <h3>T.S.U en Informática</h3><span class="date">2023</span>
+            </div>
+            <p class="edu-sub">Instituto Universitario Jesús Obrero (I.U.J.O) · Caracas, Venezuela</p>
+            <p style="font-size:9pt;color:#444;margin-top:1pt;">Mención honorífica por excelencia en desarrollo de
+                software de ciclo completo y análisis de algoritmos.</p>
+        </section>
+
+        <section>
+            <h2>Idiomas</h2>
+            <ul>
+                <li><strong>Español:</strong> Nativo</li>
+                <li><strong>Inglés:</strong> Nivel B2 — Profesional (lectura técnica y comunicación escrita avanzada)
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- ══ ENGLISH CONTENT ══════════════════════════════════════════════ -->
+    <div id="content-en" style="display:none;">
+        <header>
+            <h1>Brandon José Bello Moncada</h1>
+            <p class="subtitle">Full-Stack Senior Developer · Digital Transformation Specialist</p>
+            <div class="contact">
+                Caracas, Venezuela &nbsp;|&nbsp; +58 412-3098258 &nbsp;|&nbsp;
+                <a href="mailto:brandon91596@gmail.com">brandon91596@gmail.com</a><br>
+                LinkedIn: <a
+                    href="https://linkedin.com/in/brandon-jose-bello-moncada-5826061a0">linkedin.com/in/brandon-jose-bello-moncada-5826061a0</a>
+                &nbsp;|&nbsp;
+                Portfolio: <a href="https://portafolio-brandon-bello.web.app">portafolio-brandon-bello.web.app</a>
+            </div>
+        </header>
+
+        <section>
+            <h2>Executive Summary</h2>
+            <p>Full-Stack Senior Developer with 3+ years of experience in governmental and international digital
+                transformation. Pioneer in <em>Vibe Coding</em> and advanced AI-assisted development to shorten delivery
+                cycles while maintaining top quality through TDD and CI/CD. Specialist in building critical systems from
+                scratch (Zero to MVP) in Go, Laravel, Vue and Flutter, migrating manual workflows (Excel/paper) to
+                scalable cloud infrastructures. Proven expertise in server management, DevOps and technical leadership
+                in government and international freelance environments.</p>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            <div class="skill-row"><span class="lbl">Backend:</span> Go 1.25 (Gin + GORM), PHP 8.2 (Laravel 11 + Octane
+                + Sanctum), Python, RESTful APIs, WebSockets.</div>
+            <div class="skill-row"><span class="lbl">Frontend:</span> Vue 3 + Vite (Composition API + Pinia + PrimeVue
+                4), Astro 5 + React 19 (Zustand), React Native (Expo SDK 54 + NativeWind), TypeScript, Tailwind CSS v4,
+                DaisyUI, ECharts, ApexCharts.</div>
+            <div class="skill-row"><span class="lbl">Automation & Mobile:</span> n8n Workflow Automation, Telegram Bots,
+                Docker, Capacitor (APK Android), Socket.io, Linux Server Management, CI/CD.</div>
+            <div class="skill-row"><span class="lbl">Databases:</span> PostgreSQL, SQLite, MySQL, SQL Server, Power BI.
+            </div>
+            <div class="skill-row"><span class="lbl">Libraries:</span> Laravel Auditing, DomPDF, Maroto v2 (PDF),
+                Excelize (Excel), ML Kit (OCR), Playwright (E2E).</div>
+        </section>
+
+        <section>
+            <h2>Professional Experience</h2>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>Senior Developer — Digital Transformation</h3>
+                    <span class="date">January 2025 – Present</span>
+                </div>
+                <span class="job-company">MPPEF · Ministry of Economy and Finance, Caracas, Venezuela</span>
+                <ul>
+                    <li>Led comprehensive digital transformation replacing manual Excel workflows and paper records with
+                        systems built from scratch in <strong>Go</strong> and <strong>Laravel</strong>.</li>
+                    <li>Designed the Public Assets Management System with <strong>Go 1.25 (Gin + GORM)</strong>: asset
+                        registration, assignment, transfer and audit via REST API, WebSockets, JWT and granular RBAC.
+                        Generates PDFs (Maroto v2) and Excel reports (Excelize). Processes 100,000+ records.</li>
+                    <li>Built the mobile app with <strong>React Native (Expo SDK 54)</strong> + NativeWind + Zustand,
+                        with ML Kit for optical asset recognition and biometric authentication; web dashboard in
+                        <strong>Astro 5 + React 19</strong> with ECharts and Playwright E2E testing.
+                    </li>
+                    <li>Deployed the Inventory &amp; Warehouse System with <strong>Laravel 11 (Octane + Sanctum +
+                            JWT-Auth)</strong> and frontend in <strong>Vue 3 + Vite + Pinia + PrimeVue 4</strong>: full
+                        stock cycle, inter-warehouse transfers, hierarchical approval workflows, PDF dispatch notes
+                        (DomPDF), full audit trail (Laravel Auditing) and real-time notifications via Socket.io.
+                        Replicated across multiple floors → <strong>+60% productivity, −30% errors</strong>.</li>
+                    <li>Automated critical alerts and reports via <strong>n8n</strong> + <strong>Telegram</strong>,
+                        significantly reducing incident response times.</li>
+                    <li>Managed Linux servers, Docker pipelines and full product lifecycle (Zero to MVP to Production).
+                    </li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>Flutter Developer — International Freelance</h3>
+                    <span class="date">2025 – 2026</span>
+                </div>
+                <span class="job-company">Jutba · Streaming & Management Platform (Spain)</span>
+                <ul>
+                    <li>Led Frontend development with <strong>Flutter</strong>, implementing <strong>Widgetbook</strong>
+                        for UI component validation, ensuring full parity across Android, iOS and Web.</li>
+                    <li>Integrated <strong>Firebase</strong> services (Authentication, Realtime Database, Push
+                        Notifications) → <strong>−40% feature implementation time</strong>.</li>
+                    <li>Contributed to backend architecture with <strong>NestJS + TypeScript</strong> deployed on
+                        <strong>Google Cloud Run</strong>.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>Risk Assurance Services Assistant</h3>
+                    <span class="date">August 2023 – October 2024</span>
+                </div>
+                <span class="job-company">PwC (PriceWaterhouseCoopers) · Venezuela</span>
+                <ul>
+                    <li>Contributed to an internal <strong>Angular + SQL Server</strong> tool for
+                        <strong>automated</strong> cybersecurity report generation using standardized Word/Excel
+                        templates, reducing report preparation time by <strong>25%</strong>.
+                    </li>
+                    <li>Participated in technical security reviews across <strong>Linux, SQL Server and Windows</strong>
+                        environments, recording and evaluating control tests (configurations, permissions, access logs)
+                        following structured methodologies.</li>
+                    <li>Designed executive dashboards in <strong>Power BI</strong> for technology risk KPI visualization
+                        and strategic decision-making support.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            <div class="edu-header">
+                <h3>B.S. in Computer Science (T.S.U)</h3><span class="date">2023</span>
+            </div>
+            <p class="edu-sub">Instituto Universitario Jesús Obrero (I.U.J.O) · Caracas, Venezuela</p>
+            <p style="font-size:9pt;color:#444;margin-top:1pt;">Honors distinction for excellence in full-cycle software
+                development and algorithm analysis.</p>
+        </section>
+
+        <section>
+            <h2>Languages</h2>
+            <ul>
+                <li><strong>Spanish:</strong> Native</li>
+                <li><strong>English:</strong> B2 Level — Professional (advanced technical reading and written
+                    communication)</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        let currentLang = 'es';
+
+        function toggleLang() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            document.getElementById('content-es').style.display = currentLang === 'es' ? '' : 'none';
+            document.getElementById('content-en').style.display = currentLang === 'en' ? '' : 'none';
+            document.getElementById('htmlRoot').lang = currentLang;
+            document.getElementById('langBtn').textContent =
+                currentLang === 'es' ? '🇬🇧 Switch to English' : '🇪🇸 Cambiar a Español';
+            document.getElementById('pageTitle').textContent =
+                currentLang === 'es'
+                    ? 'Brandon José Bello Moncada — Full-Stack Senior Developer'
+                    : 'Brandon José Bello Moncada — Full-Stack Senior Developer (EN)';
+        }
+
+        function exportPDF() {
+            // Hide controls, show only the active content block
+            document.getElementById('controls').style.display = 'none';
+            const lang = currentLang === 'es' ? 'ES' : 'EN';
+
+            // Use browser print dialog — guaranteed ATS-safe text-selectable PDF
+            window.print();
+
+            // Restore after print dialog closes
+            setTimeout(() => {
+                document.getElementById('controls').style.display = '';
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html>
