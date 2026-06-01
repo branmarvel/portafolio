@@ -111,8 +111,8 @@ export default function SkillsSection() {
                                         variants={fadeInUpItem}
                                         className="flex flex-col items-center gap-1.5 relative group"
                                     >
-                                        {/* Premium Floating Tooltip */}
-                                        <div className="absolute bottom-full mb-2 hidden group-hover:flex flex-col items-center z-30 pointer-events-none transition-all duration-200">
+                                        {/* Premium Floating Tooltip - Only on desktop */}
+                                        <div className="absolute bottom-full mb-2 hidden md:group-hover:flex flex-col items-center z-30 pointer-events-none transition-all duration-200">
                                             <div className="bg-[#151515] border border-white/10 text-white text-[10px] font-mono py-1 px-2.5 rounded-md shadow-xl whitespace-nowrap tracking-wider">
                                                 {skill.name}
                                             </div>

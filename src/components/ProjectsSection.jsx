@@ -126,7 +126,7 @@ export default function ProjectsSection() {
             </div>
 
             {/* Viewport for Sliders */}
-            <div className="w-full max-w-7xl h-[65dvh] lg:h-[65vh] mt-24 relative perspective-1000">
+            <div className="w-full max-w-7xl min-h-[75vh] sm:min-h-[65vh] lg:h-[65vh] mt-12 md:mt-24 pb-16 lg:pb-0 relative perspective-1000">
                 <AnimatePresence initial={false} custom={direction} mode="wait">
                     <motion.div
                         key={page}
@@ -135,32 +135,32 @@ export default function ProjectsSection() {
                         initial="enter"
                         animate="center"
                         exit="exit"
-                        className="absolute inset-0 flex flex-col lg:flex-row gap-4 lg:gap-16 items-center"
+                        className="relative lg:absolute lg:inset-0 w-full flex flex-col lg:flex-row gap-4 lg:gap-16 items-center"
                     >
                         {/* Video / Preview Card Side */}
-                        <div className="w-full lg:w-[55%] h-48 sm:h-64 lg:h-full rounded-2xl md:rounded-3xl overflow-hidden glass-panel p-6 shadow-2xl relative group shrink-0 pointer-events-auto flex flex-col justify-between bg-black/40 border border-white/5">
+                        <div className="w-full lg:w-[55%] h-52 sm:h-64 lg:h-full rounded-2xl md:rounded-3xl overflow-hidden glass-panel p-3.5 md:p-6 shadow-2xl relative group shrink-0 pointer-events-auto flex flex-col justify-between bg-black/40 border border-white/5">
                             {/* Mac Window Header Controls */}
-                            <div className="flex items-center gap-1.5 mb-4 border-b border-white/5 pb-3">
-                                <span className="w-3.5 h-3.5 rounded-full bg-[#ff5f56] opacity-80" />
-                                <span className="w-3.5 h-3.5 rounded-full bg-[#ffbd2e] opacity-80" />
-                                <span className="w-3.5 h-3.5 rounded-full bg-[#27c93f] opacity-80" />
-                                <span className="text-[10px] font-mono text-[var(--color-text-secondary)] ml-3 tracking-widest">{project.id.toUpperCase()} // DASHBOARD_PREVIEW.sh</span>
+                            <div className="flex items-center gap-1 md:gap-1.5 mb-2.5 md:mb-4 border-b border-white/5 pb-2 md:pb-3">
+                                <span className="w-2 h-2 md:w-3.5 md:h-3.5 rounded-full bg-[#ff5f56] opacity-80" />
+                                <span className="w-2 h-2 md:w-3.5 md:h-3.5 rounded-full bg-[#ffbd2e] opacity-80" />
+                                <span className="w-2 h-2 md:w-3.5 md:h-3.5 rounded-full bg-[#27c93f] opacity-80" />
+                                <span className="text-[8px] md:text-[10px] font-mono text-[var(--color-text-secondary)] ml-2 md:ml-3 tracking-widest">{project.id.toUpperCase()} // DASHBOARD_PREVIEW.sh</span>
                             </div>
                             
                             {/* Graphic Central Visualization */}
-                            <div className="flex-1 flex flex-col items-center justify-center relative overflow-hidden rounded-xl bg-black/50 border border-white/5 p-4">
+                            <div className="flex-1 flex flex-col items-center justify-center relative overflow-hidden rounded-xl bg-black/50 border border-white/5 p-2 md:p-4">
                                 <div className="absolute -inset-10 bg-radial-gradient from-[var(--color-tungsten)]/10 to-transparent/0 opacity-30 blur-2xl group-hover:scale-125 transition-transform duration-1000" />
                                 
                                 <motion.div 
                                     animate={{ y: [0, -4, 0] }}
                                     transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                                    className="z-10 flex flex-col items-center text-center gap-2"
+                                    className="z-10 flex flex-col items-center text-center gap-1.5 md:gap-2"
                                 >
-                                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[var(--color-tungsten)] to-amber-200/50 flex items-center justify-center shadow-lg text-black font-bold text-xl mb-2">
+                                    <div className="w-8 h-8 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-gradient-to-tr from-[var(--color-tungsten)] to-amber-200/50 flex items-center justify-center shadow-lg text-black font-bold text-sm md:text-xl mb-1 md:mb-2">
                                         {project.title.charAt(0)}
                                     </div>
-                                    <h4 className="text-white text-sm md:text-lg font-mono font-medium tracking-tight">{project.title}</h4>
-                                    <span className="font-mono text-[10px] md:text-xs text-[var(--color-tungsten)] uppercase tracking-wider">{project.role}</span>
+                                    <h4 className="text-white text-[11px] md:text-lg font-mono font-medium tracking-tight px-2">{project.title}</h4>
+                                    <span className="font-mono text-[8px] md:text-xs text-[var(--color-tungsten)] uppercase tracking-wider">{project.role}</span>
                                 </motion.div>
                                 
                                 {/* Dynamic floating glow lines */}
@@ -172,7 +172,7 @@ export default function ProjectsSection() {
                             </div>
                             
                             {/* Terminal Prompt Footer */}
-                            <div className="mt-4 pt-3 border-t border-white/5 font-mono text-[10px] md:text-xs text-[var(--color-text-secondary)] flex justify-between items-center w-full">
+                            <div className="mt-2.5 md:mt-4 pt-2 md:pt-3 border-t border-white/5 font-mono text-[8px] md:text-xs text-[var(--color-text-secondary)] flex justify-between items-center w-full">
                                 <span>STATUS: <span className="text-[#ff5f56] font-semibold">SECURE_PRODUCTION</span></span>
                                 <span>NETWORK: PRIVATE_MINISTRY</span>
                             </div>
