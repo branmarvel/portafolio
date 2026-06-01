@@ -12,7 +12,8 @@ export const translations = {
             name: 'BRANDON J. BELLO',
             role: 'Full Stack Developer',
             location: 'Basado en Caracas, Venezuela',
-            scrollPrompt: 'Haz scroll para sumergirte',
+            bio: 'Apasionado por crear soluciones web elegantes y funcionales, construyendo arquitecturas robustas desde Caracas, Venezuela.',
+            scrollPrompt: 'Scroll',
             resume: 'Descargar CV'
         },
         skills: {
@@ -76,6 +77,12 @@ export const translations = {
             formDoing: 'Transmitiendo...',
             formSuccess: '✓ Transmisión completada satisfactoriamente.',
             formError: '✕ Interferencia en la señal. Inténtalo de nuevo.'
+        },
+        cookies: {
+            title: 'Cookies & Analytics',
+            desc: 'Utilizo cookies para entender mejor cómo interactúas con mi portafolio y mejorar tu experiencia. ¿Permites el seguimiento anónimo?',
+            accept: 'Aceptar',
+            decline: 'Declinar'
         }
     },
     en: {
@@ -91,7 +98,8 @@ export const translations = {
             name: 'BRANDON J. BELLO',
             role: 'Full Stack Developer',
             location: 'Based in Caracas, Venezuela',
-            scrollPrompt: 'Scroll to immerse',
+            bio: 'Passionate about building elegant and functional web solutions, crafting robust architectures from Caracas, Venezuela.',
+            scrollPrompt: 'Scroll',
             resume: 'Download Resume'
         },
         skills: {
@@ -155,6 +163,12 @@ export const translations = {
             formDoing: 'Transmitting...',
             formSuccess: '✓ Transmission completed successfully.',
             formError: '✕ Signal interference. Try again.'
+        },
+        cookies: {
+            title: 'Cookies & Analytics',
+            desc: 'I use cookies to better understand how you interact with my portfolio and improve your experience. Allow anonymous tracking?',
+            accept: 'Accept',
+            decline: 'Decline'
         }
     }
 };

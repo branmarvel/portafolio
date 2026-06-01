@@ -19,7 +19,7 @@ const skillCategories = [
             { name: 'Flutter', icon: 'https://img.icons8.com/color/48/flutter.png' },
             { name: 'React Native', icon: 'https://img.icons8.com/color/48/react-native.png' },
             { name: 'Vue 3', icon: 'https://img.icons8.com/color/48/vue-js.png' },
-            { name: 'Astro 5', icon: 'https://img.icons8.com/color/48/astro.png' },
+            { name: 'Astro 5', icon: 'https://cdn.simpleicons.org/astro/FF5D01' },
             { name: 'React 19', icon: 'https://img.icons8.com/color/48/react-native.png' },
             { name: 'TypeScript', icon: 'https://img.icons8.com/color/48/typescript.png' },
             { name: 'Tailwind CSS v4', icon: 'https://img.icons8.com/color/48/tailwind_css.png' }

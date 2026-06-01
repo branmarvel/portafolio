@@ -112,12 +112,14 @@ export default function ProjectsSection() {
                 <button
                     onClick={() => paginate(-1)}
                     className="w-12 h-12 rounded-full border border-[var(--color-border)] flex items-center justify-center hover:bg-[var(--color-tungsten)] hover:border-transparent hover:text-black transition-all group shrink-0"
+                    aria-label="Previous project"
                 >
                     <svg className="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
                 <button
                     onClick={() => paginate(1)}
                     className="w-12 h-12 rounded-full border border-[var(--color-border)] flex items-center justify-center hover:bg-[var(--color-tungsten)] hover:border-transparent hover:text-black transition-all group shrink-0"
+                    aria-label="Next project"
                 >
                     <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>

@@ -16,17 +16,29 @@ export default function Navbar() {
     ];
 
     useEffect(() => {
-        // Escuchar atributo de body para sincronizarse con Snap Controller
-        const checkActiveSection = () => {
-            const idx = document.body.getAttribute('data-active-section');
-            if (idx !== null) {
-                const currentLink = links.find(l => l.index === parseInt(idx));
-                if (currentLink) setActiveSection(currentLink.id);
+        // Use MutationObserver instead of setInterval for efficient DOM attribute watching
+        const observer = new MutationObserver((mutations) => {
+            for (const mutation of mutations) {
+                if (mutation.attributeName === 'data-active-section') {
+                    const idx = document.body.getAttribute('data-active-section');
+                    if (idx !== null) {
+                        const currentLink = links.find(l => l.index === parseInt(idx));
+                        if (currentLink) setActiveSection(currentLink.id);
+                    }
+                }
             }
-        };
+        });
 
-        const interval = setInterval(checkActiveSection, 100);
-        return () => clearInterval(interval);
+        observer.observe(document.body, { attributes: true, attributeFilter: ['data-active-section'] });
+
+        // Read initial value
+        const idx = document.body.getAttribute('data-active-section');
+        if (idx !== null) {
+            const currentLink = links.find(l => l.index === parseInt(idx));
+            if (currentLink) setActiveSection(currentLink.id);
+        }
+
+        return () => observer.disconnect();
     }, [links]);
 
     return (

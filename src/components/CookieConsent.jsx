@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 export default function CookieConsent() {
+    const { t } = useLanguage();
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
@@ -38,9 +40,9 @@ export default function CookieConsent() {
                         <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-tungsten)]/5 to-transparent pointer-events-none"></div>
 
                         <div className="relative z-10">
-                            <h3 className="text-sm font-semibold mb-2 tracking-tight text-[var(--color-tungsten)] uppercase font-mono">Cookies & Analytics</h3>
+                            <h3 className="text-sm font-semibold mb-2 tracking-tight text-[var(--color-tungsten)] uppercase font-mono">{t('cookies.title')}</h3>
                             <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed mb-6">
-                                Utilizo cookies para entender mejor cómo interactúas con mi portafolio y mejorar tu experiencia. ¿Permites el seguimiento anónimo?
+                                {t('cookies.desc')}
                             </p>
 
                             <div className="flex gap-3">
@@ -48,13 +50,13 @@ export default function CookieConsent() {
                                     onClick={handleAccept}
                                     className="flex-1 py-2 px-4 bg-white text-black text-[10px] font-bold uppercase tracking-wider rounded-lg hover:bg-[var(--color-tungsten)] transition-colors"
                                 >
-                                    Aceptar
+                                    {t('cookies.accept')}
                                 </button>
                                 <button
                                     onClick={handleDecline}
                                     className="flex-1 py-2 px-4 border border-[var(--color-border)] text-[var(--color-text-secondary)] text-[10px] font-bold uppercase tracking-wider rounded-lg hover:border-white hover:text-white transition-colors"
                                 >
-                                    Declinar
+                                    {t('cookies.decline')}
                                 </button>
                             </div>
                         </div>

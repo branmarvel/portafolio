@@ -86,7 +86,7 @@ export default function HeroSection() {
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
                     className="font-mono text-[var(--color-text-secondary)] tracking-widest text-sm uppercase mb-6 block"
                 >
-                    Hola, soy
+                    {t('hero.greeting')}
                 </motion.span>
                 <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 text-gradient font-mono">
                     <ScrambleText text={t('hero.name')} />
@@ -95,7 +95,7 @@ export default function HeroSection() {
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
                     className="text-2xl md:text-4xl font-light text-[var(--color-text-secondary)] mb-8"
                 >
-                    Full Stack Developer
+                    {t('hero.role')}
                 </motion.h2>
 
                 <motion.div
@@ -113,7 +113,7 @@ export default function HeroSection() {
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
                     className="mt-12 text-lg text-[var(--color-text-secondary)] font-light max-w-2xl mx-auto"
                 >
-                    Apasionado por crear soluciones web elegantes y funcionales, construyendo arquitecturas robustas desde Caracas, Venezuela.
+                    {t('hero.bio')}
                 </motion.p>
             </motion.div>
 
@@ -124,7 +124,7 @@ export default function HeroSection() {
                 transition={{ delay: 1.2, duration: 1 }}
                 className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-auto"
             >
-                <span className="text-[var(--color-text-secondary)] font-mono text-xs uppercase tracking-widest">Scroll</span>
+                <span className="text-[var(--color-text-secondary)] font-mono text-xs uppercase tracking-widest">{t('hero.scrollPrompt')}</span>
                 <motion.div
                     animate={{ y: [0, 8, 0] }}
                     transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}

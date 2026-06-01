@@ -7,6 +7,7 @@ import AboutSection from './AboutSection';
 import ContactSection from './ContactSection';
 import CustomCursor from './CustomCursor';
 import Navbar from './Navbar';
+import CookieConsent from './CookieConsent';
 import { LanguageProvider } from '../context/LanguageContext';
 
 const sections = [
@@ -23,6 +24,7 @@ export default function PortfolioApp() {
             <CustomCursor />
             <Navbar />
             <ScrollController sections={sections} />
+            <CookieConsent />
         </LanguageProvider>
     );
 }

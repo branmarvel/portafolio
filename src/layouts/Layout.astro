@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import GoogleAnalytics from '../components/GoogleAnalytics.astro';
-import CookieConsent from '../components/CookieConsent';
 
 interface Props {
 	title: string;
@@ -16,7 +15,7 @@ const { title, description = "Portafolio Creativo" } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="theme-color" content="#0a0a0a" />
 		<title>{title}</title>
@@ -30,6 +29,5 @@ const { title, description = "Portafolio Creativo" } = Astro.props;
 	</head>
 	<body class="antialiased selection:bg-[#ffd7aa] selection:text-black">
 		<slot />
-		<CookieConsent client:idle />
 	</body>
 </html>
