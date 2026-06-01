@@ -45,7 +45,6 @@ export default function ProjectsSection() {
             role: t('projects.sgcpRole'),
             tags: ['Go (Golang)', 'PostgreSQL', 'JWT/RBAC', 'Astro', 'React Native'],
             description: t('projects.sgcpDesc'),
-            videoUrl: 'https://www.youtube.com/embed/1_30YCtLpRo?autoplay=0&controls=1&mute=1',
             demoUrl: 'https://sgcp-app.web.app/#/login',
             credentials: [
                 { label: t('projects.sgcpCredUser'), value: 'admin@admin.com' },
@@ -58,7 +57,6 @@ export default function ProjectsSection() {
             role: t('projects.utextRole'),
             tags: ['Laravel 11', 'Vue 3', 'Node.js', 'Socket.io', 'Docker'],
             description: t('projects.utextDesc'),
-            videoUrl: 'https://www.youtube.com/embed/_rpIpp9s7Zo?autoplay=0&controls=1&mute=1',
             demoUrl: 'https://u-text-app.web.app',
             credentials: [
                 { label: t('projects.utextCredTeacher'), value: 'admin@admin.com', pass: '123456' },
@@ -71,7 +69,6 @@ export default function ProjectsSection() {
             role: t('projects.erpRole'),
             tags: ['Flutter', 'Firebase', 'NestJS', 'TypeScript', 'Cloud Run'],
             description: t('projects.erpDesc'),
-            videoUrl: 'https://www.youtube.com/embed/gsz2Cx-1DYw?autoplay=0&controls=1&mute=1',
             demoUrl: null,
             credentials: null
         }
@@ -138,19 +135,44 @@ export default function ProjectsSection() {
                         exit="exit"
                         className="absolute inset-0 flex flex-col lg:flex-row gap-4 lg:gap-16 items-center"
                     >
-                        {/* Video Side */}
-                        <div className="w-full lg:w-[55%] h-48 sm:h-64 lg:h-full rounded-2xl md:rounded-3xl overflow-hidden glass-panel p-2 shadow-2xl relative group shrink-0 pointer-events-auto">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-[var(--color-tungsten)]/10 to-transparent/0 pointer-events-none group-hover:opacity-100 opacity-20 transition-opacity duration-700"></div>
-                            <div className="w-full h-full rounded-xl overflow-hidden relative bg-black">
-                                <iframe
-                                    className="w-full h-full absolute inset-0 pointer-events-auto"
-                                    src={project.videoUrl}
-                                    title={project.title}
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                    loading="lazy"
-                                ></iframe>
+                        {/* Video / Preview Card Side */}
+                        <div className="w-full lg:w-[55%] h-48 sm:h-64 lg:h-full rounded-2xl md:rounded-3xl overflow-hidden glass-panel p-6 shadow-2xl relative group shrink-0 pointer-events-auto flex flex-col justify-between bg-black/40 border border-white/5">
+                            {/* Mac Window Header Controls */}
+                            <div className="flex items-center gap-1.5 mb-4 border-b border-white/5 pb-3">
+                                <span className="w-3.5 h-3.5 rounded-full bg-[#ff5f56] opacity-80" />
+                                <span className="w-3.5 h-3.5 rounded-full bg-[#ffbd2e] opacity-80" />
+                                <span className="w-3.5 h-3.5 rounded-full bg-[#27c93f] opacity-80" />
+                                <span className="text-[10px] font-mono text-[var(--color-text-secondary)] ml-3 tracking-widest">{project.id.toUpperCase()} // DASHBOARD_PREVIEW.sh</span>
+                            </div>
+                            
+                            {/* Graphic Central Visualization */}
+                            <div className="flex-1 flex flex-col items-center justify-center relative overflow-hidden rounded-xl bg-black/50 border border-white/5 p-4">
+                                <div className="absolute -inset-10 bg-radial-gradient from-[var(--color-tungsten)]/10 to-transparent/0 opacity-30 blur-2xl group-hover:scale-125 transition-transform duration-1000" />
+                                
+                                <motion.div 
+                                    animate={{ y: [0, -4, 0] }}
+                                    transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                                    className="z-10 flex flex-col items-center text-center gap-2"
+                                >
+                                    <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[var(--color-tungsten)] to-amber-200/50 flex items-center justify-center shadow-lg text-black font-bold text-xl mb-2">
+                                        {project.title.charAt(0)}
+                                    </div>
+                                    <h4 className="text-white text-sm md:text-lg font-mono font-medium tracking-tight">{project.title}</h4>
+                                    <span className="font-mono text-[10px] md:text-xs text-[var(--color-tungsten)] uppercase tracking-wider">{project.role}</span>
+                                </motion.div>
+                                
+                                {/* Dynamic floating glow lines */}
+                                <div className="absolute inset-0 flex justify-between px-12 pointer-events-none opacity-20">
+                                    <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[var(--color-tungsten)] to-transparent" />
+                                    <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-white to-transparent" />
+                                    <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[var(--color-tungsten)] to-transparent" />
+                                </div>
+                            </div>
+                            
+                            {/* Terminal Prompt Footer */}
+                            <div className="mt-4 pt-3 border-t border-white/5 font-mono text-[10px] md:text-xs text-[var(--color-text-secondary)] flex justify-between items-center">
+                                <span>STATUS: <span className="text-[#27c93f] font-semibold">ACTIVE_STAGING</span></span>
+                                <span>HOSTING: FIREBASE_CLOUD</span>
                             </div>
                         </div>
 

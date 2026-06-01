@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, useMotionTemplate, useMotionValue, useSpring, useReducedMotion } from 'framer-motion';
-import { mechanicalSpring, slowMechanicalSpring } from '../utils/motion';
+import { slowMechanicalSpring } from '../utils/motion';
 import ProjectLens from './ProjectLens';
 
 const projects = [
@@ -9,24 +9,21 @@ const projects = [
         title: 'SISTEMA DE GESTIÓN Y CONTROL',
         role: 'Angular & Firebase',
         desc: 'Plataforma de gestión de proyectos, integrando Angular en el frontend y Firebase en el backend.',
-        demoUrl: 'https://sgcp-app.web.app/#/login',
-        videoUrl: 'https://www.youtube.com/embed/1_30YCtLpRo'
+        demoUrl: 'https://sgcp-app.web.app/#/login'
     },
     {
         id: 'p2',
         title: 'EDUCATIVO DIDÁCTICO',
         role: 'Flutter & Firebase',
         desc: 'Aplicación móvil educativa para profesores y estudiantes del I.U.J.O. desarrollada con Flutter.',
-        demoUrl: 'https://u-text-app.web.app',
-        videoUrl: 'https://www.youtube.com/embed/_rpIpp9s7Zo'
+        demoUrl: 'https://u-text-app.web.app'
     },
     {
         id: 'p3',
         title: 'SISTEMA DE ALMACÉN AVANZADO',
         role: 'Laravel & Vue.js',
         desc: 'Sistema ERP para gestión de almacenes con integración PostgreSQL y frontend en Vue.js.',
-        demoUrl: null,
-        videoUrl: 'https://www.youtube.com/embed/gsz2Cx-1DYw'
+        demoUrl: null
     }
 ];
 
