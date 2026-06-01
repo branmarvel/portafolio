@@ -170,9 +170,9 @@ export default function ProjectsSection() {
                             </div>
                             
                             {/* Terminal Prompt Footer */}
-                            <div className="mt-4 pt-3 border-t border-white/5 font-mono text-[10px] md:text-xs text-[var(--color-text-secondary)] flex justify-between items-center">
-                                <span>STATUS: <span className="text-[#27c93f] font-semibold">ACTIVE_STAGING</span></span>
-                                <span>HOSTING: FIREBASE_CLOUD</span>
+                            <div className="mt-4 pt-3 border-t border-white/5 font-mono text-[10px] md:text-xs text-[var(--color-text-secondary)] flex justify-between items-center w-full">
+                                <span>STATUS: <span className="text-[#ff5f56] font-semibold">SECURE_PRODUCTION</span></span>
+                                <span>NETWORK: PRIVATE_MINISTRY</span>
                             </div>
                         </div>
 
