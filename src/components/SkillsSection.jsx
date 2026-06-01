@@ -28,7 +28,7 @@ const skillCategories = [
     {
         icon: '☁️',
         skills: [
-            { name: 'n8n', icon: 'https://img.icons8.com/color/48/workflow.png' },
+            { name: 'n8n', icon: 'https://cdn.simpleicons.org/n8n/EA4A5A' },
             { name: 'Docker', icon: 'https://img.icons8.com/color/48/docker.png' },
             { name: 'Firebase', icon: 'https://img.icons8.com/color/48/firebase.png' },
             { name: 'Linux Server', icon: 'https://img.icons8.com/color/48/linux.png' },
@@ -103,13 +103,13 @@ export default function SkillsSection() {
                                 variants={staggerContainer}
                                 initial="hidden"
                                 animate="visible"
-                                className="grid grid-cols-4 md:grid-cols-3 gap-2 md:gap-3 relative z-10"
+                                className="grid grid-cols-4 md:grid-cols-3 gap-2 md:gap-4 relative z-10"
                             >
                                 {category.skills.map((skill) => (
                                     <motion.div
                                         key={skill.name}
                                         variants={fadeInUpItem}
-                                        className="flex flex-col items-center gap-2 relative group"
+                                        className="flex flex-col items-center gap-1.5 relative group"
                                     >
                                         {/* Premium Floating Tooltip */}
                                         <div className="absolute bottom-full mb-2 hidden group-hover:flex flex-col items-center z-30 pointer-events-none transition-all duration-200">
@@ -124,6 +124,11 @@ export default function SkillsSection() {
                                         >
                                             <img src={skill.icon} alt={skill.name} className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-300 filter drop-shadow-md" loading="lazy" />
                                         </div>
+
+                                        {/* Clear, elegant skill label */}
+                                        <span className="text-[7.5px] md:text-[10px] lg:text-xs text-[var(--color-text-secondary)] font-mono text-center leading-tight group-hover:text-white transition-colors duration-300 max-w-full px-0.5 line-clamp-2 select-none">
+                                            {skill.name}
+                                        </span>
                                     </motion.div>
                                 ))}
                             </motion.div>
