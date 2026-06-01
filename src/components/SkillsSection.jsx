@@ -3,34 +3,34 @@ import { useLanguage } from '../context/LanguageContext';
 
 const skillCategories = [
     {
-        icon: '💻',
+        icon: '⚙️',
         skills: [
-            { name: 'HTML5', icon: 'https://img.icons8.com/color/48/html-5.png' },
-            { name: 'CSS3', icon: 'https://img.icons8.com/color/48/css3.png' },
-            { name: 'JavaScript', icon: 'https://img.icons8.com/color/48/javascript.png' },
-            { name: 'Angular', icon: 'https://img.icons8.com/color/48/angularjs.png' },
-            { name: 'Vue.js', icon: 'https://img.icons8.com/color/48/vue-js.png' },
-            { name: 'React', icon: 'https://img.icons8.com/color/48/react-native.png' }
+            { name: 'Go (Golang)', icon: 'https://img.icons8.com/color/48/golang.png' },
+            { name: 'Laravel 11', icon: 'https://img.icons8.com/fluency/48/laravel.png' },
+            { name: 'Node.js', icon: 'https://img.icons8.com/color/48/nodejs.png' },
+            { name: 'PHP 8.2', icon: 'https://img.icons8.com/color/48/php.png' },
+            { name: 'Python', icon: 'https://img.icons8.com/color/48/python.png' },
+            { name: 'PostgreSQL', icon: 'https://img.icons8.com/color/48/postgreesql.png' }
         ]
     },
     {
-        icon: '⚙️',
+        icon: '💻',
         skills: [
-            { name: 'Node.js', icon: 'https://img.icons8.com/color/48/nodejs.png' },
-            { name: 'PHP', icon: 'https://img.icons8.com/color/48/php.png' },
-            { name: 'Laravel', icon: 'https://img.icons8.com/fluency/48/laravel.png' },
-            { name: 'PostgreSQL', icon: 'https://img.icons8.com/color/48/postgreesql.png' },
-            { name: 'MySQL', icon: 'https://img.icons8.com/color/48/mysql.png' },
-            { name: 'MongoDB', icon: 'https://img.icons8.com/color/48/mongodb.png' }
+            { name: 'Vue 3', icon: 'https://img.icons8.com/color/48/vue-js.png' },
+            { name: 'Astro', icon: 'https://img.icons8.com/color/48/astro.png' },
+            { name: 'React', icon: 'https://img.icons8.com/color/48/react-native.png' },
+            { name: 'TypeScript', icon: 'https://img.icons8.com/color/48/typescript.png' },
+            { name: 'React Native', icon: 'https://img.icons8.com/color/48/react-native.png' },
+            { name: 'Tailwind CSS', icon: 'https://img.icons8.com/color/48/tailwind_css.png' }
         ]
     },
     {
         icon: '☁️',
         skills: [
-            { name: 'Flutter', icon: 'https://img.icons8.com/color/48/flutter.png' },
-            { name: 'Firebase', icon: 'https://img.icons8.com/color/48/firebase.png' },
-            { name: 'AWS', icon: 'https://img.icons8.com/color/48/amazon-web-services.png' },
+            { name: 'n8n', icon: 'https://img.icons8.com/color/48/workflow.png' },
             { name: 'Docker', icon: 'https://img.icons8.com/color/48/docker.png' },
+            { name: 'Firebase', icon: 'https://img.icons8.com/color/48/firebase.png' },
+            { name: 'Linux Server', icon: 'https://img.icons8.com/color/48/linux.png' },
             { name: 'Git', icon: 'https://img.icons8.com/color/48/git.png' }
         ]
     }

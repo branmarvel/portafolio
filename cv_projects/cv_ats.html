@@ -76,7 +76,6 @@
             margin: 0 auto;
         }
 
-        /* ── HEADER ────────────────────────── */
         header {
             text-align: center;
             border-bottom: 1.5pt solid #111;
@@ -84,7 +83,29 @@
             margin-bottom: 7pt;
         }
 
+        .photo-container {
+            position: absolute;
+            right: 100%;
+            top: 55%;
+            transform: translateY(-23%);
+            margin-right: 14pt;
+            width: 56pt;
+            height: 56pt;
+            border-radius: 50%;
+            border: 1px solid #111;
+            overflow: hidden;
+            display: none;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         header h1 {
+            position: relative;
+            display: inline-block;
             font-size: 17pt;
             font-weight: 700;
             text-transform: uppercase;
@@ -227,6 +248,10 @@
 
     <!-- Controls (not printed) -->
     <div id="controls">
+        <label class="ctrl-btn" style="background: #4f46e5; color: #fff; cursor: pointer;">
+            📷 <span data-es="Subir Foto" data-en="Upload Photo">Subir Foto</span>
+            <input type="file" id="photoInput" accept="image/*" style="display: none;">
+        </label>
         <button class="ctrl-btn lang" onclick="toggleLang()" id="langBtn">🇬🇧 Switch to English</button>
         <button class="ctrl-btn dl" onclick="exportPDF()">⬇ Download PDF</button>
     </div>
@@ -234,30 +259,46 @@
     <!-- ══ SPANISH CONTENT ══════════════════════════════════════════════ -->
     <div id="content-es">
         <header>
-            <h1>Brandon J. Bello Moncada</h1>
+            <h1>
+                <div class="photo-container"><img src="" alt="Brandon Bello"></div>
+                Brandon J. Bello Moncada
+            </h1>
             <p class="subtitle">FULL-STACK DEVELOPER</p>
             <div class="contact">
-                Caracas, Venezuela &nbsp;|&nbsp; <a href="https://wa.me/584123098258">+58 412-3098258 (WhatsApp)</a> &nbsp;|&nbsp;
+                Caracas, Venezuela &nbsp;|&nbsp; <a href="https://wa.me/584123098258">+58 412-3098258</a>
+                &nbsp;|&nbsp;
                 <a href="mailto:brandon91596@gmail.com">brandon91596@gmail.com</a><br>
                 LinkedIn: <a
-                    href="https://linkedin.com/in/brandon-jose-bello-moncada-5826061a0">https://linkedin.com/in/brandon-bello</a>
+                    href="https://www.linkedin.com/in/brandon-jose-bello-moncada-5826061a0">linkedin.com/in/brandon-jose-bello-moncada-5826061a0</a>
                 &nbsp;|&nbsp;
-                Portafolio: <a href="https://portafolio-brandon-bello.web.app">https://portafolio-brandon-bello.web.app</a>
+                Portafolio: <a href="https://portafolio-brandon-bello.web.app">portafolio-brandon-bello.web.app</a><br>
+                GitHub: <a href="https://github.com/branmarvel">github.com/branmarvel</a>
             </div>
         </header>
 
         <section>
             <h2>Resumen Ejecutivo</h2>
-            <p>Diseñé y entregué sistemas críticos en Go + Laravel y Vue + React Native que digitalizaron procesos manuales para +150 usuarios, reduciendo tiempos operativos en <strong>30%</strong> y errores logísticos en <strong>25%</strong>. Especialista en AI-Assisted Development con TDD y CI/CD, logrando ciclos de release de 2 semanas.</p>
+            <p>Desarrollador Full-Stack con más de <strong>4 años de experiencia</strong> especializado en el diseño de
+                arquitecturas modernas (<strong>Go, Laravel, Vue, Astro</strong>) y la digitalización de procesos críticos en entornos
+                gubernamentales y financieros. Experto en automatizar flujos de trabajo e integrar infraestructuras con
+                <strong>Docker</strong> y <strong>PostgreSQL</strong>. Transformo requerimientos complejos y análisis/auditoría de datos en sistemas
+                altamente eficientes y escalables, logrando reducir tiempos operativos en un <strong>30%</strong> para
+                <strong>+150 usuarios activos</strong>.</p>
         </section>
 
         <section>
             <h2>Habilidades Técnicas</h2>
-            <div class="skill-row"><span class="lbl">Backend:</span> Go 1.25 (Gin + GORM), Laravel 11, Node.js, PHP 8.2, Python, RESTful APIs, WebSockets.</div>
-            <div class="skill-row"><span class="lbl">Frontend:</span> Vue 3 + Vite (Pinia + PrimeVue 4), Astro 5 + React 19 (Zustand), React Native (Expo SDK 54 + NativeWind), TypeScript, Tailwind CSS v4.</div>
-            <div class="skill-row"><span class="lbl">Automatización & Mobile:</span> n8n Workflow Automation, Telegram Bots, Docker, Capacitor (APK Android), Socket.io, Linux Server Admin, CI/CD.</div>
-            <div class="skill-row"><span class="lbl">Bases de Datos:</span> PostgreSQL, SQLite, MySQL, SQL Server, Power BI.</div>
-            <div class="skill-row"><span class="lbl">Librerías:</span> Laravel Auditing, DomPDF, Maroto v2 (PDF), Excelize (Excel), ML Kit (OCR), Playwright (E2E).</div>
+            <div class="skill-row"><span class="lbl">Backend:</span> Go 1.25 (Gin + GORM), Laravel 11, Node.js, PHP 8.2,
+                Python, RESTful APIs, WebSockets.</div>
+            <div class="skill-row"><span class="lbl">Frontend & Mobile:</span> Flutter, React Native (Expo SDK 54 + NativeWind), Vue 3 + Vite (Pinia + PrimeVue 4), Astro 5 + React 19 (Zustand), Angular, TypeScript, Tailwind CSS v4.</div>
+            <div class="skill-row"><span class="lbl">Automatización & Mobile:</span> n8n Workflow Automation, Telegram
+                Bots, Docker, Capacitor (APK Android), Socket.io, Linux Server Admin, CI/CD.</div>
+            <div class="skill-row"><span class="lbl">Bases de Datos:</span> PostgreSQL, SQLite, MySQL, SQL Server, Power
+                BI.</div>
+            <div class="skill-row"><span class="lbl">Librerías:</span> Laravel Auditing, ML Kit (OCR).
+            </div>
+            <div class="skill-row"><span class="lbl">Metodologías:</span> Clean Architecture, SOLID, TDD, CI/CD, Git,
+                AI-Assisted Development, Prompt Engineering.</div>
         </section>
 
         <section>
@@ -268,13 +309,30 @@
                     <h3>Full-Stack Developer — Transformación Digital</h3>
                     <span class="date">Ene 2025 – Presente</span>
                 </div>
-                <span class="job-company">MPPEF · Ministerio del Poder Popular de Economía y Finanzas, Caracas, Venezuela</span>
+                <span class="job-company">MPPEF · Ministerio del Poder Popular de Economía y Finanzas, Caracas,
+                    Venezuela</span>
                 <ul>
-                    <li>Reemplacé procesos manuales (Excel/papel) con sistemas Go + Laravel desde cero, logrando un <strong>+60% de productividad operativa</strong>.</li>
-                    <li>Diseñé la arquitectura del sistema de Bienes Públicos (<strong>Go 1.25, Gin, GORM</strong>): API REST + WebSockets + JWT/RBAC. Genera PDFs y reportes Excel. <strong>+100k registros</strong> procesados.</li>
-                    <li>Construí app móvil (<strong>React Native, Expo SDK 54</strong>) con OCR y biometría; panel web (<strong>Astro 5 + React 19</strong>) con dashboards ECharts y testing E2E Playwright.</li>
-                    <li>Desarrollé un sistema de Almacén e Inventario (<strong>Laravel 11, Vue 3, Socket.io</strong>) con flujos de aprobación jerárquicos y trazabilidad en tiempo real, cuyo despliegue en múltiples departamentos redujo los errores logísticos en un <strong>30%</strong>.</li>
-                    <li>Automaticé alertas críticas con <strong>n8n + Telegram</strong>; administración de servidores Linux y pipelines Docker.</li>
+                    <li>Lideré de extremo a extremo (E2E) el diseño, desarrollo, pruebas y despliegue de sistemas
+                        críticos basados en Go y Laravel, digitalizando flujos manuales y logrando un <strong>+60% de
+                            productividad operativa</strong>.</li>
+                    <li>Diseñé y desarrollé la arquitectura del Sistema de Bienes Públicos, implementando un backend de
+                        alto rendimiento en <strong>Go 1.25 (Gin, GORM)</strong> con API REST, WebSockets, JWT/RBAC, y
+                        un frontend rápido en <strong>Astro 5 + React 19</strong> con dashboards interactivos en ECharts;
+                        procesando <strong>+100k registros</strong>.</li>
+                    <li>Desarrollé la aplicación móvil complementaria para el Sistema de Bienes Públicos utilizando
+                        <strong>React Native (Expo SDK 54 + NativeWind)</strong> con OCR (ML Kit) y autenticación
+                        biométrica, integrada al mismo backend centralizado en Go para control físico de inventarios.
+                    </li>
+                    <li>Lideré el diseño e implementación del Sistema de Almacén (<strong>Laravel 11, Vue 3,
+                            Socket.io</strong>) con flujos de aprobación en tiempo real, reduciendo errores en un
+                        <strong>30%</strong>; asimismo, colaboré en el desarrollo y optimización del sistema heredado de
+                        la Oficina de Atención al Ciudadano (<strong>Laravel + Vue.js</strong>) para la gestión de
+                        ayudas sociales y puntos de cuenta, agregando dashboards de métricas y motores de generación
+                        masiva de PDFs.
+                    </li>
+                    <li>Automaticé notificaciones y alertas transaccionales del sistema en tiempo real (ej. movimientos
+                        de almacén y nuevos registros) integrando <strong>n8n + Telegram</strong>; administrando la
+                        infraestructura de servidores <strong>Linux</strong> y pipelines <strong>Docker</strong>.</li>
                 </ul>
             </div>
 
@@ -285,9 +343,13 @@
                 </div>
                 <span class="job-company">Jutba · Plataforma de Transmisión y Gestión (España)</span>
                 <ul>
-                    <li>Desarrollé el frontend con <strong>Flutter + Widgetbook</strong>, logrando paridad total en Android, iOS y Web.</li>
-                    <li>Integré <strong>Firebase</strong> (Auth, Realtime DB, Push Notifications), logrando una <strong>reducción del 40%</strong> en el tiempo de implementación.</li>
-                    <li>Colaboré en backend <strong>NestJS + TypeScript</strong> desplegado en <strong>Google Cloud Run</strong>.</li>
+                    <li>Desarrollé el frontend con <strong>Flutter + Widgetbook</strong>, logrando paridad total en
+                        Android, iOS y Web.</li>
+                    <li>Integré <strong>Firebase</strong> (Auth, Realtime DB, Push Notifications), logrando una
+                        <strong>reducción del 40%</strong> en el tiempo de implementación.
+                    </li>
+                    <li>Colaboré en backend <strong>NestJS + TypeScript</strong> desplegado en <strong>Google Cloud
+                            Run</strong>.</li>
                 </ul>
             </div>
 
@@ -298,9 +360,33 @@
                 </div>
                 <span class="job-company">PwC (PriceWaterhouseCoopers) · Venezuela</span>
                 <ul>
-                    <li>Desarrollé herramienta interna (<strong>Angular + SQL Server</strong>) para generación automatizada de informes de ciberseguridad, lo que redujo el tiempo de preparación en un <strong>25%</strong> (de 8h a 6h por reporte).</li>
-                    <li>Ejecuté revisiones de seguridad y auditoría de accesos en entornos Linux, SQL Server y Windows, estandarizando la documentación técnica para <strong>+20 pruebas de control críticas</strong>.</li>
-                    <li>Diseñé dashboards ejecutivos en <strong>Power BI</strong> para KPIs de riesgo tecnológico y soporte a decisiones estratégicas.</li>
+                    <li>Desarrollé herramienta interna (<strong>Angular + SQL Server</strong>) para generación
+                        automatizada de informes de ciberseguridad, lo que redujo el tiempo de preparación en un
+                        <strong>25%</strong> (de 8h a 6h por reporte).
+                    </li>
+                    <li>Ejecuté revisiones de seguridad y auditoría de accesos en entornos Linux, SQL Server y Windows,
+                        estandarizando la documentación técnica para <strong>+20 pruebas de control críticas</strong>.
+                    </li>
+                    <li>Diseñé dashboards ejecutivos en <strong>Power BI</strong> para KPIs de riesgo tecnológico y
+                        soporte a decisiones estratégicas.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>Desarrollador Frontend</h3>
+                    <span class="date">Feb 2022 – Ene 2023</span>
+                </div>
+                <span class="job-company">Avimark Studios · Caracas, Venezuela</span>
+                <ul>
+                    <li>Desarrollé interfaces responsivas en <strong>Angular</strong> y <strong>Bootstrap</strong> a
+                        partir de mockups en <strong>Figma</strong>, asegurando <strong>100%</strong> de paridad visual.</li>
+                    <li>Lideré el levantamiento de requerimientos técnicos en inglés (<strong>B2</strong>) para clientes internacionales,
+                        traduciendo necesidades de negocio en features accionables y reduciendo los ciclos de feedback
+                        en un <strong>20%</strong>.</li>
+                    <li>Estructuré y personalicé sitios web interactivos basados en <strong>WordPress</strong>,
+                        optimizando el rendimiento frontend y adaptando temas y plugins a necesidades de negocio
+                        específicas.</li>
                 </ul>
             </div>
         </section>
@@ -311,6 +397,26 @@
                 <h3>T.S.U en Informática</h3><span class="date">2023</span>
             </div>
             <p class="edu-sub">Instituto Universitario Jesús Obrero (I.U.J.O) · Caracas, Venezuela</p>
+        </section>
+
+        <section>
+            <h2>Logros y Competiciones</h2>
+            <ul>
+                <li><strong>Mención de Honor (Honorable Mention)</strong> — The ICPC South America-North Finals
+                    (International Collegiate Programming Contest), prestigiosa competencia internacional de
+                    programación universitaria, ediciones consecutivas 2022, 2023 y 2024. Representando al Instituto
+                    Universitario Jesús Obrero.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Certificaciones</h2>
+            <ul>
+                <li><strong>Certificación en Bases de Datos NoSQL y MongoDB</strong> — Instituto Universitario Jesús
+                    Obrero (I.U.J.O), Ago. 2024</li>
+                <li><strong>Google Cybersecurity Certificate</strong> — Coursera, Sep. 2023</li>
+                <li><strong>Digital Acumen</strong> — PwC, Ago. 2023</li>
+            </ul>
         </section>
 
         <section>
@@ -326,30 +432,45 @@
     <!-- ══ ENGLISH CONTENT ══════════════════════════════════════════════ -->
     <div id="content-en" style="display:none;">
         <header>
-            <h1>Brandon J. Bello Moncada</h1>
+            <h1>
+                <div class="photo-container"><img src="" alt="Brandon Bello"></div>
+                Brandon J. Bello Moncada
+            </h1>
             <p class="subtitle">FULL-STACK DEVELOPER</p>
             <div class="contact">
-                Caracas, Venezuela &nbsp;|&nbsp; <a href="https://wa.me/584123098258">+58 412-3098258 (WhatsApp)</a> &nbsp;|&nbsp;
+                Caracas, Venezuela &nbsp;|&nbsp; <a href="https://wa.me/584123098258">+58 412-3098258</a>
+                &nbsp;|&nbsp;
                 <a href="mailto:brandon91596@gmail.com">brandon91596@gmail.com</a><br>
                 LinkedIn: <a
-                    href="https://linkedin.com/in/brandon-jose-bello-moncada-5826061a0">https://linkedin.com/in/brandon-bello</a>
+                    href="https://www.linkedin.com/in/brandon-jose-bello-moncada-5826061a0">linkedin.com/in/brandon-jose-bello-moncada-5826061a0</a>
                 &nbsp;|&nbsp;
-                Portfolio: <a href="https://portafolio-brandon-bello.web.app">https://portafolio-brandon-bello.web.app</a>
+                Portfolio: <a href="https://portafolio-brandon-bello.web.app">portafolio-brandon-bello.web.app</a><br>
+                GitHub: <a href="https://github.com/branmarvel">github.com/branmarvel</a>
             </div>
         </header>
 
         <section>
             <h2>Executive Summary</h2>
-            <p>Designed and delivered critical systems in Go + Laravel and Vue + React Native that digitized manual processes for 150+ users, reducing operational times by <strong>30%</strong> and logistics errors by <strong>25%</strong>. Specialist in AI-Assisted Development with TDD and CI/CD, achieving 2-week release cycles.</p>
+            <p>Full-Stack Developer with <strong>4+ years of experience</strong> specializing in modern architecture
+                design (<strong>Go, Laravel, Vue, Astro</strong>) and the digitization of critical processes within financial and
+                government sectors. Expert in workflow automation and robust infrastructure management using <strong>Docker</strong> and
+                <strong>PostgreSQL</strong>. I transform complex requirements and data audit/analysis into secure, highly efficient, and
+                scalable systems, reducing operational times by <strong>30%</strong> for <strong>150+ active users</strong>.</p>
         </section>
 
         <section>
             <h2>Technical Skills</h2>
-            <div class="skill-row"><span class="lbl">Backend:</span> Go 1.25 (Gin + GORM), Laravel 11, Node.js, PHP 8.2, Python, RESTful APIs, WebSockets.</div>
-            <div class="skill-row"><span class="lbl">Frontend:</span> Vue 3 + Vite (Pinia + PrimeVue 4), Astro 5 + React 19 (Zustand), React Native (Expo SDK 54 + NativeWind), TypeScript, Tailwind CSS v4.</div>
-            <div class="skill-row"><span class="lbl">Automation & Mobile:</span> n8n Workflow Automation, Telegram Bots, Docker, Capacitor (APK Android), Socket.io, Linux Server Admin, CI/CD.</div>
-            <div class="skill-row"><span class="lbl">Databases:</span> PostgreSQL, SQLite, MySQL, SQL Server, Power BI.</div>
-            <div class="skill-row"><span class="lbl">Libraries:</span> Laravel Auditing, DomPDF, Maroto v2 (PDF), Excelize (Excel), ML Kit (OCR), Playwright (E2E).</div>
+            <div class="skill-row"><span class="lbl">Backend:</span> Go 1.25 (Gin + GORM), Laravel 11, Node.js, PHP 8.2,
+                Python, RESTful APIs, WebSockets.</div>
+            <div class="skill-row"><span class="lbl">Frontend & Mobile:</span> Flutter, React Native (Expo SDK 54 + NativeWind), Vue 3 + Vite (Pinia + PrimeVue 4), Astro 5 + React 19 (Zustand), Angular, TypeScript, Tailwind CSS v4.</div>
+            <div class="skill-row"><span class="lbl">Automation & Mobile:</span> n8n Workflow Automation, Telegram Bots,
+                Docker, Capacitor (APK Android), Socket.io, Linux Server Admin, CI/CD.</div>
+            <div class="skill-row"><span class="lbl">Databases:</span> PostgreSQL, SQLite, MySQL, SQL Server, Power BI.
+            </div>
+            <div class="skill-row"><span class="lbl">Libraries:</span> Laravel Auditing, ML Kit (OCR).
+            </div>
+            <div class="skill-row"><span class="lbl">Methodologies:</span> Clean Architecture, SOLID, TDD, CI/CD, Git,
+                AI-Assisted Development, Prompt Engineering.</div>
         </section>
 
         <section>
@@ -362,11 +483,26 @@
                 </div>
                 <span class="job-company">MPPEF · Ministry of Economy and Finance, Caracas, Venezuela</span>
                 <ul>
-                    <li>Replaced manual processes (Excel/paper) with Go + Laravel systems from scratch, achieving <strong>+60% operational productivity</strong>.</li>
-                    <li>Designed the architecture of the Public Assets system (<strong>Go 1.25, Gin, GORM</strong>): REST API + WebSockets + JWT/RBAC. Generates PDFs and Excel reports. <strong>100k+ records</strong> processed.</li>
-                    <li>Built mobile app (<strong>React Native, Expo SDK 54</strong>) with OCR and biometrics; web dashboard (<strong>Astro 5 + React 19</strong>) with ECharts dashboards and Playwright E2E testing.</li>
-                    <li>Developed Inventory & Warehouse system (<strong>Laravel 11, Vue 3, Socket.io</strong>) with hierarchical approval workflows and real-time audit trail, where deployment across multiple departments reduced logistics errors by <strong>30%</strong>.</li>
-                    <li>Automated critical alerts via <strong>n8n + Telegram</strong>; managed Linux servers and Docker pipelines.</li>
+                    <li>Led from end-to-end (E2E) the design, development, testing, and deployment of critical Go and
+                        Laravel systems, digitalizing manual workflows and achieving a <strong>+60% boost in operational
+                            productivity</strong>.</li>
+                    <li>Designed and built the architecture of the Public Assets System, implementing a high-performance
+                        backend in <strong>Go 1.25 (Gin, GORM)</strong> with REST APIs, WebSockets, and JWT/RBAC, paired
+                        with a fast frontend in <strong>Astro 5 + React 19</strong> featuring interactive ECharts
+                        dashboards; processing <strong>100k+ records</strong>.</li>
+                    <li>Developed the companion mobile app for the Public Assets System using <strong>React Native (Expo
+                            SDK 54 + NativeWind)</strong> with OCR (ML Kit) and biometric authentication, integrated
+                        with the same centralized Go backend for physical inventory control.</li>
+                    <li>Led the design and implementation of the Inventory & Warehouse System (<strong>Laravel 11, Vue
+                            3, Socket.io</strong>) with real-time approval flows, reducing logistics errors by
+                        <strong>30%</strong>; additionally, collaborated on the development and optimization of the
+                        legacy Citizen Support Office system (<strong>Laravel + Vue.js</strong>) for managing social aid
+                        requests and official approval documents, adding metrics dashboards and mass PDF generation
+                        engines.
+                    </li>
+                    <li>Automated real-time system alerts and transactional notifications (e.g., warehouse entries, new
+                        asset registrations) integrating <strong>n8n + Telegram</strong>; managed <strong>Linux</strong> server
+                        infrastructure and <strong>Docker</strong> deployment pipelines.</li>
                 </ul>
             </div>
 
@@ -377,9 +513,13 @@
                 </div>
                 <span class="job-company">Jutba · Streaming & Management Platform (Spain)</span>
                 <ul>
-                    <li>Built the frontend with <strong>Flutter + Widgetbook</strong>, achieving full parity across Android, iOS and Web.</li>
-                    <li>Integrated <strong>Firebase</strong> (Auth, Realtime DB, Push Notifications), achieving a <strong>40% reduction</strong> in feature implementation time.</li>
-                    <li>Contributed to <strong>NestJS + TypeScript</strong> backend deployed on <strong>Google Cloud Run</strong>.</li>
+                    <li>Built the frontend with <strong>Flutter + Widgetbook</strong>, achieving full parity across
+                        Android, iOS and Web.</li>
+                    <li>Integrated <strong>Firebase</strong> (Auth, Realtime DB, Push Notifications), achieving a
+                        <strong>40% reduction</strong> in feature implementation time.
+                    </li>
+                    <li>Contributed to <strong>NestJS + TypeScript</strong> backend deployed on <strong>Google Cloud
+                            Run</strong>.</li>
                 </ul>
             </div>
 
@@ -390,9 +530,29 @@
                 </div>
                 <span class="job-company">PwC (PriceWaterhouseCoopers) · Venezuela</span>
                 <ul>
-                    <li>Built internal tool (<strong>Angular + SQL Server</strong>) for automated cybersecurity report generation, reducing preparation time by <strong>25%</strong> (from 8h to 6h per report).</li>
-                    <li>Executed security reviews and access auditing in Linux, SQL Server, and Windows environments, standardizing technical documentation for <strong>+20 critical control tests</strong>.</li>
-                    <li>Designed executive dashboards in <strong>Power BI</strong> for technology risk KPIs and strategic decision support.</li>
+                    <li>Built internal tool (<strong>Angular + SQL Server</strong>) for automated cybersecurity report
+                        generation, reducing preparation time by <strong>25%</strong> (from 8h to 6h per report).</li>
+                    <li>Executed security reviews and access auditing in Linux, SQL Server, and Windows environments,
+                        standardizing technical documentation for <strong>+20 critical control tests</strong>.</li>
+                    <li>Designed executive dashboards in <strong>Power BI</strong> for technology risk KPIs and
+                        strategic decision support.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <h3>Frontend Developer</h3>
+                    <span class="date">Feb 2022 – Jan 2023</span>
+                </div>
+                <span class="job-company">Avimark Studios · Caracas, Venezuela</span>
+                <ul>
+                    <li>Developed responsive interfaces in <strong>Angular</strong> and <strong>Bootstrap</strong> from
+                        <strong>Figma</strong> mockups, ensuring <strong>100%</strong> visual parity.
+                    </li>
+                    <li>Led technical requirement gathering in English (<strong>B2</strong>) for international clients, translating
+                        business needs into actionable features and reducing feedback cycles by <strong>20%</strong>.</li>
+                    <li>Structured and customized interactive websites based on <strong>WordPress</strong>, optimizing
+                        frontend load speed and tailoring custom themes and plugins to business requirements.</li>
                 </ul>
             </div>
         </section>
@@ -403,6 +563,25 @@
                 <h3>B.S. in Computer Science (T.S.U)</h3><span class="date">2023</span>
             </div>
             <p class="edu-sub">Instituto Universitario Jesús Obrero (I.U.J.O) · Caracas, Venezuela</p>
+        </section>
+
+        <section>
+            <h2>Awards & Competitions</h2>
+            <ul>
+                <li><strong>Honorable Mention</strong> — The ICPC South America-North Finals (International Collegiate
+                    Programming Contest), prestigious global collegiate programming competition, consecutive editions
+                    2022, 2023, and 2024. Representing Instituto Universitario Jesús Obrero.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Certifications</h2>
+            <ul>
+                <li><strong>NoSQL Databases & MongoDB Certification</strong> — Instituto Universitario Jesús Obrero
+                    (I.U.J.O), Aug. 2024</li>
+                <li><strong>Google Cybersecurity Certificate</strong> — Coursera, Sep. 2023</li>
+                <li><strong>Digital Acumen</strong> — PwC, Aug. 2023</li>
+            </ul>
         </section>
 
         <section>
@@ -430,6 +609,24 @@
                     ? 'Brandon José Bello Moncada — Full-Stack Developer'
                     : 'Brandon José Bello Moncada — Full-Stack Developer (EN)';
         }
+
+        const photoInput = document.getElementById('photoInput');
+        photoInput.addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (event) {
+                    const imageUrl = event.target.result;
+                    const containers = document.querySelectorAll('.photo-container');
+                    containers.forEach(container => {
+                        const img = container.querySelector('img');
+                        img.src = imageUrl;
+                        container.style.display = 'block';
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
+        });
 
         function exportPDF() {
             // Hide controls, show only the active content block

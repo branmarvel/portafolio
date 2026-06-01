@@ -89,7 +89,7 @@ export default function HeroSection() {
                     Hola, soy
                 </motion.span>
                 <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 text-gradient font-mono">
-                    <ScrambleText text="BRANDON BELLO" />
+                    <ScrambleText text={t('hero.name')} />
                 </h1>
                 <motion.h2
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
@@ -102,11 +102,11 @@ export default function HeroSection() {
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }}
                     className="flex flex-wrap justify-center gap-3 font-mono text-xs uppercase text-[var(--color-tungsten)]"
                 >
-                    <span className="px-3 py-1 border border-[var(--color-border)] rounded-full">Angular</span>
-                    <span className="px-3 py-1 border border-[var(--color-border)] rounded-full">Vue.js</span>
-                    <span className="px-3 py-1 border border-[var(--color-border)] rounded-full">Laravel</span>
+                    <span className="px-3 py-1 border border-[var(--color-border)] rounded-full">Go (Golang)</span>
+                    <span className="px-3 py-1 border border-[var(--color-border)] rounded-full">Laravel 11</span>
                     <span className="px-3 py-1 border border-[var(--color-border)] rounded-full">Node.js</span>
-                    <span className="px-3 py-1 border border-[var(--color-border)] rounded-full">AWS</span>
+                    <span className="px-3 py-1 border border-[var(--color-border)] rounded-full">Docker</span>
+                    <span className="px-3 py-1 border border-[var(--color-border)] rounded-full">n8n</span>
                 </motion.div>
 
                 <motion.p
