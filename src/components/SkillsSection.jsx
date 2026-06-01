@@ -5,7 +5,7 @@ const skillCategories = [
     {
         icon: '⚙️',
         skills: [
-            { name: 'Go (Golang)', icon: 'https://img.icons8.com/color/48/golang.png' },
+            { name: 'Go (Gin/GORM)', icon: 'https://img.icons8.com/color/48/golang.png' },
             { name: 'Laravel 11', icon: 'https://img.icons8.com/fluency/48/laravel.png' },
             { name: 'Node.js', icon: 'https://img.icons8.com/color/48/nodejs.png' },
             { name: 'PHP 8.2', icon: 'https://img.icons8.com/color/48/php.png' },
@@ -16,12 +16,13 @@ const skillCategories = [
     {
         icon: '💻',
         skills: [
-            { name: 'Vue 3', icon: 'https://img.icons8.com/color/48/vue-js.png' },
-            { name: 'Astro', icon: 'https://img.icons8.com/color/48/astro.png' },
-            { name: 'React', icon: 'https://img.icons8.com/color/48/react-native.png' },
-            { name: 'TypeScript', icon: 'https://img.icons8.com/color/48/typescript.png' },
+            { name: 'Flutter', icon: 'https://img.icons8.com/color/48/flutter.png' },
             { name: 'React Native', icon: 'https://img.icons8.com/color/48/react-native.png' },
-            { name: 'Tailwind CSS', icon: 'https://img.icons8.com/color/48/tailwind_css.png' }
+            { name: 'Vue 3', icon: 'https://img.icons8.com/color/48/vue-js.png' },
+            { name: 'Astro 5', icon: 'https://img.icons8.com/color/48/astro.png' },
+            { name: 'React 19', icon: 'https://img.icons8.com/color/48/react-native.png' },
+            { name: 'TypeScript', icon: 'https://img.icons8.com/color/48/typescript.png' },
+            { name: 'Tailwind CSS v4', icon: 'https://img.icons8.com/color/48/tailwind_css.png' }
         ]
     },
     {
@@ -50,8 +51,8 @@ export default function SkillsSection() {
     const { t } = useLanguage();
 
     const translatedCategories = [
-        { ...skillCategories[0], title: t('skills.catFrontend') },
-        { ...skillCategories[1], title: t('skills.catBackend') },
+        { ...skillCategories[0], title: t('skills.catBackend') },
+        { ...skillCategories[1], title: t('skills.catFrontend') },
         { ...skillCategories[2], title: t('skills.catMobileCloud') }
     ];
 
@@ -108,11 +109,18 @@ export default function SkillsSection() {
                                     <motion.div
                                         key={skill.name}
                                         variants={fadeInUpItem}
-                                        className="flex flex-col items-center gap-2"
+                                        className="flex flex-col items-center gap-2 relative group"
                                     >
+                                        {/* Premium Floating Tooltip */}
+                                        <div className="absolute bottom-full mb-2 hidden group-hover:flex flex-col items-center z-30 pointer-events-none transition-all duration-200">
+                                            <div className="bg-[#151515] border border-white/10 text-white text-[10px] font-mono py-1 px-2.5 rounded-md shadow-xl whitespace-nowrap tracking-wider">
+                                                {skill.name}
+                                            </div>
+                                            <div className="w-1.5 h-1.5 bg-[#151515] border-r border-b border-white/10 rotate-45 -mt-1" />
+                                        </div>
+
                                         <div
-                                            className="w-10 h-10 md:w-12 lg:w-14 md:h-12 lg:h-14 rounded-xl md:rounded-2xl bg-[#111] border border-[var(--color-border)] flex items-center justify-center transition-all duration-300 shadow-inner hover:-translate-y-1"
-                                            title={skill.name}
+                                            className="w-10 h-10 md:w-12 lg:w-14 md:h-12 lg:h-14 rounded-xl md:rounded-2xl bg-[#111] border border-[var(--color-border)] flex items-center justify-center transition-all duration-300 shadow-inner hover:-translate-y-1 cursor-help"
                                         >
                                             <img src={skill.icon} alt={skill.name} className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-300 filter drop-shadow-md" loading="lazy" />
                                         </div>
