@@ -451,9 +451,22 @@ export default function ProjectsSection() {
                                 <h3 className="text-xl md:text-3xl lg:text-5xl font-bold tracking-tight leading-none mb-2 lg:mb-4">{project.title}</h3>
                             </div>
 
-                            <p className="text-[var(--color-text-secondary)] leading-relaxed text-xs lg:text-base max-w-md line-clamp-4 lg:line-clamp-none">
-                                {project.description}
-                            </p>
+                            <div className="max-w-md pointer-events-auto">
+                                {project.description && project.description.includes('•') ? (
+                                    <ul className="space-y-1.5 list-none">
+                                        {project.description.split('•').map(p => p.trim()).filter(Boolean).map((part, index) => (
+                                            <li key={index} className="flex items-start gap-2.5 text-[var(--color-text-secondary)] leading-relaxed text-[11px] md:text-xs lg:text-sm">
+                                                <span className="text-[var(--color-tungsten)] mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-tungsten)] opacity-70" />
+                                                <span>{part}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                ) : (
+                                    <p className="text-[var(--color-text-secondary)] leading-relaxed text-[11px] md:text-xs lg:text-sm">
+                                        {project.description}
+                                    </p>
+                                )}
+                            </div>
 
                             <div className="flex flex-wrap gap-2 mt-2">
                                 {project.tags.map(tag => (
