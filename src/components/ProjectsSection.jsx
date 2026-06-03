@@ -103,6 +103,7 @@ export default function ProjectsSection() {
             description: t('projects.sgcpDesc'),
             videoUrl: null, // Private (NDA)
             demoUrl: null,
+            githubUrl: 'https://github.com/branmarvel/Sistema-para-la-Gestion-y-Control-de-proyectos',
             credentials: null,
             architecture: [
                 '┌─────────────────────────────────────────────┐',
@@ -139,6 +140,7 @@ export default function ProjectsSection() {
             description: t('projects.utextDesc'),
             videoUrl: 'https://www.youtube.com/embed/_rpIpp9s7Zo?autoplay=0&controls=1&mute=1',
             demoUrl: 'https://u-text-app.web.app',
+            githubUrl: 'https://github.com/branmarvel/U-text',
             credentials: [
                 { label: t('projects.utextCredTeacher'), value: 'admin@admin.com', pass: '123456' },
                 { label: t('projects.utextCredStudent'), value: 'student@student.com', pass: '123456' }
