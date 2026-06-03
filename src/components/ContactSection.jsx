@@ -60,7 +60,14 @@ export default function ContactSection() {
                     </div>
                     <div className="text-right hidden lg:block">
                         <p className="font-mono text-xs text-[var(--color-text-secondary)] uppercase tracking-widest">{t('contact.statusLabel')}</p>
-                        <p className="text-sm font-semibold text-green-500 whitespace-nowrap"><span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>{t('contact.statusValue')}</p>
+                        <div className="flex items-center justify-end gap-3 mt-1">
+                            <div className="relative flex items-center justify-center w-3 h-3">
+                                <span className="absolute inline-flex w-full h-full rounded-full bg-green-500/50" style={{ animation: 'signal-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}></span>
+                                <span className="absolute inline-flex w-full h-full rounded-full bg-green-500/30" style={{ animation: 'signal-pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite 1s' }}></span>
+                                <span className="relative inline-flex rounded-full w-1.5 h-1.5 bg-green-500"></span>
+                            </div>
+                            <p className="text-sm font-semibold text-green-500 whitespace-nowrap">{t('contact.statusValue')}</p>
+                        </div>
                     </div>
                 </div>
 

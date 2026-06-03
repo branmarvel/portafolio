@@ -39,10 +39,26 @@ export default function ProjectsSection() {
     const [activeModal, setActiveModal] = useState(null);
 
     const categoryConfig = {
-        university: { color: '#a78bda', label: t('projects.catUniversity') },
-        government: { color: '#6b8aae', label: t('projects.catGovernment') },
-        freelance:  { color: '#5ea88e', label: t('projects.catFreelance') },
-        personal:   { color: 'var(--color-tungsten)', label: t('projects.catPersonal') }
+        university: {
+            color: '#a78bda',
+            label: t('projects.catUniversity'),
+            icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>
+        },
+        government: {
+            color: '#6b8aae',
+            label: t('projects.catGovernment'),
+            icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        },
+        freelance: {
+            color: '#5ea88e',
+            label: t('projects.catFreelance'),
+            icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        },
+        personal: {
+            color: '#ffd7aa',
+            label: t('projects.catPersonal'),
+            icon: <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        }
     };
 
     const projects = [
@@ -257,14 +273,15 @@ export default function ProjectsSection() {
                                 </span>
                                 {/* Category Badge */}
                                 <span
-                                    className="inline-block font-mono text-[9px] md:text-[11px] tracking-widest uppercase mb-2 lg:mb-3 py-1 px-2.5 rounded-sm"
+                                    className="inline-flex items-center gap-1.5 font-mono text-[9px] md:text-[11px] tracking-widest uppercase mb-2 lg:mb-3 py-1 px-2.5 rounded-sm"
                                     style={{
                                         color: categoryConfig[project.category]?.color,
                                         borderLeft: `2px solid ${categoryConfig[project.category]?.color}`,
                                         backgroundColor: `${categoryConfig[project.category]?.color}11`
                                     }}
                                 >
-                                    ▸ {categoryConfig[project.category]?.label}
+                                    {categoryConfig[project.category]?.icon}
+                                    {categoryConfig[project.category]?.label}
                                 </span>
                                 <h3 className="text-xl md:text-3xl lg:text-5xl font-bold tracking-tight leading-none mb-2 lg:mb-4">{project.title}</h3>
                             </div>

@@ -73,3 +73,15 @@ textarea {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-[#ffd7aa];
   }
 }
+
+/* Terminal Cursor Blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Signal Pulse Ripple */
+@keyframes signal-pulse {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}

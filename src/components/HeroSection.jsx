@@ -89,7 +89,7 @@ export default function HeroSection() {
                     {t('hero.greeting')}
                 </motion.span>
                 <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 text-gradient font-mono">
-                    <ScrambleText text={t('hero.name')} />
+                    <ScrambleText text={t('hero.name')} /><span className="inline-block w-[3px] h-[0.85em] bg-[var(--color-tungsten)] ml-1 align-middle" style={{ animation: 'blink 1.06s step-end infinite' }} />
                 </h1>
                 <motion.h2
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
