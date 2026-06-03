@@ -75,6 +75,23 @@ export default function ProjectsSection() {
             credentials: [
                 { label: t('projects.sgcpCredUser'), value: 'admin@admin.com' },
                 { label: t('projects.sgcpCredPass'), value: '123456' }
+            ],
+            architecture: [
+                '┌─────────────────────────────────────────────┐',
+                '│      PROJECT MANAGEMENT SYSTEM (LEGACY)     │',
+                '├─────────────────────────────────────────────┤',
+                '│                                             │',
+                '│  ┌─────────┐   REST/WS ┌──────────────┐    │',
+                '│  │ Angular │◄─────────►│  Firebase    │    │',
+                '│  │ Web App │           │  Firestore   │    │',
+                '│  │ SPA     │           │  Auth/Rules  │    │',
+                '│  └─────────┘           └──────┬───────┘    │',
+                '│                               │            │',
+                '│                        ┌──────┴───────┐    │',
+                '│                        │   Cloud      │    │',
+                '│                        │   Functions  │    │',
+                '│                        └──────────────┘    │',
+                '└─────────────────────────────────────────────┘',
             ]
         },
         {
@@ -125,6 +142,27 @@ export default function ProjectsSection() {
             credentials: [
                 { label: t('projects.utextCredTeacher'), value: 'admin@admin.com', pass: '123456' },
                 { label: t('projects.utextCredStudent'), value: 'student@student.com', pass: '123456' }
+            ],
+            architecture: [
+                '┌─────────────────────────────────────────────┐',
+                '│           IBC APRENDEIT PLATFORM            │',
+                '├─────────────────────────────────────────────┤',
+                '│                                             │',
+                '│  ┌─────────┐   REST/WS ┌──────────────┐    │',
+                '│  │ Flutter │◄─────────►│  Firebase    │    │',
+                '│  │ Mobile  │           │  Firestore   │    │',
+                '│  │ App     │           │  Auth/Storage│    │',
+                '│  └────┬────┘           └──────┬───────┘    │',
+                '│       │                       │            │',
+                '│       │ REST           ┌──────┴───────┐    │',
+                '│       ├───────────────►│   Cloud      │    │',
+                '│       │                │   Functions  │    │',
+                '│       ▼                └──────────────┘    │',
+                '│  ┌─────────┐                               │',
+                '│  │ OpenAI  │                               │',
+                '│  │ ChatGPT │                               │',
+                '│  └─────────┘                               │',
+                '└─────────────────────────────────────────────┘',
             ]
         },
         {
@@ -171,7 +209,32 @@ export default function ProjectsSection() {
             description: t('projects.jutbaDesc'),
             videoUrl: null, // Public APK, but currently no video (placeholder)
             demoUrl: null,
-            credentials: null
+            credentials: null,
+            architecture: [
+                '┌─────────────────────────────────────────────┐',
+                '│              JUTBA STREAMING PLATFORM       │',
+                '├─────────────────────────────────────────────┤',
+                '│                                             │',
+                '│  ┌─────────┐   REST    ┌──────────────┐    │',
+                '│  │ Flutter │◄─────────►│ NestJS API   │    │',
+                '│  │ iOS/And │   WS      │ TypeScript   │    │',
+                '│  │ Web App │           │ Cloud Run    │    │',
+                '│  └─────────┘           └──────┬───────┘    │',
+                '│                               │            │',
+                '│  ┌─────────┐          ┌───────┼───────┐    │',
+                '│  │ Redis   │◄────────►│ PostgreSQL    │    │',
+                '│  │ Cache   │          │ (TypeORM)     │    │',
+                '│  └─────────┘          └───────┬───────┘    │',
+                '│                               │            │',
+                '│  ┌────────────────────────────┴───────┐    │',
+                '│  │ External Integrations              │    │',
+                '│  ├────────────────────────────────────┤    │',
+                '│  │ • Firebase Admin (Push/Auth)       │    │',
+                '│  │ • Stripe (Payments) & Twilio (SMS) │    │',
+                '│  │ • GCP Text-to-Speech & VertexAI    │    │',
+                '│  └────────────────────────────────────┘    │',
+                '└─────────────────────────────────────────────┘',
+            ]
         },
         {
             id: 'calc',
@@ -368,13 +431,23 @@ export default function ProjectsSection() {
                                         </a>
                                     </Magnetic>
                                 )}
-                                {(project.credentials || project.architecture) && (
+                                {project.credentials && (
                                     <Magnetic>
                                         <button
-                                            onClick={() => setActiveModal(project.id)}
+                                            onClick={() => setActiveModal({ id: project.id, type: 'credentials' })}
                                             className="px-4 py-2 lg:px-6 lg:py-3 rounded-full border border-[var(--color-border)] text-xs lg:text-sm font-medium hover:bg-[var(--color-tungsten)] hover:text-black transition-colors"
                                         >
                                             {t('projects.credBtn')}
+                                        </button>
+                                    </Magnetic>
+                                )}
+                                {project.architecture && (
+                                    <Magnetic>
+                                        <button
+                                            onClick={() => setActiveModal({ id: project.id, type: 'architecture' })}
+                                            className="px-4 py-2 lg:px-6 lg:py-3 rounded-full border border-[var(--color-border)] text-xs lg:text-sm font-medium hover:bg-[var(--color-tungsten)] hover:text-black transition-colors"
+                                        >
+                                            {t('projects.archBtn')}
                                         </button>
                                     </Magnetic>
                                 )}
@@ -434,40 +507,47 @@ export default function ProjectsSection() {
                                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                             </button>
 
-                            <h3 className="text-xl md:text-2xl font-bold mb-6">{t('projects.modalTitle')} <span className="text-[var(--color-tungsten)]">{t('projects.modalHighlight')}</span></h3>
+                            <h3 className="text-xl md:text-2xl font-bold mb-6">
+                                {activeModal.type === 'architecture' ? t('projects.modalTitleArch') : t('projects.modalTitleCred')}{' '}
+                                <span className="text-[var(--color-tungsten)]">
+                                    {activeModal.type === 'architecture' ? t('projects.modalHighlightArch') : t('projects.modalHighlightCred')}
+                                </span>
+                            </h3>
 
                             <div className="flex flex-col gap-4 md:gap-6">
-                                {projects.find(p => p.id === activeModal)?.architecture ? (
+                                {activeModal.type === 'architecture' ? (
                                     <div className="w-full overflow-x-auto bg-[#0a0a0a] border border-[var(--color-border)] rounded-xl p-3 md:p-4 hide-scrollbar">
                                         <pre className="text-[8px] md:text-[10px] font-mono text-[var(--color-tungsten)] leading-tight whitespace-pre">
-                                            {projects.find(p => p.id === activeModal).architecture.join('\n')}
+                                            {projects.find(p => p.id === activeModal.id)?.architecture?.join('\n')}
                                         </pre>
                                     </div>
-                                ) : projects.find(p => p.id === activeModal)?.credentials?.map((cred, i) => (
-                                    <div key={i} className="flex flex-col gap-2 md:gap-3">
-                                        <span className="font-mono text-[10px] md:text-xs uppercase text-[var(--color-text-secondary)]">{cred.label}</span>
-                                        <div className="flex bg-[#000] border border-[var(--color-border)] rounded-xl overflow-hidden focus-within:border-[var(--color-tungsten)] transition-colors">
-                                            <input type="text" value={cred.value} readOnly className="bg-transparent px-3 md:px-4 py-2 md:py-3 flex-1 text-xs md:text-sm outline-none text-white font-mono" />
-                                            <button
-                                                onClick={() => { navigator.clipboard.writeText(cred.value); }}
-                                                className="px-3 md:px-4 py-2 md:py-3 hover:bg-[var(--color-tungsten)] hover:text-black transition-colors font-medium text-[10px] md:text-xs font-mono text-[var(--color-text-secondary)] border-l border-[var(--color-border)] cursor-pointer"
-                                            >
-                                                {t('projects.copyBtn')}
-                                            </button>
-                                        </div>
-                                        {cred.pass && (
-                                            <div className="flex bg-[#000] border border-[var(--color-border)] rounded-xl overflow-hidden focus-within:border-[var(--color-tungsten)] transition-colors mt-1 md:mt-2">
-                                                <input type="text" value={cred.pass} readOnly className="bg-transparent px-3 md:px-4 py-2 md:py-3 flex-1 text-xs md:text-sm outline-none text-white font-mono" />
+                                ) : (
+                                    projects.find(p => p.id === activeModal.id)?.credentials?.map((cred, i) => (
+                                        <div key={i} className="flex flex-col gap-2 md:gap-3">
+                                            <span className="font-mono text-[10px] md:text-xs uppercase text-[var(--color-text-secondary)]">{cred.label}</span>
+                                            <div className="flex bg-[#000] border border-[var(--color-border)] rounded-xl overflow-hidden focus-within:border-[var(--color-tungsten)] transition-colors">
+                                                <input type="text" value={cred.value} readOnly className="bg-transparent px-3 md:px-4 py-2 md:py-3 flex-1 text-xs md:text-sm outline-none text-white font-mono" />
                                                 <button
-                                                    onClick={() => { navigator.clipboard.writeText(cred.pass); }}
+                                                    onClick={() => { navigator.clipboard.writeText(cred.value); }}
                                                     className="px-3 md:px-4 py-2 md:py-3 hover:bg-[var(--color-tungsten)] hover:text-black transition-colors font-medium text-[10px] md:text-xs font-mono text-[var(--color-text-secondary)] border-l border-[var(--color-border)] cursor-pointer"
                                                 >
                                                     {t('projects.copyBtn')}
                                                 </button>
                                             </div>
-                                        )}
-                                    </div>
-                                ))}
+                                            {cred.pass && (
+                                                <div className="flex bg-[#000] border border-[var(--color-border)] rounded-xl overflow-hidden focus-within:border-[var(--color-tungsten)] transition-colors mt-1 md:mt-2">
+                                                    <input type="text" value={cred.pass} readOnly className="bg-transparent px-3 md:px-4 py-2 md:py-3 flex-1 text-xs md:text-sm outline-none text-white font-mono" />
+                                                    <button
+                                                        onClick={() => { navigator.clipboard.writeText(cred.pass); }}
+                                                        className="px-3 md:px-4 py-2 md:py-3 hover:bg-[var(--color-tungsten)] hover:text-black transition-colors font-medium text-[10px] md:text-xs font-mono text-[var(--color-text-secondary)] border-l border-[var(--color-border)] cursor-pointer"
+                                                    >
+                                                        {t('projects.copyBtn')}
+                                                    </button>
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))
+                                )}
                             </div>
                         </motion.div>
                     </motion.div>
