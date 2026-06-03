@@ -44,7 +44,7 @@ This repository houses the source code for my professional developer portfolio. 
 ### Prerequisites
 
 *   **Node.js:** `>=18.0.0` (Node 20+ recommended)
-*   **npm** or **yarn**
+*   **pnpm:** `^10.x` or newer (Exclusive package manager)
 *   **Docker & Docker Compose** (Optional: for containerized running)
 
 ### Installation & Execution Guide
@@ -57,20 +57,24 @@ This repository houses the source code for my professional developer portfolio. 
 
 2.  **Install Dependencies:**
     ```bash
-    npm install
+    pnpm install
     ```
 
 3.  **Run Development Server:**
     ```bash
-    npm run dev
+    pnpm dev
     ```
     Open your browser and navigate to `http://localhost:4321/` to view the interactive canvas locally.
 
 4.  **Build Production Bundle:**
     ```bash
-    npm run build
+    pnpm build
     ```
     This triggers typechecking via `@astrojs/check` and generates the optimized static bundle in the `dist/` directory.
+
+### 🔒 Security Policy: Package Release Age Guard
+
+To prevent supply chain attacks (such as malicious packages or zero-day exploits in newly published modules), this repository blocks the installation of any dependency released less than **10 days ago** (14,400 minutes). This cooldown security constraint is declared in `pnpm-workspace.yaml` and `.npmrc` (`minimumReleaseAge` set to `14400`). pnpm will automatically fall back to the latest safe and mature version of any dependency.
 
 ---
 

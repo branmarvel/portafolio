@@ -44,7 +44,7 @@ Este repositorio contiene el código fuente de mi portafolio profesional de desa
 ### Requisitos Previos
 
 *   **Node.js:** `>=18.0.0` (Se recomienda Node 20+)
-*   **npm** o **yarn**
+*   **pnpm:** `^10.x` o más reciente (Gestor de paquetes exclusivo)
 *   **Docker y Docker Compose** (Opcional: para ejecución en contenedores)
 
 ### Guía de Instalación y Ejecución
@@ -57,20 +57,24 @@ Este repositorio contiene el código fuente de mi portafolio profesional de desa
 
 2.  **Instalar Dependencias:**
     ```bash
-    npm install
+    pnpm install
     ```
 
 3.  **Iniciar Servidor de Desarrollo:**
     ```bash
-    npm run dev
+    pnpm dev
     ```
     Abre tu navegador en `http://localhost:4321/` para ver el canvas interactivo localmente.
 
 4.  **Generar el Bundle de Producción:**
     ```bash
-    npm run build
+    pnpm build
     ```
     Esto ejecuta el chequeo de tipos con `@astrojs/check` y genera el build estático optimizado en el directorio `dist/`.
+
+### 🔒 Política de Seguridad: Control de Edad de Publicación
+
+Para prevenir ataques a la cadena de suministro (como paquetes maliciosos o exploits de día cero en módulos recién publicados), este repositorio bloquea la instalación de cualquier dependencia publicada hace menos de **10 días** (14,400 minutos). Esta limitación de seguridad está declarada en `pnpm-workspace.yaml` y `.npmrc` (`minimumReleaseAge` configurado en `14400`). pnpm retrocederá automáticamente a la última versión segura y madura de cualquier dependencia.
 
 ---
 
