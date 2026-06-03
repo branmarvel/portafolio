@@ -86,7 +86,32 @@ export default function ProjectsSection() {
             description: t('projects.sgcpDesc'),
             videoUrl: null, // Private (NDA)
             demoUrl: null,
-            credentials: null
+            credentials: null,
+            architecture: [
+                '┌─────────────────────────────────────────────┐',
+                '│           PUBLIC ASSET SYSTEM (SGCP)        │',
+                '├─────────────────────────────────────────────┤',
+                '│                                             │',
+                '│  ┌─────────┐   REST    ┌──────────────┐    │',
+                '│  │ Astro 5 │◄────────►│  Go 1.25 API  │    │',
+                '│  │React 19 │  + WS    │  Gin + GORM   │    │',
+                '│  │ECharts  │          │  JWT / RBAC   │    │',
+                '│  └─────────┘          └──────┬───────┘    │',
+                '│                               │            │',
+                '│  ┌─────────┐          ┌──────┴───────┐    │',
+                '│  │  Expo   │◄────────►│  PostgreSQL   │    │',
+                '│  │SDK 54   │  REST    │  +100k rows   │    │',
+                '│  │OCR+Bio  │          └──────────────┘    │',
+                '│  └─────────┘                               │',
+                '│                               │            │',
+                '│  ┌─────────┐          ┌──────┴───────┐    │',
+                '│  │  n8n    │─────────►│   Telegram    │    │',
+                '│  │Workflow │  Alerts  │   Bot API     │    │',
+                '│  └─────────┘          └──────────────┘    │',
+                '│                                             │',
+                '│  Infra: Docker │ Linux │ CI/CD Pipeline     │',
+                '└─────────────────────────────────────────────┘',
+            ]
         },
         {
             id: 'utext',
@@ -111,7 +136,31 @@ export default function ProjectsSection() {
             description: t('projects.erpDesc'),
             videoUrl: null, // Excluded per user request
             demoUrl: null,
-            credentials: null
+            credentials: null,
+            architecture: [
+                '┌─────────────────────────────────────────────┐',
+                '│        WAREHOUSE & INVENTORY SYSTEM         │',
+                '├─────────────────────────────────────────────┤',
+                '│                                             │',
+                '│  ┌─────────┐  Axios   ┌──────────────┐    │',
+                '│  │ Vue 3   │◄────────►│ Laravel 11   │    │',
+                '│  │PrimeVue │          │  PHP 8.2     │    │',
+                '│  │ Vite    │          │  REST API    │    │',
+                '│  └─────────┘          └──────┬───────┘    │',
+                '│       │                       │            │',
+                '│  ┌────┴────┐          ┌──────┴───────┐    │',
+                '│  │Socket.io│ Realtime │  PostgreSQL   │    │',
+                '│  │  Events │◄────────►│  + Auditing   │    │',
+                '│  └─────────┘          └──────────────┘    │',
+                '│                               │            │',
+                '│  ┌─────────┐          ┌──────┴───────┐    │',
+                '│  │  n8n    │─────────►│   Telegram    │    │',
+                '│  │Workflow │  Alerts  │   Bot API     │    │',
+                '│  └─────────┘          └──────────────┘    │',
+                '│                                             │',
+                '│  Infra: Docker │ Linux │ PDF Engine         │',
+                '└─────────────────────────────────────────────┘',
+            ]
         },
         {
             id: 'jutba',
@@ -319,7 +368,7 @@ export default function ProjectsSection() {
                                         </a>
                                     </Magnetic>
                                 )}
-                                {project.credentials && (
+                                {(project.credentials || project.architecture) && (
                                     <Magnetic>
                                         <button
                                             onClick={() => setActiveModal(project.id)}
@@ -388,7 +437,13 @@ export default function ProjectsSection() {
                             <h3 className="text-xl md:text-2xl font-bold mb-6">{t('projects.modalTitle')} <span className="text-[var(--color-tungsten)]">{t('projects.modalHighlight')}</span></h3>
 
                             <div className="flex flex-col gap-4 md:gap-6">
-                                {projects.find(p => p.id === activeModal)?.credentials?.map((cred, i) => (
+                                {projects.find(p => p.id === activeModal)?.architecture ? (
+                                    <div className="w-full overflow-x-auto bg-[#0a0a0a] border border-[var(--color-border)] rounded-xl p-3 md:p-4 hide-scrollbar">
+                                        <pre className="text-[8px] md:text-[10px] font-mono text-[var(--color-tungsten)] leading-tight whitespace-pre">
+                                            {projects.find(p => p.id === activeModal).architecture.join('\n')}
+                                        </pre>
+                                    </div>
+                                ) : projects.find(p => p.id === activeModal)?.credentials?.map((cred, i) => (
                                     <div key={i} className="flex flex-col gap-2 md:gap-3">
                                         <span className="font-mono text-[10px] md:text-xs uppercase text-[var(--color-text-secondary)]">{cred.label}</span>
                                         <div className="flex bg-[#000] border border-[var(--color-border)] rounded-xl overflow-hidden focus-within:border-[var(--color-tungsten)] transition-colors">

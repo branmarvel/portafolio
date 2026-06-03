@@ -1,12 +1,8 @@
-version: '3.8'
-
 services:
-  astro:
+  portfolio:
     build: .
     ports:
-      - "4321:4321"
-    volumes:
-      - .:/app
-      - /app/node_modules
+      - "8080:80"
+    restart: unless-stopped
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
