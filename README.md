@@ -23,7 +23,7 @@ This repository houses the source code for my professional developer portfolio. 
 *   **🎨 Glassmorphism & High-Tech Design:** Implements premium dark-theme glass designs with custom HSL styling and micro-animations backed by **Framer Motion 12**.
 *   **💻 Mac Terminal Project Showcases:** Custom-built terminal and dashboard preview components with conditional device mockups (Smartphones/Laptops) for projects without video and secure production layout styles.
 *   **🌐 Comprehensive Bilingual Support (i18n):** Fast, client-side language switching between Spanish and English using dynamic context management.
-*   **📄 Embedded Dual CV Portals:** Hosts highly polished, downloadable CV files in both Visual (CSS styled) and ATS-Friendly formats.
+*   **📄 Interactive & Responsive Dual CV Portals:** Houses responsive, bilingual, and theme-toggleable CV pages under `/cv/modern` and `/cv/classic` with real-time profile photo controls and optimized PDF export functionality (`html2pdf.js` / browser print dialogue).
 *   **🐳 Containerized Architecture:** Pre-configured with a modular **Dockerfile** and **Docker Compose** structure for fast deployment and local isolation.
 
 ---
@@ -92,7 +92,7 @@ This codebase features a clean separation between Astro pages (routes) and modul
 
 ```text
 portafolio/
-├── public/                 # Static assets (CV PDFs)
+├── public/                 # Static assets (images, profile pictures)
 ├── src/
 │   ├── components/         # Interactive UI Components (React)
 │   │   ├── ProjectsSection.jsx   # Projects slider featuring terminal mockups

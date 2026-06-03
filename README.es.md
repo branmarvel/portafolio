@@ -23,7 +23,7 @@ Este repositorio contiene el código fuente de mi portafolio profesional de desa
 *   **🎨 Glassmorphism y Diseño High-Tech:** Aplica diseños premium de tema oscuro tipo vidrio con estilos HSL personalizados y microanimaciones respaldadas por **Framer Motion 12**.
 *   **💻 Showcases de Proyectos en Terminal de Mac:** Componentes personalizados de terminal y previsualizaciones de paneles de control con mockups de dispositivos condicionales (teléfono móvil o laptop) para proyectos sin video y estilos de red segura de producción.
 *   **🌐 Soporte Bilingüe Completo (i18n):** Cambio rápido de idioma del lado del cliente entre español e inglés utilizando gestión dinámica de contexto de React.
-*   **📄 Portales de CV Dual Integrados:** Aloja archivos de CV altamente pulidos y descargables tanto en formato Visual (estilizado con CSS) como optimizado para ATS (ATS-Friendly).
+*   **📄 Portales de CV Dual Interactivos y Responsivos:** Aloja páginas de CV bilingües y con selección de tema bajo `/cv/modern` y `/cv/classic` con controles en tiempo real de foto de perfil y exportación a PDF optimizada (`html2pdf.js` / diálogo nativo de impresión).
 *   **🐳 Arquitectura Containerizada:** Preconfigurado con reglas modulares de **Dockerfile** y **Docker Compose** para un despliegue rápido y aislamiento en entorno local.
 
 ---
@@ -92,7 +92,7 @@ Este codebase presenta una separación limpia entre páginas de Astro (rutas) y 
 
 ```text
 portafolio/
-├── public/                 # Recursos estáticos (PDFs de CV)
+├── public/                 # Recursos estáticos (imágenes, foto de perfil)
 ├── src/
 │   ├── components/         # Componentes UI Interactivos (React)
 │   │   ├── ProjectsSection.jsx   # Slider de proyectos con mockups de terminal
