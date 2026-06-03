@@ -72,6 +72,7 @@ export default function ProjectsSection() {
             description: t('projects.sgcpLegacyDesc'),
             videoUrl: 'https://www.youtube.com/embed/1_30YCtLpRo?autoplay=0&controls=1&mute=1',
             demoUrl: 'https://sgcp-app.web.app/#/login',
+            githubUrl: 'https://github.com/branmarvel/Sistema-para-la-Gestion-y-Control-de-proyectos',
             credentials: [
                 { label: t('projects.sgcpCredUser'), value: 'admin@admin.com' },
                 { label: t('projects.sgcpCredPass'), value: '123456' }
@@ -103,7 +104,6 @@ export default function ProjectsSection() {
             description: t('projects.sgcpDesc'),
             videoUrl: null, // Private (NDA)
             demoUrl: null,
-            githubUrl: 'https://github.com/branmarvel/Sistema-para-la-Gestion-y-Control-de-proyectos',
             credentials: null,
             architecture: [
                 '┌─────────────────────────────────────────────┐',
