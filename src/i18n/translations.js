@@ -30,6 +30,7 @@ export const translations = {
             demoBtn: 'Ver Detalles',
             credBtn: 'Credenciales',
             archBtn: 'Arquitectura',
+            repoBtn: 'Repositorio',
             modalTitleCred: 'Credenciales de',
             modalHighlightCred: 'Acceso',
             modalTitleArch: 'Arquitectura de',
@@ -58,12 +59,12 @@ export const translations = {
             jutbaTitle: 'Jutba (Plataforma de Streaming)',
             jutbaRole: 'Frontend Lead (Flutter)',
             jutbaDesc: '• Arquitectura: Frontend multiplataforma en Flutter + Widgetbook con backend NestJS/TypeScript desplegado en Google Cloud Run. • Integración: Firebase Auth, Realtime DB y Push Notifications con sincronización cross-platform. • Impacto: Paridad 100% entre Web, Android e iOS; reducción del 40% en tiempos de implementación.',
-            calcTitle: 'Ve-Exchange Calculator',
+            calcTitle: 'VesTrack',
             calcRole: 'Developer & Creator',
-            calcDesc: '• Arquitectura: App Offline-First en Expo/React Native sin backend; caché persistente (AsyncStorage) con estrategia de invalidación TTL. • Rendimiento: Cero latencia en cálculos de UI con gestión de estado aislada del hilo de red. • Impacto: Herramienta de uso diario para consulta de tasas cambiarias en entornos de baja conectividad.',
-            moviTitle: 'Movilnet Balance Checker',
+            calcDesc: '• Arquitectura: App Offline-First en Expo/React Native y TypeScript con almacenamiento persistente local (AsyncStorage) y sincronización adaptativa de tasas. • Funcionalidad: Monitoreo en tiempo real de tasas BCV (USD/EUR) y ofertas de Binance P2P con filtrado avanzado y calculadora integrada. • UX/UI: Interfaz fluida optimizada con Tailwind CSS, soporte de tema oscuro/claro nativo, feedback háptico y exportación de capturas.',
+            moviTitle: 'movilnet-app',
             moviRole: 'Developer & UX Creator',
-            moviDesc: '• Arquitectura: App ligera en Expo/React Native consumiendo API REST pública con manejo de errores y reintentos automáticos. • UX: Flujo simplificado a un solo toque, diseñado para accesibilidad de adultos mayores. • Impacto: Solución de utilidad real que reduce fricciones de la web oficial de Movilnet.'
+            moviDesc: '• Arquitectura: App móvil en Expo/React Native y TypeScript con soporte nativo Android/iOS y persistencia local para consulta rápida. • UX: Flujo simplificado a un solo toque diseñado para una interacción fluida y accesible con los servicios de Movilnet. • Funcionalidad: Consulta de saldo disponible, estado de la línea y fecha de corte con almacenamiento de historial.'
         },
         about: {
             title: 'Sobre',
@@ -137,6 +138,7 @@ export const translations = {
             demoBtn: 'View Details',
             credBtn: 'Credentials',
             archBtn: 'Architecture',
+            repoBtn: 'Repository',
             modalTitleCred: 'Access Credentials for',
             modalHighlightCred: 'Access',
             modalTitleArch: 'System Architecture of',
@@ -165,12 +167,12 @@ export const translations = {
             jutbaTitle: 'Jutba (Streaming Platform)',
             jutbaRole: 'Frontend Lead (Flutter)',
             jutbaDesc: '• Architecture: Cross-platform Flutter + Widgetbook frontend with NestJS/TypeScript backend deployed on Google Cloud Run. • Integration: Firebase Auth, Realtime DB, and Push Notifications with cross-platform sync. • Impact: 100% feature parity across Web, Android, and iOS; 40% reduction in feature implementation time.',
-            calcTitle: 'Ve-Exchange Calculator',
+            calcTitle: 'VesTrack',
             calcRole: 'Developer & Creator',
-            calcDesc: '• Architecture: Offline-First Expo/React Native app with no backend; persistent cache (AsyncStorage) with TTL invalidation strategy. • Performance: Zero UI-calculation latency with state management isolated from the network thread. • Impact: Daily-use tool for exchange rate queries in low-connectivity environments.',
-            moviTitle: 'Movilnet Balance Checker',
+            calcDesc: '• Architecture: Offline-First Expo/React Native and TypeScript app; persistent cache (AsyncStorage) with adaptive rate synchronization. • Features: Real-time monitoring of BCV rates (USD/EUR) and Binance P2P offers with advanced filtering and integrated calculator. • UX/UI: Fluid interface optimized with Tailwind CSS, native dark/light theme support, haptic feedback, and sharing snapshots.',
+            moviTitle: 'movilnet-app',
             moviRole: 'Developer & UX Creator',
-            moviDesc: '• Architecture: Lightweight Expo/React Native app consuming a public REST API with error handling and automatic retries. • UX: Single-tap flow designed for elderly accessibility. • Impact: Real-world utility reducing friction from the official Movilnet website.'
+            moviDesc: '• Architecture: Expo/React Native and TypeScript mobile app with native Android/iOS support and local persistence for quick queries. • UX: Single-tap flow designed for fluid and accessible interaction with Movilnet services. • Features: Check available balance, line status, and billing cycle date with query history tracking.'
         },
         about: {
             title: 'About',
