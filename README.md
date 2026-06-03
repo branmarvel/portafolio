@@ -4,6 +4,12 @@ A state-of-the-art, ultra-high-performance personal portfolio website and intera
 
 ---
 
+<p align="center">
+  🇺🇸 <b>English</b> | <a href="./README.es.md">🇪🇸 Español</a>
+</p>
+
+---
+
 ## 🌟 Overview
 
 This repository houses the source code for my professional developer portfolio. It is designed to act as a sleek, interactive, and high-performance showcase of my GovTech, FinTech, and Cross-Platform Mobile capabilities, presenting my projects, professional CVs (both visual and ATS-optimized), and interactive layouts to recruiters and technical leaders.
