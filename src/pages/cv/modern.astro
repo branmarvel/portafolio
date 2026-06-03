@@ -13,7 +13,7 @@
         rel="stylesheet">
     <script is:inline src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <style>
+    <style is:global>
         :root {
             --bg: #ffffff;
             --sidebar: #f8fafc;
@@ -62,6 +62,13 @@
             padding: 90px 16px 40px;
             min-height: 100vh;
             overflow-x: hidden;
+        }
+
+        /* When exporting to PDF/print, force light backgrounds and default padding */
+        body.print-mode {
+            background: #ffffff !important;
+            background-image: none !important;
+            padding: 0 !important;
         }
 
         /* Cinematic Noise Overlay (Same as main page) */
@@ -120,6 +127,7 @@
         .btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
             background: transparent;
             color: #e2e8f0;
@@ -180,7 +188,6 @@
             display: flex;
             justify-content: center;
             align-items: flex-start;
-            transition: height 0.2s ease;
         }
 
         #cv-page {
@@ -193,7 +200,7 @@
             position: relative;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
             border-radius: 8px;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: box-shadow 0.2s ease;
         }
 
         #cv-page::before {
@@ -535,40 +542,176 @@
             font-weight: 500;
         }
 
-        /* Responsive and Mobile scaling overrides */
+        /* Responsive and Mobile layout (only on screens < 840px and when NOT printing) */
         @media (max-width: 840px) {
-            body {
-                padding: 30px 10px 100px; /* Leave space for controls bar at bottom */
+            body:not(.print-mode) {
+                padding: 30px 12px 110px; /* space for mobile controls dock */
             }
-            .cv-scaler {
+
+            body:not(.print-mode) .cv-scaler-wrapper,
+            body:not(.print-mode) .cv-scaler {
+                width: 100% !important;
+                height: auto !important;
+                display: block !important;
+            }
+
+            body:not(.print-mode) #cv-page {
+                width: 100% !important;
+                height: auto !important;
+                max-width: 600px;
+                margin: 0 auto;
+                transform: none !important;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+                display: block !important;
+                overflow: visible !important;
+                border-radius: 12px;
+            }
+
+            body:not(.print-mode) header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 16px;
+                padding: 24px 20px;
+            }
+
+            body:not(.print-mode) .photo-wrap {
+                width: 110px;
+                height: 110px;
+            }
+
+            body:not(.print-mode) .contact-grid {
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+                margin-top: 10px;
                 width: 100%;
-                overflow: hidden;
             }
-            #cv-page {
-                transform-origin: top center;
-                border-radius: 4px;
+
+            body:not(.print-mode) .c-item {
+                font-size: .8rem;
+                padding: 4px 0;
             }
-            #controls {
-                width: 90%;
-                top: auto;
-                bottom: 20px;
-                transform: translateX(-50%);
-                justify-content: space-around;
-                padding: 6px 12px;
+
+            body:not(.print-mode) .body-grid {
+                grid-template-columns: 1fr !important;
+                display: block !important;
             }
-            .btn span {
+
+            body:not(.print-mode) aside {
+                border-right: none;
+                border-bottom: 1px solid var(--line);
+                padding: 24px 20px;
+                gap: 16px;
+                overflow: visible;
+            }
+
+            body:not(.print-mode) .s-title {
+                font-size: .85rem;
+                margin-bottom: 10px;
+            }
+
+            body:not(.print-mode) .tag {
+                font-size: .75rem;
+                padding: 4px 10px;
+            }
+
+            body:not(.print-mode) .edu-item p {
+                font-size: .85rem;
+            }
+
+            body:not(.print-mode) .edu-item span {
+                font-size: .75rem;
+            }
+
+            body:not(.print-mode) .edu-item em {
+                font-size: .7rem;
+            }
+
+            body:not(.print-mode) main {
+                padding: 24px 20px;
+                gap: 16px;
+                overflow: visible;
+            }
+
+            body:not(.print-mode) .summary {
+                font-size: .82rem;
+                line-height: 1.6;
+            }
+
+            body:not(.print-mode) .m-title {
+                font-size: .95rem;
+            }
+
+            body:not(.print-mode) .exp {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                margin-bottom: 16px;
+            }
+
+            body:not(.print-mode) .exp-line {
                 display: none;
             }
-            .btn {
-                padding: 8px;
-                border-radius: 50%;
-                width: 38px;
-                height: 38px;
-                justify-content: center;
+
+            body:not(.print-mode) .exp-head {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
             }
-            .btn.back {
+
+            body:not(.print-mode) .exp-head h3 {
+                font-size: .9rem;
+            }
+
+            body:not(.print-mode) .exp-head .date {
+                padding-left: 0;
+                font-size: .75rem;
+            }
+
+            body:not(.print-mode) .exp-co {
+                font-size: .75rem;
+            }
+
+            body:not(.print-mode) .exp li {
+                font-size: .78rem;
+                margin-bottom: 4px;
+                line-height: 1.45;
+                padding-left: 14px;
+            }
+
+            /* Controls Dock on Mobile */
+            body:not(.print-mode) #controls {
+                width: 92%;
+                max-width: 450px;
+                top: auto;
+                bottom: 24px;
+                transform: translateX(-50%);
+                justify-content: space-between;
+                padding: 8px 16px;
+                background: rgba(15, 23, 42, 0.85);
+                border: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 9999px;
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+            }
+
+            body:not(.print-mode) .btn span {
+                display: none !important; /* Force hide button text on mobile */
+            }
+
+            body:not(.print-mode) .btn {
+                padding: 0;
+                margin: 0;
+                border-radius: 50% !important;
+                width: 42px !important;
+                height: 42px !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            body:not(.print-mode) .btn.back {
                 border-left: none;
-                padding-left: 8px;
+                padding-left: 0;
             }
         }
 
@@ -585,6 +728,10 @@
                 transform: none !important;
                 box-shadow: none !important;
                 border-radius: 0 !important;
+                width: 816px !important;
+                height: 1056px !important;
+                display: flex !important;
+                flex-direction: column !important;
             }
 
             body.dark-mode .tag {
@@ -617,6 +764,16 @@
             .cv-scaler-wrapper, .cv-scaler {
                 height: auto !important;
                 width: auto !important;
+            }
+
+            .body-grid {
+                display: grid !important;
+                grid-template-columns: 210px 1fr !important;
+            }
+
+            header {
+                display: flex !important;
+                flex-direction: row !important;
             }
         }
     </style>
@@ -901,8 +1058,8 @@
                                                 control críticas</strong>.</li>
                                         <li data-es="Diseñé dashboards ejecutivos en <strong>Power BI</strong> para KPIs de riesgo tecnológico y soporte a decisiones estratégicas."
                                             data-en="Designed executive dashboards in <strong>Power BI</strong> for technology risk KPIs and strategic decision support.">
-                                            Diseñé dashboards ejecutivos en <strong>Power BI</strong> para KPIs de riesgo
-                                            tecnológico y soporte a decisiones estratégicas.</li>
+                                            Diseñé dashboards ejecutivos en <strong>Power BI</strong> for technology risk
+                                            KPIs and strategic decision support.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -967,7 +1124,6 @@
                                  <span data-es="Mostrar Foto" data-en="Show Photo">${currentLang === 'es' ? 'Mostrar Foto' : 'Show Photo'}</span>`;
             }
             lucide.createIcons();
-            adjustScale();
         }
 
         // ── Language Toggle ────────────────────────────
@@ -1039,21 +1195,17 @@
         // ── PDF Export ─────────────────────────────────
         function exportPDF() {
             const page = document.getElementById('cv-page');
-            const scaler = document.getElementById('cvScaler');
             const lang = currentLang === 'es' ? 'ES' : 'EN';
             
-            // Temporarily reset scale & style for PDF capture
-            const oldTransform = page.style.transform;
-            const oldHeight = scaler.style.height;
-            const oldWidth = scaler.style.width;
+            // Add print-mode class to body to force desktop layout for export
+            document.body.classList.add('print-mode');
+            
+            // Temporarily reset styles for PDF capture
             const oldBorderRadius = page.style.borderRadius;
             const oldBoxShadow = page.style.boxShadow;
             
-            page.style.transform = 'none';
             page.style.borderRadius = '0';
             page.style.boxShadow = 'none';
-            scaler.style.height = 'auto';
-            scaler.style.width = 'auto';
 
             const opt = {
                 margin: 0,
@@ -1072,39 +1224,12 @@
                 // Restore original preview styling
                 page.style.borderRadius = oldBorderRadius;
                 page.style.boxShadow = oldBoxShadow;
-                if (window.innerWidth < 840) {
-                    page.style.transform = oldTransform;
-                    scaler.style.height = oldHeight;
-                    scaler.style.width = oldWidth;
-                }
+                document.body.classList.remove('print-mode');
+            }).catch(err => {
+                console.error("PDF export error", err);
+                document.body.classList.remove('print-mode');
             });
         }
-
-        // ── Dynamic Scaling ───────────────────────────
-        function adjustScale() {
-            const scaler = document.getElementById('cvScaler');
-            const page = document.getElementById('cv-page');
-            if (!scaler || !page) return;
-            
-            if (window.innerWidth < 840) {
-                const targetWidth = window.innerWidth - 20;
-                const scale = targetWidth / 816;
-                page.style.transform = `scale(${scale})`;
-                scaler.style.height = `${1056 * scale}px`;
-                scaler.style.width = `${targetWidth}px`;
-            } else {
-                page.style.transform = '';
-                scaler.style.height = '';
-                scaler.style.width = '';
-            }
-        }
-
-        window.addEventListener('resize', adjustScale);
-        window.addEventListener('DOMContentLoaded', () => {
-            adjustScale();
-            updateThemeBtn();
-        });
-        setTimeout(adjustScale, 100);
     </script>
 </body>
 
