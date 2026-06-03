@@ -12,9 +12,10 @@ This repository houses the source code for my professional developer portfolio. 
 
 ## ✨ Key Features
 
-*   **⚡ Ultra-Fast Static Site Generation:** Powered by **Astro 5** for near-zero runtime JavaScript by default, achieving perfect Core Web Vitals scores.
-*   **🎨 Glassmorphism & High-Tech Aesthetics:** Implements premium dark-theme glass designs with custom HSL styling and micro-animations backed by **Framer Motion 12**.
-*   **💻 Mac Terminal Project Showcases:** Custom-built terminal and dashboard preview components with secure production and private government ministry network layout styles (justifying private staging).
+*   **⚡ Code Splitting & Performance:** Powered by **Astro 5** with dynamic React `lazy` loading and `Suspense` for heavy components, plus asynchronous image decoding (`decoding="async"`) to minimize initial bundle size and ensure perfect Core Web Vitals.
+*   **🎬 Premium Cinematic Aesthetics:** Implements a subtle fixed noise overlay, responsive magnetic hover effects on CTAs and Navbar links, dynamic color-coded project category badges, and realistic blinking terminal cursors.
+*   **🎨 Glassmorphism & High-Tech Design:** Implements premium dark-theme glass designs with custom HSL styling and micro-animations backed by **Framer Motion 12**.
+*   **💻 Mac Terminal Project Showcases:** Custom-built terminal and dashboard preview components with conditional device mockups (Smartphones/Laptops) for projects without video and secure production layout styles.
 *   **🌐 Comprehensive Bilingual Support (i18n):** Fast, client-side language switching between Spanish and English using dynamic context management.
 *   **📄 Embedded Dual CV Portals:** Hosts highly polished, downloadable CV files in both Visual (CSS styled) and ATS-Friendly formats.
 *   **🐳 Containerized Architecture:** Pre-configured with a modular **Dockerfile** and **Docker Compose** structure for fast deployment and local isolation.
@@ -105,6 +106,12 @@ portafolio/
 ├── astro.config.mjs        # Astro integration settings
 └── tsconfig.json           # TypeScript configuration
 ```
+
+---
+
+## 🤝 Git Commit Guidelines
+
+To maintain clean repository hygiene for both humans and AI agents, all commits must follow the conventions specified in [COMMIT_CONVENTION.md](COMMIT_CONVENTION.md). Make sure your commit messages start with appropriate emoji and Angular style prefixes (e.g., `⚡ perf(scope): description` or `💄 style(scope): description`).
 
 ---
 
