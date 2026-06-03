@@ -89,9 +89,9 @@ export default function SkillsSection() {
                             initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 + (catIdx * 0.1), type: "spring", stiffness: 200, damping: 20 }}
-                            className="glass-panel rounded-2xl md:rounded-3xl p-4 md:p-6 hover:bg-[var(--color-surface-hover)] transition-colors duration-500 group relative overflow-hidden"
+                            className="glass-panel rounded-2xl md:rounded-3xl p-4 md:p-6 hover:bg-[var(--color-surface-hover)] transition-colors duration-500 group/card relative overflow-hidden"
                         >
-                            <div className="absolute -right-4 -top-4 md:-right-6 md:-top-6 text-6xl md:text-8xl opacity-5 group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                            <div className="absolute -right-4 -top-4 md:-right-6 md:-top-6 text-6xl md:text-8xl opacity-5 group-hover/card:scale-110 transition-transform duration-700 pointer-events-none">
                                 {category.icon}
                             </div>
 
