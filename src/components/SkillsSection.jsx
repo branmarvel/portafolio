@@ -122,7 +122,7 @@ export default function SkillsSection() {
                                         <div
                                             className="w-10 h-10 md:w-12 lg:w-14 md:h-12 lg:h-14 rounded-xl md:rounded-2xl bg-[#111] border border-[var(--color-border)] flex items-center justify-center transition-all duration-300 shadow-inner hover:-translate-y-1 cursor-help"
                                         >
-                                            <img src={skill.icon} alt={skill.name} className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-300 filter drop-shadow-md" loading="lazy" />
+                                            <img src={skill.icon} alt={skill.name} className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 opacity-80 hover:opacity-100 hover:scale-110 transition-all duration-300 filter drop-shadow-md" loading="lazy" decoding="async" />
                                         </div>
 
                                         {/* Clear, elegant skill label */}
