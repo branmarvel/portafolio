@@ -70,7 +70,7 @@ export default function ProjectsSection() {
             category: 'freelance',
             tags: ['Flutter', 'Firebase', 'NestJS', 'TypeScript', 'Cloud Run'],
             description: t('projects.jutbaDesc'),
-            videoUrl: null, // Public APK, but currently no video (placeholder)
+            videoUrl: 'https://www.youtube.com/embed/I87DAt4ZdD4?autoplay=0&controls=1&mute=1',
             demoUrl: null,
             credentials: null,
             architecture: [
