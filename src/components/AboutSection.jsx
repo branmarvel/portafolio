@@ -39,26 +39,49 @@ export default function AboutSection() {
                         {t('about.p2')}
                     </p>
 
-                    {/* CV Download Buttons */}
-                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
-                        <a
-                            href="/Brandon_Bello_Programador_24884464.pdf"
-                            download
-                            onClick={() => trackDownload('Brandon_Bello_ES.pdf')}
-                            className="px-4 py-2.5 md:px-8 md:py-4 rounded-full bg-white text-black font-semibold hover:bg-[var(--color-tungsten)] transition-colors flex items-center justify-center gap-2 group/cv text-[11px] md:text-sm"
-                        >
-                            <span>{t('about.cvEs')}</span>
-                            <svg className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover/cv:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        </a>
-                        <a
-                            href="/Brandon_Bello_Developer.pdf"
-                            download
-                            onClick={() => trackDownload('Brandon_Bello_EN.pdf')}
-                            className="px-4 py-2.5 md:px-8 md:py-4 rounded-full border border-[var(--color-border)] text-white font-semibold hover:bg-[var(--color-tungsten)] hover:text-black transition-colors flex items-center justify-center gap-2 group/cv text-[11px] md:text-sm"
-                        >
-                            <span>{t('about.cvEn')}</span>
-                            <svg className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover/cv:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        </a>
+                    {/* CV Interactive & PDF Buttons */}
+                    <div className="flex flex-col gap-3 w-full">
+                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full">
+                            <a
+                                href="/cv/modern"
+                                className="px-4 py-2.5 md:px-8 md:py-4 rounded-full bg-[var(--color-tungsten)] text-black font-semibold hover:bg-white transition-colors flex items-center justify-center gap-2 group/cv text-[11px] md:text-sm flex-1"
+                            >
+                                <svg className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover/cv:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"></path>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                                <span>{t('about.modernCv')}</span>
+                            </a>
+                            <a
+                                href="/cv/classic"
+                                className="px-4 py-2.5 md:px-8 md:py-4 rounded-full border border-[var(--color-border)] text-white font-semibold hover:bg-[var(--color-tungsten)] hover:text-black transition-colors flex items-center justify-center gap-2 group/cv text-[11px] md:text-sm flex-1"
+                            >
+                                <svg className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover/cv:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"></path>
+                                </svg>
+                                <span>{t('about.classicCv')}</span>
+                            </a>
+                        </div>
+                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full">
+                            <a
+                                href="/Brandon_Bello_Programador_24884464.pdf"
+                                download
+                                onClick={() => trackDownload('Brandon_Bello_ES.pdf')}
+                                className="px-4 py-2 md:px-6 md:py-2.5 rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 group/cv text-[10px] md:text-xs flex-1"
+                            >
+                                <svg className="w-3 h-3 md:w-3.5 md:h-3.5 group-hover/cv:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                <span>{t('about.cvEs')}</span>
+                            </a>
+                            <a
+                                href="/Brandon_Bello_Developer.pdf"
+                                download
+                                onClick={() => trackDownload('Brandon_Bello_EN.pdf')}
+                                className="px-4 py-2 md:px-6 md:py-2.5 rounded-full bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2 group/cv text-[10px] md:text-xs flex-1"
+                            >
+                                <svg className="w-3 h-3 md:w-3.5 md:h-3.5 group-hover/cv:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                <span>{t('about.cvEn')}</span>
+                            </a>
+                        </div>
                     </div>
 
                 </motion.div>
