@@ -1,0 +1,6 @@
+packages:
+  - '.'
+minimumReleaseAge: 14400
+allowBuilds:
+  esbuild: true
+  sharp: true
