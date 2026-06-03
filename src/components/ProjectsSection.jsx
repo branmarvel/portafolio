@@ -38,13 +38,22 @@ export default function ProjectsSection() {
     const [[page, direction], setPage] = useState([0, 0]);
     const [activeModal, setActiveModal] = useState(null);
 
+    const categoryConfig = {
+        university: { color: '#a78bda', label: t('projects.catUniversity') },
+        government: { color: '#6b8aae', label: t('projects.catGovernment') },
+        freelance:  { color: '#5ea88e', label: t('projects.catFreelance') },
+        personal:   { color: 'var(--color-tungsten)', label: t('projects.catPersonal') }
+    };
+
     const projects = [
         {
-            id: 'sgcp',
-            title: t('projects.sgcpTitle'),
-            role: t('projects.sgcpRole'),
-            tags: ['Go (Golang)', 'PostgreSQL', 'JWT/RBAC', 'Astro', 'React Native'],
-            description: t('projects.sgcpDesc'),
+            id: 'sgcp-legacy',
+            title: t('projects.sgcpLegacyTitle'),
+            role: t('projects.sgcpLegacyRole'),
+            category: 'university',
+            tags: ['Angular', 'Firebase', 'Bootstrap', 'JavaScript'],
+            description: t('projects.sgcpLegacyDesc'),
+            videoUrl: 'https://www.youtube.com/embed/1_30YCtLpRo?autoplay=0&controls=1&mute=1',
             demoUrl: 'https://sgcp-app.web.app/#/login',
             credentials: [
                 { label: t('projects.sgcpCredUser'), value: 'admin@admin.com' },
@@ -52,11 +61,24 @@ export default function ProjectsSection() {
             ]
         },
         {
+            id: 'sgcp',
+            title: t('projects.sgcpTitle'),
+            role: t('projects.sgcpRole'),
+            category: 'government',
+            tags: ['Go (Golang)', 'PostgreSQL', 'JWT/RBAC', 'Astro', 'React Native'],
+            description: t('projects.sgcpDesc'),
+            videoUrl: null, // Private (NDA)
+            demoUrl: null,
+            credentials: null
+        },
+        {
             id: 'utext',
             title: t('projects.utextTitle'),
             role: t('projects.utextRole'),
-            tags: ['Laravel 11', 'Vue 3', 'Node.js', 'Socket.io', 'Docker'],
+            category: 'university',
+            tags: ['Flutter', 'Firebase', 'Dart', 'Mobile UI'],
             description: t('projects.utextDesc'),
+            videoUrl: 'https://www.youtube.com/embed/_rpIpp9s7Zo?autoplay=0&controls=1&mute=1',
             demoUrl: 'https://u-text-app.web.app',
             credentials: [
                 { label: t('projects.utextCredTeacher'), value: 'admin@admin.com', pass: '123456' },
@@ -67,8 +89,43 @@ export default function ProjectsSection() {
             id: 'erp',
             title: t('projects.erpTitle'),
             role: t('projects.erpRole'),
-            tags: ['Flutter', 'Firebase', 'NestJS', 'TypeScript', 'Cloud Run'],
+            category: 'government',
+            tags: ['Laravel 11', 'Vue 3', 'Node.js', 'Socket.io', 'Docker'],
             description: t('projects.erpDesc'),
+            videoUrl: null, // Excluded per user request
+            demoUrl: null,
+            credentials: null
+        },
+        {
+            id: 'jutba',
+            title: t('projects.jutbaTitle'),
+            role: t('projects.jutbaRole'),
+            category: 'freelance',
+            tags: ['Flutter', 'Firebase', 'NestJS', 'TypeScript', 'Cloud Run'],
+            description: t('projects.jutbaDesc'),
+            videoUrl: null, // Public APK, but currently no video (placeholder)
+            demoUrl: null,
+            credentials: null
+        },
+        {
+            id: 'calc',
+            title: t('projects.calcTitle'),
+            role: t('projects.calcRole'),
+            category: 'personal',
+            tags: ['React Native', 'Expo', 'JavaScript', 'Tailwind CSS', 'Mobile UI'],
+            description: t('projects.calcDesc'),
+            videoUrl: null,
+            demoUrl: null,
+            credentials: null
+        },
+        {
+            id: 'movi',
+            title: t('projects.moviTitle'),
+            role: t('projects.moviRole'),
+            category: 'personal',
+            tags: ['React Native', 'Expo', 'REST API', 'JavaScript', 'Android'],
+            description: t('projects.moviDesc'),
+            videoUrl: null,
             demoUrl: null,
             credentials: null
         }
@@ -147,34 +204,48 @@ export default function ProjectsSection() {
                                 <span className="text-[8px] md:text-[10px] font-mono text-[var(--color-text-secondary)] ml-2 md:ml-3 tracking-widest">{project.id.toUpperCase()} // DASHBOARD_PREVIEW.sh</span>
                             </div>
                             
-                            {/* Graphic Central Visualization */}
-                            <div className="flex-1 flex flex-col items-center justify-center relative overflow-hidden rounded-xl bg-black/50 border border-white/5 p-2 md:p-4">
-                                <div className="absolute -inset-10 bg-radial-gradient from-[var(--color-tungsten)]/10 to-transparent/0 opacity-30 blur-2xl group-hover:scale-125 transition-transform duration-1000" />
-                                
-                                <motion.div 
-                                    animate={{ y: [0, -4, 0] }}
-                                    transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-                                    className="z-10 flex flex-col items-center text-center gap-1.5 md:gap-2"
-                                >
-                                    <div className="w-8 h-8 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-gradient-to-tr from-[var(--color-tungsten)] to-amber-200/50 flex items-center justify-center shadow-lg text-black font-bold text-sm md:text-xl mb-1 md:mb-2">
-                                        {project.title.charAt(0)}
-                                    </div>
-                                    <h4 className="text-white text-[11px] md:text-lg font-mono font-medium tracking-tight px-2">{project.title}</h4>
-                                    <span className="font-mono text-[8px] md:text-xs text-[var(--color-tungsten)] uppercase tracking-wider">{project.role}</span>
-                                </motion.div>
-                                
-                                {/* Dynamic floating glow lines */}
-                                <div className="absolute inset-0 flex justify-between px-12 pointer-events-none opacity-20">
-                                    <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[var(--color-tungsten)] to-transparent" />
-                                    <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-white to-transparent" />
-                                    <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[var(--color-tungsten)] to-transparent" />
+                            {project.videoUrl ? (
+                                <div className="flex-1 rounded-xl overflow-hidden relative bg-black border border-white/5">
+                                    <iframe
+                                        className="w-full h-full absolute inset-0 pointer-events-auto"
+                                        src={project.videoUrl}
+                                        title={project.title}
+                                        frameBorder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                        loading="lazy"
+                                    ></iframe>
                                 </div>
-                            </div>
+                            ) : (
+                                /* Graphic Central Visualization for NDA or Mobile Expo mockups */
+                                <div className="flex-1 flex flex-col items-center justify-center relative overflow-hidden rounded-xl bg-black/50 border border-white/5 p-2 md:p-4">
+                                    <div className="absolute -inset-10 bg-radial-gradient from-[var(--color-tungsten)]/10 to-transparent/0 opacity-30 blur-2xl group-hover:scale-125 transition-transform duration-1000" />
+                                    
+                                    <motion.div 
+                                        animate={{ y: [0, -4, 0] }}
+                                        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+                                        className="z-10 flex flex-col items-center text-center gap-1.5 md:gap-2"
+                                    >
+                                        <div className="w-8 h-8 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-gradient-to-tr from-[var(--color-tungsten)] to-amber-200/50 flex items-center justify-center shadow-lg text-black font-bold text-sm md:text-xl mb-1 md:mb-2">
+                                            {project.title.charAt(0)}
+                                        </div>
+                                        <h4 className="text-white text-[11px] md:text-lg font-mono font-medium tracking-tight px-2">{project.title}</h4>
+                                        <span className="font-mono text-[8px] md:text-xs text-[var(--color-tungsten)] uppercase tracking-wider">{project.role}</span>
+                                    </motion.div>
+                                    
+                                    {/* Dynamic floating glow lines */}
+                                    <div className="absolute inset-0 flex justify-between px-12 pointer-events-none opacity-20">
+                                        <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[var(--color-tungsten)] to-transparent" />
+                                        <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-white to-transparent" />
+                                        <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[var(--color-tungsten)] to-transparent" />
+                                    </div>
+                                </div>
+                            )}
                             
                             {/* Terminal Prompt Footer */}
                             <div className="mt-2.5 md:mt-4 pt-2 md:pt-3 border-t border-white/5 font-mono text-[8px] md:text-xs text-[var(--color-text-secondary)] flex justify-between items-center w-full">
-                                <span>STATUS: <span className="text-[#ff5f56] font-semibold">SECURE_PRODUCTION</span></span>
-                                <span>NETWORK: PRIVATE_MINISTRY</span>
+                                <span>STATUS: <span className={project.videoUrl ? "text-[#27c93f] font-semibold" : (project.id === 'calc' || project.id === 'movi' || project.id === 'jutba') ? "text-amber-400 font-semibold" : "text-[#ff5f56] font-semibold"}>{project.videoUrl ? "ACTIVE_STAGING" : (project.id === 'calc' || project.id === 'movi') ? "OFFLINE_LOCAL_DEV" : project.id === 'jutba' ? "PUBLIC_RELEASE_PENDING" : "SECURE_PRODUCTION"}</span></span>
+                                <span>NETWORK: {project.videoUrl ? "PUBLIC_CLOUDFLARE" : (project.id === 'calc' || project.id === 'movi') ? "EXPO_CLIENT_SIM" : project.id === 'jutba' ? "PUBLIC_CLOUDFLARE" : "PRIVATE_MINISTRY"}</span>
                             </div>
                         </div>
 
@@ -183,6 +254,17 @@ export default function ProjectsSection() {
                             <div>
                                 <span className="font-mono text-[var(--color-tungsten)] tracking-widest text-[10px] md:text-xs uppercase block mb-1 lg:mb-2">
                                     {project.role}
+                                </span>
+                                {/* Category Badge */}
+                                <span
+                                    className="inline-block font-mono text-[9px] md:text-[11px] tracking-widest uppercase mb-2 lg:mb-3 py-1 px-2.5 rounded-sm"
+                                    style={{
+                                        color: categoryConfig[project.category]?.color,
+                                        borderLeft: `2px solid ${categoryConfig[project.category]?.color}`,
+                                        backgroundColor: `${categoryConfig[project.category]?.color}11`
+                                    }}
+                                >
+                                    ▸ {categoryConfig[project.category]?.label}
                                 </span>
                                 <h3 className="text-xl md:text-3xl lg:text-5xl font-bold tracking-tight leading-none mb-2 lg:mb-4">{project.title}</h3>
                             </div>
