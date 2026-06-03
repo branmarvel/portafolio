@@ -11,7 +11,7 @@ export const translations = {
             greeting: 'Hola, soy',
             name: 'BRANDON J. BELLO',
             role: 'Full Stack Developer',
-            location: 'Basado en Caracas, Venezuela',
+            location: 'Basado en Caracas, Venezuela · Disponible para roles Remotos Globales',
             bio: 'Apasionado por crear soluciones web elegantes y funcionales, construyendo arquitecturas robustas desde Caracas, Venezuela.',
             scrollPrompt: 'Scroll',
             resume: 'Descargar CV'
@@ -113,7 +113,7 @@ export const translations = {
             greeting: 'Hello, I am',
             name: 'BRANDON J. BELLO',
             role: 'Full Stack Developer',
-            location: 'Based in Caracas, Venezuela',
+            location: 'Based in Caracas, Venezuela · Available for Global Remote roles',
             bio: 'Passionate about building elegant and functional web solutions, crafting robust architectures from Caracas, Venezuela.',
             scrollPrompt: 'Scroll',
             resume: 'Download Resume'

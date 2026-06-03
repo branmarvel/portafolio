@@ -25,6 +25,7 @@ export default function PortfolioApp() {
             <Navbar />
             <ScrollController sections={sections} />
             <CookieConsent />
+            <div className="noise-overlay"></div>
         </LanguageProvider>
     );
 }

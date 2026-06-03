@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { mechanicalSpring } from '../utils/motion';
 import { useLanguage } from '../context/LanguageContext';
+import Magnetic from './Magnetic';
 
 const slideVariants = {
     enter: (direction) => ({
@@ -242,8 +243,19 @@ export default function ProjectsSection() {
                                         transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
                                         className="z-10 flex flex-col items-center text-center gap-1.5 md:gap-2"
                                     >
-                                        <div className="w-8 h-8 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-gradient-to-tr from-[var(--color-tungsten)] to-amber-200/50 flex items-center justify-center shadow-lg text-black font-bold text-sm md:text-xl mb-1 md:mb-2">
-                                            {project.title.charAt(0)}
+                                        <div className="w-12 h-12 md:w-20 md:h-20 mb-1 md:mb-2 text-[var(--color-tungsten)] opacity-80 flex items-center justify-center">
+                                            {project.category === 'personal' || project.category === 'freelance' ? (
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full drop-shadow-[0_0_12px_rgba(255,215,170,0.3)]">
+                                                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                                    <line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="2"></line>
+                                                </svg>
+                                            ) : (
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" className="w-full h-full drop-shadow-[0_0_12px_rgba(255,215,170,0.3)]">
+                                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                                                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                                                </svg>
+                                            )}
                                         </div>
                                         <h4 className="text-white text-[11px] md:text-lg font-mono font-medium tracking-tight px-2">{project.title}</h4>
                                         <span className="font-mono text-[8px] md:text-xs text-[var(--color-tungsten)] uppercase tracking-wider">{project.role}</span>
@@ -300,18 +312,22 @@ export default function ProjectsSection() {
 
                             <div className="flex flex-wrap items-center gap-3 mt-auto lg:mt-6">
                                 {project.demoUrl && (
-                                    <a href={project.demoUrl} target="_blank" rel="noreferrer" className="px-4 py-2 lg:px-6 lg:py-3 rounded-full bg-white text-black font-semibold text-xs lg:text-sm hover:scale-105 transition-transform flex items-center gap-2">
-                                        {t('projects.demoBtn')}
-                                        <svg className="w-3 h-3 lg:w-4 lg:h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                                    </a>
+                                    <Magnetic>
+                                        <a href={project.demoUrl} target="_blank" rel="noreferrer" className="px-4 py-2 lg:px-6 lg:py-3 rounded-full bg-white text-black font-semibold text-xs lg:text-sm hover:scale-105 transition-transform flex items-center gap-2 block">
+                                            {t('projects.demoBtn')}
+                                            <svg className="w-3 h-3 lg:w-4 lg:h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                        </a>
+                                    </Magnetic>
                                 )}
                                 {project.credentials && (
-                                    <button
-                                        onClick={() => setActiveModal(project.id)}
-                                        className="px-4 py-2 lg:px-6 lg:py-3 rounded-full border border-[var(--color-border)] text-xs lg:text-sm font-medium hover:bg-[var(--color-tungsten)] hover:text-black transition-colors"
-                                    >
-                                        {t('projects.credBtn')}
-                                    </button>
+                                    <Magnetic>
+                                        <button
+                                            onClick={() => setActiveModal(project.id)}
+                                            className="px-4 py-2 lg:px-6 lg:py-3 rounded-full border border-[var(--color-border)] text-xs lg:text-sm font-medium hover:bg-[var(--color-tungsten)] hover:text-black transition-colors"
+                                        >
+                                            {t('projects.credBtn')}
+                                        </button>
+                                    </Magnetic>
                                 )}
                             </div>
                         </div>

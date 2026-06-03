@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import Magnetic from './Magnetic';
 
 export default function Navbar() {
     const { language, toggleLanguage, t } = useLanguage();
@@ -53,39 +54,42 @@ export default function Navbar() {
                 {/* Enlaces de Navegación */}
                 <div className="flex items-center gap-1 md:gap-4 overflow-x-auto no-scrollbar mask-edges pr-2 lg:pr-0">
                     {links.map((link) => (
-                        <button
-                            key={link.id}
-                            onClick={() => {
-                                const buttons = document.querySelectorAll('.nav-dot');
-                                if (buttons && buttons[link.index]) buttons[link.index].click();
-                            }}
-                            className={`relative px-2 py-1.5 md:px-3 text-[10px] md:text-sm font-medium uppercase tracking-widest transition-colors flex-shrink-0 ${activeSection === link.id ? 'text-[var(--color-tungsten)]' : 'text-[var(--color-text-secondary)] hover:text-white'
-                                }`}
-                        >
-                            {activeSection === link.id && (
-                                <motion.div
-                                    layoutId="navbar-indicator"
-                                    className="absolute inset-0 rounded-full bg-[var(--color-tungsten)]/10"
-                                    transition={{ type: 'spring', bounce: 0.25, duration: 0.5 }}
-                                />
-                            )}
-                            <span className="relative z-10">{link.name}</span>
-                        </button>
+                        <Magnetic key={link.id}>
+                            <button
+                                onClick={() => {
+                                    const buttons = document.querySelectorAll('.nav-dot');
+                                    if (buttons && buttons[link.index]) buttons[link.index].click();
+                                }}
+                                className={`relative px-2 py-1.5 md:px-3 text-[10px] md:text-sm font-medium uppercase tracking-widest transition-colors flex-shrink-0 ${activeSection === link.id ? 'text-[var(--color-tungsten)]' : 'text-[var(--color-text-secondary)] hover:text-white'
+                                    }`}
+                            >
+                                {activeSection === link.id && (
+                                    <motion.div
+                                        layoutId="navbar-indicator"
+                                        className="absolute inset-0 rounded-full bg-[var(--color-tungsten)]/10"
+                                        transition={{ type: 'spring', bounce: 0.25, duration: 0.5 }}
+                                    />
+                                )}
+                                <span className="relative z-10">{link.name}</span>
+                            </button>
+                        </Magnetic>
                     ))}
                 </div>
 
                 <div className="w-[1px] h-6 bg-[var(--color-border)] mx-1 md:mx-2 shrink-0 hidden lg:block" />
 
                 {/* Toggle Language ES/EN */}
-                <button
-                    onClick={toggleLanguage}
-                    className="flex items-center gap-1 md:gap-2 px-2 py-1.5 md:px-3 rounded-full hover:bg-[var(--color-surface-hover)] transition-colors border border-transparent hover:border-[var(--color-border)] group shrink-0"
-                    title="Cambiar Idioma / Change Language"
-                >
-                    <span className={`text-[10px] md:text-xs font-mono font-bold transition-colors ${language === 'es' ? 'text-[var(--color-tungsten)]' : 'text-[var(--color-text-secondary)]'}`}>ES</span>
-                    <span className="text-[10px] md:text-xs text-[var(--color-border)]">/</span>
-                    <span className={`text-[10px] md:text-xs font-mono font-bold transition-colors ${language === 'en' ? 'text-[var(--color-tungsten)]' : 'text-[var(--color-text-secondary)]'}`}>EN</span>
-                </button>
+                <Magnetic>
+                    <button
+                        onClick={toggleLanguage}
+                        className="flex items-center gap-1 md:gap-2 px-2 py-1.5 md:px-3 rounded-full hover:bg-[var(--color-surface-hover)] transition-colors border border-transparent hover:border-[var(--color-border)] group shrink-0"
+                        title="Cambiar Idioma / Change Language"
+                    >
+                        <span className={`text-[10px] md:text-xs font-mono font-bold transition-colors ${language === 'es' ? 'text-[var(--color-tungsten)]' : 'text-[var(--color-text-secondary)]'}`}>ES</span>
+                        <span className="text-[10px] md:text-xs text-[var(--color-border)]">/</span>
+                        <span className={`text-[10px] md:text-xs font-mono font-bold transition-colors ${language === 'en' ? 'text-[var(--color-tungsten)]' : 'text-[var(--color-text-secondary)]'}`}>EN</span>
+                    </button>
+                </Magnetic>
 
             </nav>
         </motion.header>
