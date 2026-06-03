@@ -243,7 +243,7 @@ export default function ProjectsSection() {
             category: 'personal',
             tags: ['React Native', 'Expo', 'TypeScript', 'Tailwind CSS', 'Mobile UI'],
             description: t('projects.calcDesc'),
-            videoUrl: null,
+            videoUrl: 'https://www.youtube.com/embed/pVpo8PMqKq0?autoplay=0&controls=1&mute=1',
             demoUrl: null,
             githubUrl: 'https://github.com/branmarvel/VesTrack',
             credentials: null
@@ -255,7 +255,7 @@ export default function ProjectsSection() {
             category: 'personal',
             tags: ['React Native', 'Expo', 'TypeScript', 'Android', 'iOS'],
             description: t('projects.moviDesc'),
-            videoUrl: null,
+            videoUrl: 'https://www.youtube.com/embed/CRh3BbnVRaM?autoplay=0&controls=1&mute=1',
             demoUrl: null,
             githubUrl: 'https://github.com/branmarvel/movilnet-app',
             credentials: null
