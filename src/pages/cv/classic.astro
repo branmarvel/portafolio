@@ -398,6 +398,10 @@
             <i data-lucide="download"></i>
             <span data-es="Exportar PDF" data-en="Export PDF">Exportar PDF</span>
         </button>
+        <a class="btn cv-type" href="/cv/modern" title="Ver CV Moderno">
+            <i data-lucide="sparkles"></i>
+            <span data-es="CV Moderno" data-en="Modern CV">CV Moderno</span>
+        </a>
         <a class="btn back" href="/" title="Volver al Inicio">
             <i data-lucide="arrow-left"></i>
             <span data-es="Volver" data-en="Back">Volver</span>
@@ -771,33 +775,78 @@
         }
 
         // ── Language Toggle ────────────────────────────
+        function initLang() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            const savedLang = localStorage.getItem('portfolio_lang');
+            
+            let detectedLang = 'es';
+            if (urlLang === 'es' || urlLang === 'en') {
+                detectedLang = urlLang;
+            } else if (savedLang === 'es' || savedLang === 'en') {
+                detectedLang = savedLang;
+            } else {
+                const browserLang = navigator.language || navigator.userLanguage;
+                detectedLang = browserLang.toLowerCase().includes('es') ? 'es' : 'en';
+            }
+            
+            currentLang = detectedLang;
+            localStorage.setItem('portfolio_lang', currentLang);
+            updateUIForLang();
+        }
+
         function toggleLang() {
             currentLang = currentLang === 'es' ? 'en' : 'es';
+            localStorage.setItem('portfolio_lang', currentLang);
+            updateUIForLang();
+        }
+
+        function updateUIForLang() {
             document.getElementById('content-es').style.display = currentLang === 'es' ? '' : 'none';
             document.getElementById('content-en').style.display = currentLang === 'en' ? '' : 'none';
             document.getElementById('htmlRoot').lang = currentLang;
             
             const btn = document.getElementById('langBtn');
-            btn.innerHTML = currentLang === 'es'
-                ? '<i data-lucide="globe"></i> <span>🇬🇧 English</span>'
-                : '<i data-lucide="globe"></i> <span>🇪🇸 Español</span>';
+            if (btn) {
+                btn.innerHTML = currentLang === 'es'
+                    ? '<i data-lucide="globe"></i> <span>🇬🇧 English</span>'
+                    : '<i data-lucide="globe"></i> <span>🇪🇸 Español</span>';
+            }
 
             const pageTitle = document.getElementById('pageTitle');
-            pageTitle.textContent = currentLang === 'es'
-                ? 'Brandon J. Bello Moncada — Classic CV'
-                : 'Brandon J. Bello Moncada — Classic CV (EN)';
+            if (pageTitle) {
+                pageTitle.textContent = currentLang === 'es'
+                    ? 'Brandon J. Bello Moncada — Classic CV'
+                    : 'Brandon J. Bello Moncada — Classic CV (EN)';
+            }
 
             // Update photo button text
             const photoBtn = document.getElementById('photoBtn');
-            if (showPhoto) {
-                photoBtn.querySelector('span').textContent = currentLang === 'es' ? 'Ocultar Foto' : 'Hide Photo';
-            } else {
-                photoBtn.querySelector('span').textContent = currentLang === 'es' ? 'Mostrar Foto' : 'Show Photo';
+            if (photoBtn) {
+                if (showPhoto) {
+                    photoBtn.querySelector('span').textContent = currentLang === 'es' ? 'Ocultar Foto' : 'Hide Photo';
+                } else {
+                    photoBtn.querySelector('span').textContent = currentLang === 'es' ? 'Mostrar Foto' : 'Show Photo';
+                }
             }
 
             // Update PDF button text
             const dlBtn = document.getElementById('controls').querySelector('.dl span');
-            dlBtn.textContent = currentLang === 'es' ? 'Exportar PDF' : 'Export PDF';
+            if (dlBtn) {
+                dlBtn.textContent = currentLang === 'es' ? 'Exportar PDF' : 'Export PDF';
+            }
+
+            // Update CV toggle button text
+            const cvBtn = document.getElementById('controls').querySelector('.cv-type span');
+            if (cvBtn) {
+                cvBtn.textContent = currentLang === 'es' ? 'CV Moderno' : 'Modern CV';
+            }
+
+            // Update CV modern link query param
+            const cvLink = document.getElementById('controls').querySelector('.cv-type');
+            if (cvLink) {
+                cvLink.href = `/cv/modern?lang=${currentLang}`;
+            }
 
             lucide.createIcons();
         }
@@ -817,9 +866,9 @@
             }, 1000);
         }
 
-        // Initialize icons
+        // Initialize icons and language on DOM load
         window.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
+            initLang();
         });
     </script>
 </body>

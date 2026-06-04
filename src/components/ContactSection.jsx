@@ -38,7 +38,7 @@ export default function ContactSection() {
     };
 
     return (
-        <section id="contact" className="w-full h-full flex flex-col justify-start md:justify-center items-center px-4 md:px-12 relative overflow-y-auto overflow-x-hidden bg-[var(--color-base)]">
+        <section id="contact" className="w-full h-full flex flex-col justify-start lg:justify-center items-center px-4 md:px-12 relative overflow-y-auto lg:overflow-hidden overflow-x-hidden bg-[var(--color-base)] no-scrollbar">
 
             {/* Minimalist Grid Pattern */}
             <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{ backgroundImage: 'linear-gradient(var(--color-text-primary) 1px, transparent 1px), linear-gradient(90deg, var(--color-text-primary) 1px, transparent 1px)', backgroundSize: '64px 64px' }}></div>
@@ -48,7 +48,7 @@ export default function ContactSection() {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={staggerContainer}
-                className="max-w-6xl w-full flex flex-col justify-start md:justify-center gap-4 lg:gap-12 pt-16 md:pt-0 pb-6 md:pb-0 relative z-10"
+                className="max-w-6xl w-full flex flex-col justify-start lg:justify-center gap-4 lg:gap-12 pt-20 md:pt-24 lg:pt-0 pb-8 lg:pb-0 relative z-10"
             >
                 {/* Header */}
                 <div className="text-center lg:text-left flex flex-col lg:flex-row justify-between items-start lg:items-end gap-2 md:gap-6 border-b border-[var(--color-border)] pb-3 md:pb-8 shrink-0">

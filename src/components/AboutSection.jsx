@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 
 export default function AboutSection() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
     const trackDownload = (fileName) => {
         if (window.gtag) {
@@ -15,11 +15,11 @@ export default function AboutSection() {
     };
 
     return (
-        <section id="about" className="w-full h-full flex flex-col justify-start md:justify-center items-center px-4 md:px-12 bg-[var(--color-base)] relative overflow-y-auto overflow-x-hidden">
+        <section id="about" className="w-full h-full flex flex-col justify-start lg:justify-center items-center px-4 md:px-12 bg-[var(--color-base)] relative overflow-y-auto lg:overflow-hidden overflow-x-hidden no-scrollbar">
             {/* Subtle glow lines */}
             <div className="absolute top-1/4 -right-1/4 w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--color-border)] to-transparent opacity-20 transform rotate-45 pointer-events-none"></div>
 
-            <div className="max-w-7xl w-full flex flex-col lg:grid lg:grid-cols-12 gap-4 lg:gap-8 items-start lg:items-center pt-20 md:pt-0 pb-6 lg:pb-0">
+            <div className="max-w-7xl w-full flex flex-col lg:grid lg:grid-cols-12 gap-4 lg:gap-8 items-start lg:items-center pt-20 md:pt-24 lg:pt-0 pb-8 lg:pb-0">
 
                 {/* Intro Bento Box */}
                 <motion.div
@@ -42,7 +42,7 @@ export default function AboutSection() {
                     {/* CV Interactive Buttons */}
                     <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full">
                         <a
-                            href="/cv/modern"
+                            href={`/cv/modern?lang=${language}`}
                             className="px-4 py-2.5 md:px-8 md:py-4 rounded-full bg-[var(--color-tungsten)] text-black font-semibold hover:bg-white transition-colors flex items-center justify-center gap-2 group/cv text-[11px] md:text-sm flex-1"
                         >
                             <svg className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover/cv:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -52,7 +52,7 @@ export default function AboutSection() {
                             <span>{t('about.modernCv')}</span>
                         </a>
                         <a
-                            href="/cv/classic"
+                            href={`/cv/classic?lang=${language}`}
                             className="px-4 py-2.5 md:px-8 md:py-4 rounded-full border border-[var(--color-border)] text-white font-semibold hover:bg-[var(--color-tungsten)] hover:text-black transition-colors flex items-center justify-center gap-2 group/cv text-[11px] md:text-sm flex-1"
                         >
                             <svg className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover/cv:scale-110 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">

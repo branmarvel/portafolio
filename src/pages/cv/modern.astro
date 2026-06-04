@@ -799,6 +799,10 @@
             <i data-lucide="download"></i>
             <span data-es="Exportar PDF" data-en="Export PDF">Exportar PDF</span>
         </button>
+        <a class="btn cv-type" href="/cv/classic" title="Ver CV Clásico">
+            <i data-lucide="file-text"></i>
+            <span data-es="CV Clásico" data-en="Classic CV">CV Clásico</span>
+        </a>
         <a class="btn back" href="/" title="Volver al Inicio">
             <i data-lucide="arrow-left"></i>
             <span data-es="Volver" data-en="Back">Volver</span>
@@ -1129,12 +1133,39 @@
         // ── Language Toggle ────────────────────────────
         let currentLang = 'es';
 
+        function initLang() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            const savedLang = localStorage.getItem('portfolio_lang');
+            
+            let detectedLang = 'es';
+            if (urlLang === 'es' || urlLang === 'en') {
+                detectedLang = urlLang;
+            } else if (savedLang === 'es' || savedLang === 'en') {
+                detectedLang = savedLang;
+            } else {
+                const browserLang = navigator.language || navigator.userLanguage;
+                detectedLang = browserLang.toLowerCase().includes('es') ? 'es' : 'en';
+            }
+            
+            currentLang = detectedLang;
+            localStorage.setItem('portfolio_lang', currentLang);
+            updateUIForLang();
+        }
+
         function toggleLang() {
             currentLang = currentLang === 'es' ? 'en' : 'es';
+            localStorage.setItem('portfolio_lang', currentLang);
+            updateUIForLang();
+        }
+
+        function updateUIForLang() {
             const btn = document.getElementById('langBtn');
-            btn.innerHTML = currentLang === 'es'
-                ? '<i data-lucide="globe"></i> <span>🇬🇧 English</span>'
-                : '<i data-lucide="globe"></i> <span>🇪🇸 Español</span>';
+            if (btn) {
+                btn.innerHTML = currentLang === 'es'
+                    ? '<i data-lucide="globe"></i> <span>🇬🇧 English</span>'
+                    : '<i data-lucide="globe"></i> <span>🇪🇸 Español</span>';
+            }
 
             // Update all elements with data-es / data-en
             document.querySelectorAll('[data-es]').forEach(el => {
@@ -1148,23 +1179,32 @@
                 }
             });
 
-            lucide.createIcons();
-            document.documentElement.lang = currentLang;
-
             // Update the show/hide photo button text lang
             const photoBtn = document.getElementById('photoBtn');
-            if (showPhoto) {
-                photoBtn.querySelector('span').textContent = currentLang === 'es' ? 'Ocultar Foto' : 'Hide Photo';
-            } else {
-                photoBtn.querySelector('span').textContent = currentLang === 'es' ? 'Mostrar Foto' : 'Show Photo';
+            if (photoBtn) {
+                if (showPhoto) {
+                    photoBtn.querySelector('span').textContent = currentLang === 'es' ? 'Ocultar Foto' : 'Hide Photo';
+                } else {
+                    photoBtn.querySelector('span').textContent = currentLang === 'es' ? 'Mostrar Foto' : 'Show Photo';
+                }
             }
 
             // Update PDF button text lang
             const dlBtn = document.getElementById('controls').querySelector('.dl span');
-            dlBtn.textContent = currentLang === 'es' ? 'Exportar PDF' : 'Export PDF';
+            if (dlBtn) {
+                dlBtn.textContent = currentLang === 'es' ? 'Exportar PDF' : 'Export PDF';
+            }
 
-            // Update theme text
+            // Update CV classic link query param
+            const cvLink = document.getElementById('controls').querySelector('.cv-type');
+            if (cvLink) {
+                cvLink.href = `/cv/classic?lang=${currentLang}`;
+            }
+
+            // Update theme button
             updateThemeBtn();
+            lucide.createIcons();
+            document.documentElement.lang = currentLang;
         }
 
         function updateThemeBtn() {
@@ -1197,6 +1237,13 @@
             const page = document.getElementById('cv-page');
             const lang = currentLang === 'es' ? 'ES' : 'EN';
             
+            // Save original scroll position
+            const originalScrollY = window.scrollY;
+            const originalScrollX = window.scrollX;
+            
+            // Scroll to top-left to avoid html2canvas offsets / blank areas
+            window.scrollTo(0, 0);
+            
             // Add print-mode class to body to force desktop layout for export
             document.body.classList.add('print-mode');
             
@@ -1215,21 +1262,43 @@
                     scale: 3,
                     useCORS: true,
                     letterRendering: true,
-                    backgroundColor: '#ffffff'
+                    backgroundColor: '#ffffff',
+                    scrollY: 0,
+                    scrollX: 0
                 },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
             };
             
-            html2pdf().set(opt).from(page).save().then(() => {
+            const pdfName = `Brandon_Bello_CV_${lang}.pdf`;
+
+            html2pdf().set(opt).from(page).output('blob').then((pdfBlob) => {
+                const blobUrl = URL.createObjectURL(pdfBlob);
+                const link = document.createElement('a');
+                link.href = blobUrl;
+                link.download = pdfName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(blobUrl);
+
                 // Restore original preview styling
                 page.style.borderRadius = oldBorderRadius;
                 page.style.boxShadow = oldBoxShadow;
                 document.body.classList.remove('print-mode');
+                // Restore scroll position
+                window.scrollTo(originalScrollX, originalScrollY);
             }).catch(err => {
                 console.error("PDF export error", err);
                 document.body.classList.remove('print-mode');
+                // Restore scroll position
+                window.scrollTo(originalScrollX, originalScrollY);
             });
         }
+
+        // Initialize icons and language on DOM load
+        window.addEventListener('DOMContentLoaded', () => {
+            initLang();
+        });
     </script>
 </body>
 

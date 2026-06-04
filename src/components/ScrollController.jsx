@@ -55,6 +55,18 @@ export default function ScrollController({ sections }) {
             const newDirection = e.deltaY > 0 ? 1 : -1;
             const newIndex = currentIndex + newDirection;
 
+            // Check if the current section has scrollable content
+            const sectionId = sections[currentIndex]?.id;
+            const sectionEl = document.getElementById(sectionId);
+            if (sectionEl && sectionEl.scrollHeight > sectionEl.clientHeight + 10) {
+                const atTop = sectionEl.scrollTop <= 5;
+                const atBottom = sectionEl.scrollTop + sectionEl.clientHeight >= sectionEl.scrollHeight - 5;
+                // Scrolling down (go next) — only if at bottom of scroll
+                if (newDirection > 0 && !atBottom) return;
+                // Scrolling up (go prev) — only if at top of scroll
+                if (newDirection < 0 && !atTop) return;
+            }
+
             if (newIndex >= 0 && newIndex < sections.length) {
                 isAnimating.current = true;
                 setDirection(newDirection);
@@ -63,7 +75,7 @@ export default function ScrollController({ sections }) {
             }
         };
 
-        // Soporte Toque para Móviles
+        // Soporte Toque para Móviles — with scroll-aware navigation
         let touchStart = 0;
         let touchStartX = 0;
         const handleTouchStart = (e) => {
@@ -80,6 +92,18 @@ export default function ScrollController({ sections }) {
 
             // Only trigger vertical navigation if vertical swipe is dominant
             if (Math.abs(deltaY) > 50 && Math.abs(deltaY) > Math.abs(deltaX)) {
+                // Check if the current section has scrollable content
+                const sectionId = sections[currentIndex]?.id;
+                const sectionEl = document.getElementById(sectionId);
+                if (sectionEl && sectionEl.scrollHeight > sectionEl.clientHeight + 10) {
+                    const atTop = sectionEl.scrollTop <= 5;
+                    const atBottom = sectionEl.scrollTop + sectionEl.clientHeight >= sectionEl.scrollHeight - 5;
+                    // Swiping up (go next) — only if at bottom of scroll
+                    if (deltaY > 0 && !atBottom) return;
+                    // Swiping down (go prev) — only if at top of scroll
+                    if (deltaY < 0 && !atTop) return;
+                }
+
                 const newDirection = deltaY > 0 ? 1 : -1;
                 const newIndex = currentIndex + newDirection;
                 if (newIndex >= 0 && newIndex < sections.length) {

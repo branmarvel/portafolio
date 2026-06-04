@@ -57,11 +57,11 @@ export default function SkillsSection() {
     ];
 
     return (
-        <section id="skills" className="w-full min-h-full flex flex-col justify-center items-center px-4 md:px-12 bg-[var(--color-base)] relative overflow-hidden">
+        <section id="skills" className="w-full h-full flex flex-col justify-start lg:justify-center items-center px-4 md:px-12 bg-[var(--color-base)] relative overflow-y-auto lg:overflow-hidden overflow-x-hidden no-scrollbar">
             {/* Ambient Background Blur */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[var(--color-tungsten)]/5 rounded-full blur-[100px] pointer-events-none" />
 
-            <div className="max-w-7xl w-full flex flex-col h-full justify-center pt-24 pb-12 overflow-y-auto md:overflow-visible no-scrollbar">
+            <div className="max-w-7xl w-full flex flex-col pt-20 md:pt-24 lg:pt-12 pb-8 lg:pb-12">
 
                 <div className="mb-6 md:mb-16 text-center lg:text-left shrink-0">
                     <motion.h2
