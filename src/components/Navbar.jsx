@@ -20,13 +20,13 @@ export default function Navbar() {
         // Use MutationObserver instead of setInterval for efficient DOM attribute watching
         const observer = new MutationObserver((mutations) => {
             for (const mutation of mutations) {
-                if (mutation.attributeName === 'data-active-section') {
-                    const idx = document.body.getAttribute('data-active-section');
-                    if (idx !== null) {
-                        const currentLink = links.find(l => l.index === parseInt(idx));
-                        if (currentLink) setActiveSection(currentLink.id);
-                    }
-                }
+                if (mutation.attributeName !== 'data-active-section') continue;
+
+                const idx = document.body.getAttribute('data-active-section');
+                if (idx === null) continue;
+
+                const currentLink = links.find(l => l.index === parseInt(idx));
+                if (currentLink) setActiveSection(currentLink.id);
             }
         });
 
@@ -34,10 +34,10 @@ export default function Navbar() {
 
         // Read initial value
         const idx = document.body.getAttribute('data-active-section');
-        if (idx !== null) {
-            const currentLink = links.find(l => l.index === parseInt(idx));
-            if (currentLink) setActiveSection(currentLink.id);
-        }
+        if (idx === null) return () => observer.disconnect();
+
+        const currentLink = links.find(l => l.index === parseInt(idx));
+        if (currentLink) setActiveSection(currentLink.id);
 
         return () => observer.disconnect();
     }, [links]);
