@@ -17,27 +17,33 @@ export default function Navbar() {
     ];
 
     useEffect(() => {
+        // Pre-compute map for O(1) lookups
+        const linkMap = new Map(links.map(l => [l.index.toString(), l.id]));
+
         // Use MutationObserver instead of setInterval for efficient DOM attribute watching
         const observer = new MutationObserver((mutations) => {
+            let latestIdx = null;
+            // Process mutations and only keep the latest active section index
             for (const mutation of mutations) {
-                if (mutation.attributeName !== 'data-active-section') continue;
+                if (mutation.attributeName === 'data-active-section') {
+                    latestIdx = mutation.target.getAttribute('data-active-section');
+                }
+            }
 
-                const idx = document.body.getAttribute('data-active-section');
-                if (idx === null) continue;
-
-                const currentLink = links.find(l => l.index === parseInt(idx));
-                if (currentLink) setActiveSection(currentLink.id);
+            if (latestIdx !== null) {
+                const sectionId = linkMap.get(latestIdx);
+                if (sectionId) setActiveSection(sectionId);
             }
         });
 
         observer.observe(document.body, { attributes: true, attributeFilter: ['data-active-section'] });
 
         // Read initial value
-        const idx = document.body.getAttribute('data-active-section');
-        if (idx === null) return () => observer.disconnect();
-
-        const currentLink = links.find(l => l.index === parseInt(idx));
-        if (currentLink) setActiveSection(currentLink.id);
+        const initialIdx = document.body.getAttribute('data-active-section');
+        if (initialIdx !== null) {
+            const sectionId = linkMap.get(initialIdx);
+            if (sectionId) setActiveSection(sectionId);
+        }
 
         return () => observer.disconnect();
     }, [links]);
