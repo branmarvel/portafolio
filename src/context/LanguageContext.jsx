@@ -1,9 +1,12 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { translations } from '../i18n/translations';
 
 const LanguageContext = createContext();
 
 export const useLanguage = () => useContext(LanguageContext);
+
+// Module-level cache to persist translation lookups across renders
+const tCacheMap = new Map();
 
 export const LanguageProvider = ({ children }) => {
     const [language, setLanguage] = useState('es'); // Default initial
@@ -32,7 +35,14 @@ export const LanguageProvider = ({ children }) => {
     };
 
     // Helper to get nested translation keys 'hero.title'
-    const t = (key) => {
+    const t = useCallback((key) => {
+        let langCache = tCacheMap.get(language);
+        if (!langCache) {
+            langCache = new Map();
+            tCacheMap.set(language, langCache);
+        }
+        if (langCache.has(key)) return langCache.get(key);
+
         const keys = key.split('.');
         let value = translations[language];
 
@@ -40,11 +50,14 @@ export const LanguageProvider = ({ children }) => {
             if (value && value[k] !== undefined) {
                 value = value[k];
             } else {
+                langCache.set(key, key);
                 return key; // Fallback to raw key if not found
             }
         }
+
+        langCache.set(key, value);
         return value;
-    };
+    }, [language]);
 
     // Prevent rendering until browser language is detected to avoid hydration flash
     if (!isLoaded) return null;
