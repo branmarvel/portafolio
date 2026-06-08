@@ -308,6 +308,8 @@ export default function ProjectsSection() {
         setPage([page + newDirection, newDirection]);
     };
 
+    const activeProject = activeModal ? projects.find(p => p.id === activeModal.id) : null;
+
     return (
         <section id="projects" className="w-full h-full flex flex-col items-center justify-start lg:justify-center px-4 md:px-12 relative overflow-y-auto lg:overflow-hidden overflow-x-hidden bg-[var(--color-base)] no-scrollbar">
 
@@ -580,11 +582,11 @@ export default function ProjectsSection() {
                                 {activeModal.type === 'architecture' ? (
                                     <div className="w-full overflow-x-auto bg-[#0a0a0a] border border-[var(--color-border)] rounded-xl p-3 md:p-4 hide-scrollbar">
                                         <pre className="text-[8px] md:text-[10px] font-mono text-[var(--color-tungsten)] leading-tight whitespace-pre">
-                                            {projects.find(p => p.id === activeModal.id)?.architecture?.join('\n')}
+                                            {activeProject?.architecture?.join('\n')}
                                         </pre>
                                     </div>
                                 ) : (
-                                    projects.find(p => p.id === activeModal.id)?.credentials?.map((cred, i) => (
+                                    activeProject?.credentials?.map((cred, i) => (
                                         <div key={i} className="flex flex-col gap-2 md:gap-3">
                                             <span className="font-mono text-[10px] md:text-xs uppercase text-[var(--color-text-secondary)]">{cred.label}</span>
                                             <div className="flex bg-[#000] border border-[var(--color-border)] rounded-xl overflow-hidden focus-within:border-[var(--color-tungsten)] transition-colors">
