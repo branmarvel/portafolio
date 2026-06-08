@@ -17,12 +17,16 @@ function ScrambleText({ text }) {
             clearInterval(interval);
             iteration = 0;
             interval = setInterval(() => {
-                setDisplayText(text.split('').map((letter, index) => {
-                    if (index < iteration) {
-                        return text[index];
+                let result = '';
+                const charsLen = CHARS.length;
+                for (let i = 0; i < text.length; i++) {
+                    if (i < iteration) {
+                        result += text[i];
+                    } else {
+                        result += CHARS[Math.floor(Math.random() * charsLen)];
                     }
-                    return CHARS[Math.floor(Math.random() * CHARS.length)];
-                }).join(''));
+                }
+                setDisplayText(result);
 
                 if (iteration >= text.length) {
                     clearInterval(interval);
