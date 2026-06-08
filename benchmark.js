@@ -131,3 +131,42 @@ const optimizedScrambleTime = endOptimizedScramble - startOptimizedScramble;
 console.log(`Original Time: ${originalScrambleTime.toFixed(2)} ms`);
 console.log(`Optimized Time: ${optimizedScrambleTime.toFixed(2)} ms`);
 console.log(`Improvement: ${((originalScrambleTime - optimizedScrambleTime) / originalScrambleTime * 100).toFixed(2)}% faster\n`);
+
+
+// ==========================================
+// Benchmark 3: Description Traversal
+// ==========================================
+console.log('--- Running Description Traversal Benchmark ---');
+const description = "• Task 1 • Task 2 •    • Task 3";
+
+function originalTraversal() {
+    return description.split('•').map(p => p.trim()).filter(Boolean).map((part, index) => ({ id: index, part }));
+}
+
+function optimizedTraversal() {
+    return description.split('•').reduce((acc, p) => {
+        const trimmed = p.trim();
+        if (trimmed) {
+            acc.push({ id: acc.length, part: trimmed });
+        }
+        return acc;
+    }, []);
+}
+
+const startOriginalTraversal = performance.now();
+for (let i = 0; i < ITERATIONS; i++) {
+    originalTraversal();
+}
+const endOriginalTraversal = performance.now();
+const originalTraversalTime = endOriginalTraversal - startOriginalTraversal;
+
+const startOptimizedTraversal = performance.now();
+for (let i = 0; i < ITERATIONS; i++) {
+    optimizedTraversal();
+}
+const endOptimizedTraversal = performance.now();
+const optimizedTraversalTime = endOptimizedTraversal - startOptimizedTraversal;
+
+console.log(`Original Time: ${originalTraversalTime.toFixed(2)} ms`);
+console.log(`Optimized Time: ${optimizedTraversalTime.toFixed(2)} ms`);
+console.log(`Improvement: ${((originalTraversalTime - optimizedTraversalTime) / originalTraversalTime * 100).toFixed(2)}% faster\n`);

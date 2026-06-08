@@ -454,12 +454,18 @@ export default function ProjectsSection() {
                             <div className="max-w-md pointer-events-auto">
                                 {project.description && project.description.includes('•') ? (
                                     <ul className="space-y-1.5 list-none">
-                                        {project.description.split('•').map(p => p.trim()).filter(Boolean).map((part, index) => (
-                                            <li key={index} className="flex items-start gap-2.5 text-[var(--color-text-secondary)] leading-relaxed text-[11px] md:text-xs lg:text-sm">
-                                                <span className="text-[var(--color-tungsten)] mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-tungsten)] opacity-70" />
-                                                <span>{part}</span>
-                                            </li>
-                                        ))}
+                                        {project.description.split('•').reduce((acc, p) => {
+                                            const trimmed = p.trim();
+                                            if (trimmed) {
+                                                acc.push(
+                                                    <li key={acc.length} className="flex items-start gap-2.5 text-[var(--color-text-secondary)] leading-relaxed text-[11px] md:text-xs lg:text-sm">
+                                                        <span className="text-[var(--color-tungsten)] mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-tungsten)] opacity-70" />
+                                                        <span>{trimmed}</span>
+                                                    </li>
+                                                );
+                                            }
+                                            return acc;
+                                        }, [])}
                                     </ul>
                                 ) : (
                                     <p className="text-[var(--color-text-secondary)] leading-relaxed text-[11px] md:text-xs lg:text-sm">
