@@ -13,6 +13,7 @@
         rel="stylesheet">
     <script is:inline src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.8/purify.min.js"></script>
     <style is:global>
         :root {
             --bg: #ffffff;
@@ -1169,7 +1170,7 @@
                 const content = el.getAttribute(`data-${currentLang}`);
                 if (content !== null) {
                     if (content.includes('<')) {
-                        el.innerHTML = content;
+                        el.innerHTML = DOMPurify.sanitize(content);
                     } else {
                         el.textContent = content;
                     }
