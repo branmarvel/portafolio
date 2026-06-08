@@ -3,6 +3,21 @@ import { translations } from '../i18n/translations';
 
 const LanguageContext = createContext();
 
+export const resolveTranslation = (translationsObj, lang, key) => {
+    if (!key || typeof key !== 'string') return key;
+    const keys = key.split('.');
+    let value = translationsObj[lang];
+
+    for (const k of keys) {
+        if (value && value[k] !== undefined) {
+            value = value[k];
+        } else {
+            return key; // Fallback to raw key if not found
+        }
+    }
+    return value;
+};
+
 export const useLanguage = () => useContext(LanguageContext);
 
 export const LanguageProvider = ({ children }) => {
@@ -32,19 +47,7 @@ export const LanguageProvider = ({ children }) => {
     };
 
     // Helper to get nested translation keys 'hero.title'
-    const t = (key) => {
-        const keys = key.split('.');
-        let value = translations[language];
-
-        for (const k of keys) {
-            if (value && value[k] !== undefined) {
-                value = value[k];
-            } else {
-                return key; // Fallback to raw key if not found
-            }
-        }
-        return value;
-    };
+    const t = (key) => resolveTranslation(translations, language, key);
 
     // Prevent rendering until browser language is detected to avoid hydration flash
     if (!isLoaded) return null;
