@@ -2,40 +2,12 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { fadeInUp, staggerContainer } from '../utils/motion';
 import { useLanguage } from '../context/LanguageContext';
+import { useContactForm } from '../hooks/useContactForm';
 
 export default function ContactSection() {
     const { t } = useLanguage();
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [status, setStatus] = useState(null);
+    const { isSubmitting, status, handleSubmit } = useContactForm();
     const [focusedInput, setFocusedInput] = useState(null);
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setIsSubmitting(true);
-        setStatus(null);
-
-        const form = e.target;
-
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (response.ok) {
-                setStatus('success');
-                form.reset();
-            } else {
-                setStatus('error');
-            }
-        } catch (error) {
-            setStatus('error');
-        } finally {
-            setIsSubmitting(false);
-            setTimeout(() => setStatus(null), 5000);
-        }
-    };
 
     return (
         <section id="contact" className="w-full h-full flex flex-col justify-start lg:justify-center items-center px-4 md:px-12 relative overflow-y-auto lg:overflow-hidden overflow-x-hidden bg-[var(--color-base)] no-scrollbar">
