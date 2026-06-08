@@ -1,5 +1,11 @@
 import { performance } from 'perf_hooks';
 
+const ITERATIONS = 1000000;
+
+// ==========================================
+// Benchmark 1: Navbar Active Section Observer
+// ==========================================
+console.log('--- Running Navbar Active Section Observer Benchmark ---');
 const links = [
     { name: 'Home', id: 'hero', index: 0 },
     { name: 'Skills', id: 'skills', index: 1 },
@@ -17,7 +23,7 @@ const mutations = Array.from({ length: 10 }, () => ({
     target: mockDocumentBody
 }));
 
-function baseline() {
+function baselineNavbar() {
     let activeSection;
     for (const mutation of mutations) {
         if (mutation.attributeName === 'data-active-section') {
@@ -31,20 +37,13 @@ function baseline() {
     return activeSection;
 }
 
-// In React, we can't do things exactly like standard JS outside the render cycle,
-// but we can prepare the map once and use it.
 const linkMap = new Map();
 for (const link of links) {
     linkMap.set(link.index.toString(), link.id);
 }
 
-function optimized() {
+function optimizedNavbar() {
     let activeSection;
-
-    // Instead of querying document body on every mutation iteration,
-    // let's just find if the attribute changed, then query once at the end
-    // or just use target from the last mutation
-
     let hasAttributeMutation = false;
     let target = null;
 
@@ -66,22 +65,69 @@ function optimized() {
     return activeSection;
 }
 
-const ITERATIONS = 1000000;
-
-const startBaseline = performance.now();
+const startBaselineNav = performance.now();
 for (let i = 0; i < ITERATIONS; i++) {
-    baseline();
+    baselineNavbar();
 }
-const endBaseline = performance.now();
-const baselineTime = endBaseline - startBaseline;
+const endBaselineNav = performance.now();
+const baselineNavTime = endBaselineNav - startBaselineNav;
 
-const startOptimized = performance.now();
+const startOptimizedNav = performance.now();
 for (let i = 0; i < ITERATIONS; i++) {
-    optimized();
+    optimizedNavbar();
 }
-const endOptimized = performance.now();
-const optimizedTime = endOptimized - startOptimized;
+const endOptimizedNav = performance.now();
+const optimizedNavTime = endOptimizedNav - startOptimizedNav;
 
-console.log(`Baseline Time: ${baselineTime.toFixed(2)} ms`);
-console.log(`Optimized Time: ${optimizedTime.toFixed(2)} ms`);
-console.log(`Improvement: ${((baselineTime - optimizedTime) / baselineTime * 100).toFixed(2)}% faster`);
+console.log(`Baseline Time: ${baselineNavTime.toFixed(2)} ms`);
+console.log(`Optimized Time: ${optimizedNavTime.toFixed(2)} ms`);
+console.log(`Improvement: ${((baselineNavTime - optimizedNavTime) / baselineNavTime * 100).toFixed(2)}% faster\n`);
+
+
+// ==========================================
+// Benchmark 2: Scramble Text Animation
+// ==========================================
+console.log('--- Running Scramble Text Animation Benchmark ---');
+const CHARS = '!<>-_\\/[]{}—=+*^?#________';
+const scrambleText = 'Brandon Bello';
+
+function originalScramble(iteration) {
+    return scrambleText.split('').map((letter, index) => {
+        if (index < iteration) {
+            return scrambleText[index];
+        }
+        return CHARS[Math.floor(Math.random() * CHARS.length)];
+    }).join('');
+}
+
+function optimizedScramble(iteration) {
+    let result = '';
+    const len = scrambleText.length;
+    const charsLen = CHARS.length;
+    for (let i = 0; i < len; i++) {
+        if (i < iteration) {
+            result += scrambleText[i];
+        } else {
+            result += CHARS[Math.floor(Math.random() * charsLen)];
+        }
+    }
+    return result;
+}
+
+const startOriginalScramble = performance.now();
+for (let i = 0; i < ITERATIONS; i++) {
+    originalScramble(i % scrambleText.length);
+}
+const endOriginalScramble = performance.now();
+const originalScrambleTime = endOriginalScramble - startOriginalScramble;
+
+const startOptimizedScramble = performance.now();
+for (let i = 0; i < ITERATIONS; i++) {
+    optimizedScramble(i % scrambleText.length);
+}
+const endOptimizedScramble = performance.now();
+const optimizedScrambleTime = endOptimizedScramble - startOptimizedScramble;
+
+console.log(`Original Time: ${originalScrambleTime.toFixed(2)} ms`);
+console.log(`Optimized Time: ${optimizedScrambleTime.toFixed(2)} ms`);
+console.log(`Improvement: ${((originalScrambleTime - optimizedScrambleTime) / originalScrambleTime * 100).toFixed(2)}% faster\n`);
