@@ -4,16 +4,6 @@ import { useLanguage } from '../context/LanguageContext';
 export default function AboutSection() {
     const { t, language } = useLanguage();
 
-    const trackDownload = (fileName) => {
-        if (window.gtag) {
-            window.gtag('event', 'cv_download', {
-                'file_name': fileName,
-                'event_category': 'Engagement',
-                'event_label': 'CV Download'
-            });
-        }
-    };
-
     return (
         <section id="about" className="w-full h-full flex flex-col justify-start lg:justify-center items-center px-4 md:px-12 bg-[var(--color-base)] relative overflow-y-auto lg:overflow-hidden overflow-x-hidden no-scrollbar">
             {/* Subtle glow lines */}
