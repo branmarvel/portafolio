@@ -176,6 +176,10 @@
             transition: all 0.2s ease;
         }
 
+        #cv-page.show-photo .photo-container {
+            display: block;
+        }
+
         .photo-container img {
             width: 100%;
             height: 100%;
@@ -751,18 +755,14 @@
         function togglePhoto() {
             showPhoto = !showPhoto;
             const btn = document.getElementById('photoBtn');
-            const containers = document.querySelectorAll('.photo-container');
+            const cvPage = document.getElementById('cv-page');
             
             if (showPhoto) {
-                containers.forEach(container => {
-                    container.style.display = 'block';
-                });
+                cvPage.classList.add('show-photo');
                 btn.innerHTML = `<i data-lucide="image"></i> 
                                  <span data-es="Ocultar Foto" data-en="Hide Photo">${currentLang === 'es' ? 'Ocultar Foto' : 'Hide Photo'}</span>`;
             } else {
-                containers.forEach(container => {
-                    container.style.display = 'none';
-                });
+                cvPage.classList.remove('show-photo');
                 btn.innerHTML = `<i data-lucide="image-off"></i> 
                                  <span data-es="Mostrar Foto" data-en="Show Photo">${currentLang === 'es' ? 'Mostrar Foto' : 'Show Photo'}</span>`;
             }
