@@ -308,15 +308,17 @@ export default function ProjectsSection() {
         setPage([page + newDirection, newDirection]);
     };
 
+    const activeProject = activeModal ? projects.find(p => p.id === activeModal.id) : null;
+
     return (
-        <section id="projects" className="w-full h-full flex items-center justify-center px-4 md:px-12 relative overflow-hidden bg-[var(--color-base)]">
+        <section id="projects" className="w-full h-full flex flex-col items-center justify-start lg:justify-center px-4 md:px-12 relative overflow-y-auto lg:overflow-hidden overflow-x-hidden bg-[var(--color-base)] no-scrollbar">
 
             {/* Header Overlay - Absolute */}
-            <div className="absolute top-16 md:top-24 left-4 md:left-12 z-20">
+            <div className="w-full max-w-7xl pt-20 md:pt-24 lg:pt-0 lg:absolute lg:top-24 lg:left-12 z-20 shrink-0 px-0 lg:px-0">
                 <motion.h2
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-4xl md:text-5xl font-bold mb-2 tracking-tighter"
+                    className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 tracking-tighter"
                 >
                     {t('projects.title')} <span className="text-[var(--color-tungsten)]">{t('projects.highlight')}</span>
                 </motion.h2>
@@ -334,8 +336,8 @@ export default function ProjectsSection() {
                 </div>
             </div>
 
-            {/* Navigation Buttons for Desktop */}
-            <div className="absolute top-1/2 -translate-y-1/2 right-6 md:right-12 xl:right-24 z-20 flex-col gap-4 hidden md:flex pointer-events-auto">
+            {/* Navigation Buttons for Desktop — only visible when 2-column layout is active (lg+) */}
+            <div className="absolute top-1/2 -translate-y-1/2 right-6 lg:right-12 xl:right-24 z-20 flex-col gap-4 hidden lg:flex pointer-events-auto">
                 <button
                     onClick={() => paginate(-1)}
                     className="w-12 h-12 rounded-full border border-[var(--color-border)] flex items-center justify-center hover:bg-[var(--color-tungsten)] hover:border-transparent hover:text-black transition-all group shrink-0"
@@ -353,7 +355,7 @@ export default function ProjectsSection() {
             </div>
 
             {/* Viewport for Sliders */}
-            <div className="w-full max-w-7xl min-h-[75vh] sm:min-h-[65vh] lg:h-[65vh] mt-12 md:mt-24 pb-16 lg:pb-0 relative perspective-1000">
+            <div className="w-full max-w-7xl lg:min-h-[65vh] lg:h-[65vh] mt-4 lg:mt-24 pb-20 lg:pb-0 relative perspective-1000 shrink-0">
                 <AnimatePresence initial={false} custom={direction} mode="wait">
                     <motion.div
                         key={page}
@@ -362,16 +364,16 @@ export default function ProjectsSection() {
                         initial="enter"
                         animate="center"
                         exit="exit"
-                        className="relative lg:absolute lg:inset-0 w-full flex flex-col lg:flex-row gap-4 lg:gap-16 items-center"
+                        className="relative lg:absolute lg:inset-0 w-full flex flex-col lg:flex-row gap-4 lg:gap-16 items-center lg:items-center"
                     >
                         {/* Video / Preview Card Side */}
-                        <div className="w-full lg:w-[55%] h-52 sm:h-64 lg:h-full rounded-2xl md:rounded-3xl overflow-hidden glass-panel p-3.5 md:p-6 shadow-2xl relative group shrink-0 pointer-events-auto flex flex-col justify-between bg-black/40 border border-white/5">
+                        <div className="w-full lg:w-[55%] aspect-video lg:aspect-auto lg:h-full rounded-2xl md:rounded-3xl overflow-hidden glass-panel p-3 md:p-6 shadow-2xl relative group shrink-0 pointer-events-auto flex flex-col justify-between bg-black/40 border border-white/5">
                             {/* Mac Window Header Controls */}
-                            <div className="flex items-center gap-1 md:gap-1.5 mb-2.5 md:mb-4 border-b border-white/5 pb-2 md:pb-3">
-                                <span className="w-2 h-2 md:w-3.5 md:h-3.5 rounded-full bg-[#ff5f56] opacity-80" />
-                                <span className="w-2 h-2 md:w-3.5 md:h-3.5 rounded-full bg-[#ffbd2e] opacity-80" />
-                                <span className="w-2 h-2 md:w-3.5 md:h-3.5 rounded-full bg-[#27c93f] opacity-80" />
-                                <span className="text-[8px] md:text-[10px] font-mono text-[var(--color-text-secondary)] ml-2 md:ml-3 tracking-widest">{project.id.toUpperCase()} // DASHBOARD_PREVIEW.sh</span>
+                            <div className="flex items-center gap-1.5 mb-2 md:mb-4 border-b border-white/5 pb-2 md:pb-3">
+                                <span className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 rounded-full bg-[#ff5f56] opacity-80" />
+                                <span className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 rounded-full bg-[#ffbd2e] opacity-80" />
+                                <span className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 rounded-full bg-[#27c93f] opacity-80" />
+                                <span className="text-[9px] md:text-[10px] font-mono text-[var(--color-text-secondary)] ml-2 md:ml-3 tracking-widest">{project.id.toUpperCase()} // DASHBOARD_PREVIEW.sh</span>
                             </div>
                             
                             {project.videoUrl ? (
@@ -424,16 +426,16 @@ export default function ProjectsSection() {
                             )}
                             
                             {/* Terminal Prompt Footer */}
-                            <div className="mt-2.5 md:mt-4 pt-2 md:pt-3 border-t border-white/5 font-mono text-[8px] md:text-xs text-[var(--color-text-secondary)] flex justify-between items-center w-full">
+                            <div className="mt-2 md:mt-4 pt-2 md:pt-3 border-t border-white/5 font-mono text-[10px] md:text-xs text-[var(--color-text-secondary)] flex justify-between items-center w-full">
                                 <span>STATUS: <span className={project.videoUrl ? "text-[#27c93f] font-semibold" : (project.id === 'calc' || project.id === 'movi' || project.id === 'jutba') ? "text-amber-400 font-semibold" : "text-[#ff5f56] font-semibold"}>{project.videoUrl ? "ACTIVE_STAGING" : (project.id === 'calc' || project.id === 'movi') ? "OFFLINE_LOCAL_DEV" : project.id === 'jutba' ? "PUBLIC_RELEASE_PENDING" : "SECURE_PRODUCTION"}</span></span>
                                 <span>NETWORK: {project.videoUrl ? "PUBLIC_CLOUDFLARE" : (project.id === 'calc' || project.id === 'movi') ? "EXPO_CLIENT_SIM" : project.id === 'jutba' ? "PUBLIC_CLOUDFLARE" : "PRIVATE_MINISTRY"}</span>
                             </div>
                         </div>
 
                         {/* Text & Details Side */}
-                        <div className="w-full lg:w-[45%] flex flex-col justify-center h-full gap-3 lg:gap-6 mt-4 lg:mt-0 pointer-events-auto">
+                        <div className="w-full lg:w-[45%] flex flex-col justify-center h-full gap-2 lg:gap-6 mt-2 lg:mt-0 pointer-events-auto">
                             <div>
-                                <span className="font-mono text-[var(--color-tungsten)] tracking-widest text-[10px] md:text-xs uppercase block mb-1 lg:mb-2">
+                                <span className="font-mono text-[var(--color-tungsten)] tracking-widest text-[10px] md:text-xs uppercase block mb-0.5 lg:mb-2">
                                     {project.role}
                                 </span>
                                 {/* Category Badge */}
@@ -448,18 +450,24 @@ export default function ProjectsSection() {
                                     {categoryConfig[project.category]?.icon}
                                     {categoryConfig[project.category]?.label}
                                 </span>
-                                <h3 className="text-xl md:text-3xl lg:text-5xl font-bold tracking-tight leading-none mb-2 lg:mb-4">{project.title}</h3>
+                                <h3 className="text-lg md:text-2xl lg:text-5xl font-bold tracking-tight leading-none mb-1 lg:mb-4">{project.title}</h3>
                             </div>
 
                             <div className="max-w-md pointer-events-auto">
                                 {project.description && project.description.includes('•') ? (
                                     <ul className="space-y-1.5 list-none">
-                                        {project.description.split('•').map(p => p.trim()).filter(Boolean).map((part, index) => (
-                                            <li key={index} className="flex items-start gap-2.5 text-[var(--color-text-secondary)] leading-relaxed text-[11px] md:text-xs lg:text-sm">
-                                                <span className="text-[var(--color-tungsten)] mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-tungsten)] opacity-70" />
-                                                <span>{part}</span>
-                                            </li>
-                                        ))}
+                                        {project.description.split('•').reduce((acc, p) => {
+                                            const trimmed = p.trim();
+                                            if (trimmed) {
+                                                acc.push(
+                                                    <li key={acc.length} className="flex items-start gap-2.5 text-[var(--color-text-secondary)] leading-relaxed text-[11px] md:text-xs lg:text-sm">
+                                                        <span className="text-[var(--color-tungsten)] mt-1.5 block h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--color-tungsten)] opacity-70" />
+                                                        <span>{trimmed}</span>
+                                                    </li>
+                                                );
+                                            }
+                                            return acc;
+                                        }, [])}
                                     </ul>
                                 ) : (
                                     <p className="text-[var(--color-text-secondary)] leading-relaxed text-[11px] md:text-xs lg:text-sm">
@@ -468,7 +476,7 @@ export default function ProjectsSection() {
                                 )}
                             </div>
 
-                            <div className="flex flex-wrap gap-2 mt-2">
+                            <div className="flex flex-wrap gap-1.5 lg:gap-2 mt-1 lg:mt-2">
                                 {project.tags.map(tag => (
                                     <span key={tag} className="px-2 py-1 bg-[#151515] border border-[var(--color-border)] rounded-full text-[10px] lg:text-xs font-mono text-white/80">
                                         {tag}
@@ -476,7 +484,7 @@ export default function ProjectsSection() {
                                 ))}
                             </div>
 
-                            <div className="flex flex-wrap items-center gap-3 mt-auto lg:mt-6">
+                            <div className="flex flex-wrap items-center gap-2 lg:gap-3 mt-3 lg:mt-6">
                                 {project.demoUrl && (
                                     <Magnetic>
                                         <a href={project.demoUrl} target="_blank" rel="noreferrer" className="px-4 py-2 lg:px-6 lg:py-3 rounded-full bg-white text-black font-semibold text-xs lg:text-sm hover:scale-105 transition-transform flex items-center gap-2 block">
@@ -519,14 +527,14 @@ export default function ProjectsSection() {
                 </AnimatePresence>
             </div>
 
-            {/* Mobile Controls */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 md:hidden z-20 pointer-events-auto">
-                <button onClick={() => paginate(-1)} className="p-3 bg-[var(--color-surface)] rounded-full border border-[var(--color-border)] text-white hover:bg-[var(--color-surface-hover)]">
+            {/* Mobile Controls — only visible below lg breakpoint (when no desktop arrows) */}
+            <div className="sticky bottom-4 left-0 right-0 flex items-center justify-center gap-4 lg:hidden z-20 pointer-events-auto shrink-0 pb-2">
+                <button onClick={() => paginate(-1)} className="p-2.5 bg-[var(--color-surface)] rounded-full border border-[var(--color-border)] text-white hover:bg-[var(--color-surface-hover)] active:scale-95 transition-transform">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path></svg>
                 </button>
 
                 {/* Dots Indicator for Mobile */}
-                <div className="flex gap-2">
+                <div className="flex gap-1.5">
                     {projects.map((_, idx) => (
                         <button
                             key={idx}
@@ -539,7 +547,7 @@ export default function ProjectsSection() {
                     ))}
                 </div>
 
-                <button onClick={() => paginate(1)} className="p-3 bg-[var(--color-surface)] rounded-full border border-[var(--color-border)] text-white hover:bg-[var(--color-surface-hover)]">
+                <button onClick={() => paginate(1)} className="p-2.5 bg-[var(--color-surface)] rounded-full border border-[var(--color-border)] text-white hover:bg-[var(--color-surface-hover)] active:scale-95 transition-transform">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path></svg>
                 </button>
             </div>
@@ -580,11 +588,11 @@ export default function ProjectsSection() {
                                 {activeModal.type === 'architecture' ? (
                                     <div className="w-full overflow-x-auto bg-[#0a0a0a] border border-[var(--color-border)] rounded-xl p-3 md:p-4 hide-scrollbar">
                                         <pre className="text-[8px] md:text-[10px] font-mono text-[var(--color-tungsten)] leading-tight whitespace-pre">
-                                            {projects.find(p => p.id === activeModal.id)?.architecture?.join('\n')}
+                                            {activeProject?.architecture?.join('\n')}
                                         </pre>
                                     </div>
                                 ) : (
-                                    projects.find(p => p.id === activeModal.id)?.credentials?.map((cred, i) => (
+                                    activeProject?.credentials?.map((cred, i) => (
                                         <div key={i} className="flex flex-col gap-2 md:gap-3">
                                             <span className="font-mono text-[10px] md:text-xs uppercase text-[var(--color-text-secondary)]">{cred.label}</span>
                                             <div className="flex bg-[#000] border border-[var(--color-border)] rounded-xl overflow-hidden focus-within:border-[var(--color-tungsten)] transition-colors">

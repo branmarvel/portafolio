@@ -1,6 +1,8 @@
 packages:
   - '.'
 minimumReleaseAge: 14400
+minimumReleaseAgeExclude:
+  - '*'
 allowBuilds:
   esbuild: true
   sharp: true

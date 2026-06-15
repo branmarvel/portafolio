@@ -13,6 +13,7 @@
         rel="stylesheet">
     <script is:inline src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.8/purify.min.js"></script>
     <style is:global>
         :root {
             --bg: #ffffff;
@@ -799,6 +800,10 @@
             <i data-lucide="download"></i>
             <span data-es="Exportar PDF" data-en="Export PDF">Exportar PDF</span>
         </button>
+        <a class="btn cv-type" href="/cv/classic" title="Ver CV Clásico">
+            <i data-lucide="file-text"></i>
+            <span data-es="CV Clásico" data-en="Classic CV">CV Clásico</span>
+        </a>
         <a class="btn back" href="/" title="Volver al Inicio">
             <i data-lucide="arrow-left"></i>
             <span data-es="Volver" data-en="Back">Volver</span>
@@ -1010,7 +1015,7 @@
                                         <h3 data-es="Flutter Developer (Freelance part-time)"
                                             data-en="Flutter Developer (Freelance part-time)">Flutter Developer (Freelance
                                             part-time)</h3>
-                                        <span class="date">Mar 2025 – Feb 2026</span>
+                                        <span class="date">Mar 2025 – Jun 2026</span>
                                     </div>
                                     <span class="exp-co" data-es="Jutba · Plataforma de Transmisión (España)"
                                         data-en="Jutba · Streaming Platform (Spain)">Jutba · Plataforma de Transmisión
@@ -1020,9 +1025,9 @@
                                             data-en="Built the frontend with <strong>Flutter + Widgetbook</strong>, achieving full parity across Android, iOS and Web.">
                                             Desarrollé el frontend con <strong>Flutter + Widgetbook</strong>, logrando paridad
                                             total en Android, iOS y Web.</li>
-                                        <li data-es="Integré <strong>Firebase</strong> (Auth, Realtime DB, Push), logrando una <strong>reducción del 40%</strong> en el tiempo de implementación."
-                                            data-en="Integrated Firebase (Auth, Realtime DB, Push), achieving a 40% reduction in feature implementation time.">
-                                            Integré <strong>Firebase</strong> (Auth, Realtime DB, Push), logrando una
+                                        <li data-es="Integré <strong>Firebase Cloud Messaging (FCM)</strong> para notificaciones push, logrando una <strong>reducción del 40%</strong> en el tiempo de implementación."
+                                            data-en="Integrated <strong>Firebase Cloud Messaging (FCM)</strong> for push notifications, achieving a <strong>40% reduction</strong> in implementation time.">
+                                            Integré <strong>Firebase Cloud Messaging (FCM)</strong> para notificaciones push, logrando una
                                             <strong>reducción del 40%</strong> en el tiempo de implementación.
                                         </li>
                                     </ul>
@@ -1040,17 +1045,15 @@
                                         <h3 data-es="Risk Assurance Services Assistant"
                                             data-en="Risk Assurance Services Assistant">Risk Assurance Services Assistant</h3>
                                         <span class="date"><span data-es="Ago" data-en="Aug">Ago</span> 2023 – <span
-                                                data-es="Oct" data-en="Oct">Oct</span> 2024</span>
+                                                data-es="Nov" data-en="Nov">Nov</span> 2024</span>
                                     </div>
                                     <span class="exp-co" data-es="PwC (PriceWaterhouseCoopers) · Venezuela"
                                         data-en="PwC (PriceWaterhouseCoopers) · Venezuela">PwC (PriceWaterhouseCoopers) ·
                                         Venezuela</span>
                                     <ul>
-                                        <li data-es="Desarrollé herramienta interna (<strong>Angular + SQL Server</strong>) para generación automatizada de informes de ciberseguridad, lo que redujo el tiempo de preparación en un <strong>25%</strong> (de 8h a 6h por reporte)."
-                                            data-en="Built internal tool (<strong>Angular + SQL Server</strong>) for automated cybersecurity report generation, reducing preparation time by <strong>25%</strong> (from 8h to 6h per report).">
-                                            Desarrollé herramienta interna (<strong>Angular + SQL Server</strong>) para
-                                            generación automatizada de informes de ciberseguridad, lo que redujo el tiempo de
-                                            preparación en un <strong>25%</strong> (de 8h a 6h por reporte).</li>
+                                        <li data-es="Colaboré en la finalización y refinamiento de una herramienta interna (<strong>Angular + SQL Server</strong>) para la generación automatizada de informes de ciberseguridad, reduciendo el tiempo de preparación en un <strong>25%</strong> (de 8h a 6h por reporte)."
+                                            data-en="Contributed to the completion and refinement of an internal tool (<strong>Angular + SQL Server</strong>) for automated cybersecurity report generation, reducing preparation time by <strong>25%</strong> (from 8h to 6h per report).">
+                                            Colaboré en la finalización y refinamiento de una herramienta interna (<strong>Angular + SQL Server</strong>) para la generación automatizada de informes de ciberseguridad, reduciendo el tiempo de preparación en un <strong>25%</strong> (de 8h a 6h por reporte).</li>
                                         <li data-es="Ejecuté revisiones de seguridad y auditoría de accesos en entornos Linux, SQL Server y Windows, estandarizando la documentación técnica para <strong>+20 pruebas de control críticas</strong>."
                                             data-en="Executed security reviews and access auditing in Linux, SQL Server, and Windows environments, standardizing technical documentation for <strong>+20 critical control tests</strong>.">
                                             Ejecuté revisiones de seguridad y auditoría de accesos en entornos Linux, SQL Server
@@ -1073,12 +1076,11 @@
                                     <div class="exp-head">
                                         <h3 data-es="Desarrollador Frontend" data-en="Frontend Developer">Desarrollador Frontend
                                         </h3>
-                                        <span class="date"><span data-es="Feb" data-en="Feb">Feb</span> 2022 – <span
-                                                data-es="Ene" data-en="Jan">Ene</span> 2023</span>
+                                        <span class="date"><span data-es="Ene" data-en="Jan">Ene</span> 2022 – <span
+                                                data-es="Sep" data-en="Sep">Sep</span> 2023</span>
                                     </div>
-                                    <span class="exp-co" data-es="Avimark Studios · Caracas, Venezuela"
-                                        data-en="Avimark Studios · Caracas, Venezuela">Avimark Studios · Caracas,
-                                        Venezuela</span>
+                                    <span class="exp-co" data-es="Avimark Studios (Fumimark) · Caracas, Venezuela"
+                                        data-en="Avimark Studios (Fumimark) · Caracas, Venezuela">Avimark Studios (Fumimark) · Caracas, Venezuela</span>
                                     <ul>
                                         <li data-es="Desarrollé interfaces responsivas en <strong>Angular</strong> y <strong>Bootstrap</strong> a partir de mockups en <strong>Figma</strong>, asegurando <strong>100%</strong> de paridad visual."
                                             data-en="Developed responsive interfaces in <strong>Angular</strong> and <strong>Bootstrap</strong> from <strong>Figma</strong> mockups, ensuring <strong>100%</strong> visual parity.">
@@ -1129,42 +1131,78 @@
         // ── Language Toggle ────────────────────────────
         let currentLang = 'es';
 
+        function initLang() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
+            const savedLang = localStorage.getItem('portfolio_lang');
+            
+            let detectedLang = 'es';
+            if (urlLang === 'es' || urlLang === 'en') {
+                detectedLang = urlLang;
+            } else if (savedLang === 'es' || savedLang === 'en') {
+                detectedLang = savedLang;
+            } else {
+                const browserLang = navigator.language || navigator.userLanguage;
+                detectedLang = browserLang.toLowerCase().includes('es') ? 'es' : 'en';
+            }
+            
+            currentLang = detectedLang;
+            localStorage.setItem('portfolio_lang', currentLang);
+            updateUIForLang();
+        }
+
         function toggleLang() {
             currentLang = currentLang === 'es' ? 'en' : 'es';
+            localStorage.setItem('portfolio_lang', currentLang);
+            updateUIForLang();
+        }
+
+        function updateUIForLang() {
             const btn = document.getElementById('langBtn');
-            btn.innerHTML = currentLang === 'es'
-                ? '<i data-lucide="globe"></i> <span>🇬🇧 English</span>'
-                : '<i data-lucide="globe"></i> <span>🇪🇸 Español</span>';
+            if (btn) {
+                btn.innerHTML = currentLang === 'es'
+                    ? '<i data-lucide="globe"></i> <span>🇬🇧 English</span>'
+                    : '<i data-lucide="globe"></i> <span>🇪🇸 Español</span>';
+            }
 
             // Update all elements with data-es / data-en
             document.querySelectorAll('[data-es]').forEach(el => {
                 const content = el.getAttribute(`data-${currentLang}`);
                 if (content !== null) {
                     if (content.includes('<')) {
-                        el.innerHTML = content;
+                        el.innerHTML = DOMPurify.sanitize(content);
                     } else {
                         el.textContent = content;
                     }
                 }
             });
 
-            lucide.createIcons();
-            document.documentElement.lang = currentLang;
-
             // Update the show/hide photo button text lang
             const photoBtn = document.getElementById('photoBtn');
-            if (showPhoto) {
-                photoBtn.querySelector('span').textContent = currentLang === 'es' ? 'Ocultar Foto' : 'Hide Photo';
-            } else {
-                photoBtn.querySelector('span').textContent = currentLang === 'es' ? 'Mostrar Foto' : 'Show Photo';
+            if (photoBtn) {
+                if (showPhoto) {
+                    photoBtn.querySelector('span').textContent = currentLang === 'es' ? 'Ocultar Foto' : 'Hide Photo';
+                } else {
+                    photoBtn.querySelector('span').textContent = currentLang === 'es' ? 'Mostrar Foto' : 'Show Photo';
+                }
             }
 
             // Update PDF button text lang
             const dlBtn = document.getElementById('controls').querySelector('.dl span');
-            dlBtn.textContent = currentLang === 'es' ? 'Exportar PDF' : 'Export PDF';
+            if (dlBtn) {
+                dlBtn.textContent = currentLang === 'es' ? 'Exportar PDF' : 'Export PDF';
+            }
 
-            // Update theme text
+            // Update CV classic link query param
+            const cvLink = document.getElementById('controls').querySelector('.cv-type');
+            if (cvLink) {
+                cvLink.href = `/cv/classic?lang=${currentLang}`;
+            }
+
+            // Update theme button
             updateThemeBtn();
+            lucide.createIcons();
+            document.documentElement.lang = currentLang;
         }
 
         function updateThemeBtn() {
@@ -1197,6 +1235,13 @@
             const page = document.getElementById('cv-page');
             const lang = currentLang === 'es' ? 'ES' : 'EN';
             
+            // Save original scroll position
+            const originalScrollY = window.scrollY;
+            const originalScrollX = window.scrollX;
+            
+            // Scroll to top-left to avoid html2canvas offsets / blank areas
+            window.scrollTo(0, 0);
+            
             // Add print-mode class to body to force desktop layout for export
             document.body.classList.add('print-mode');
             
@@ -1215,21 +1260,43 @@
                     scale: 3,
                     useCORS: true,
                     letterRendering: true,
-                    backgroundColor: '#ffffff'
+                    backgroundColor: '#ffffff',
+                    scrollY: 0,
+                    scrollX: 0
                 },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
             };
             
-            html2pdf().set(opt).from(page).save().then(() => {
+            const pdfName = `Brandon_Bello_CV_${lang}.pdf`;
+
+            html2pdf().set(opt).from(page).output('blob').then((pdfBlob) => {
+                const blobUrl = URL.createObjectURL(pdfBlob);
+                const link = document.createElement('a');
+                link.href = blobUrl;
+                link.download = pdfName;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(blobUrl);
+
                 // Restore original preview styling
                 page.style.borderRadius = oldBorderRadius;
                 page.style.boxShadow = oldBoxShadow;
                 document.body.classList.remove('print-mode');
+                // Restore scroll position
+                window.scrollTo(originalScrollX, originalScrollY);
             }).catch(err => {
                 console.error("PDF export error", err);
                 document.body.classList.remove('print-mode');
+                // Restore scroll position
+                window.scrollTo(originalScrollX, originalScrollY);
             });
         }
+
+        // Initialize icons and language on DOM load
+        window.addEventListener('DOMContentLoaded', () => {
+            initLang();
+        });
     </script>
 </body>
 
