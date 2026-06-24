@@ -93,7 +93,7 @@ export default function ProjectsSection() {
                 '│  │ External Integrations              │    │',
                 '│  ├────────────────────────────────────┤    │',
                 '│  │ • Firebase Admin (Push/Auth)       │    │',
-                '│  │ • Stripe (Payments) & Twilio (SMS) │    │',
+                '│  │ • RevenueCat (Payments) & Twilio   │    │',
                 '│  │ • GCP Text-to-Speech & VertexAI    │    │',
                 '│  └────────────────────────────────────┘    │',
                 '└─────────────────────────────────────────────┘',
